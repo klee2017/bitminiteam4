@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.bit.team4.repository.mapper.MailMapper">
+	
+	<resultMap id="mailMap" type ="Mail">
+		<result column="reg_date" property ="regDate"/>
+		<result column="check_mail" property ="checkMail"/>	
+	</resultMap>
+	
+	
+	<select id="trashAll" resultMap="mailMap">
+		select *
+		 from  tb_member_mail
+		where  trash='y' 
+	</select>
+	
+	<select id="receiverMail" parameterType="string" resultMap="mailMap">
+		select *
+		 from  tb_member_mail
+		where  receiver=#{receiver} 
+	</select>
+    
+    
+    <insert id="write" parameterType="Mail">
+    	insert into tb_member_mail
+    		(receiver,no,sender,title,content) values(
+    		#{receiver},1,#{sender},#{title},#{content})
+    </insert>
+    
+</mapper>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>글쓰기</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magicsuggest/2.1.4/magicsuggest-min.css" />
     <style>
@@ -117,25 +117,25 @@
   <div class="post-form">
     <div class="post-form-backdrop closed"></div>
     <div class="post-section editor-title">
-      <h3 class="page-title">New Post</h3>
+      <h3 class="page-title">글쓰기</h3>
     </div>
-    <div class="post-section post-tagged-people">
+    <!-- <div class="post-section post-tagged-people">
       <div class="form-group">
         <label for="people-entry">Select People</label>
         <div id="people-entry"></div>
       </div>
-    </div>
+    </div> -->
     <div class="post-section">
-      <label for="post-title">Post Content</label>
+      <!-- <label for="post-title">글</label> -->
       <div class="post-title">
-        <input type="text" name="title" id="post-title" class="post-input large"  placeholder="Title..."/>
+        <input type="text" name="title" id="post-title" class="post-input large"  placeholder="제목"/>
       </div>
       <div class="post-content">
-        <textarea name="content" class="post-input" placeholder="Content..."></textarea>
+        <textarea name="content" class="post-input" placeholder="내용"></textarea>
       </div>
     </div>
     <div class="post-section post-media">
-      <label>Media</label>
+      <label>사진</label>
       <div class="post-media-inner">
         <div class="post-media-icon thumbnail">
           <button class="delete-media btn btn-danger btn-xs">&times;</button>
@@ -156,17 +156,17 @@
       </div>
     </div>
     <div class="post-section post-buttons">
-      <div class="dropup pull-left">
+      <!-- <div class="dropup pull-left">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="add-more-post-items">Add More <i class="caret"></i></button>
          <ul class="dropdown-menu" arial-labelledby="#add-more-post-items">
           <li><a href="#" class="open-overlay" data-target=".activities">Add Activities</a></li>
           <li><a href="#" class="open-overlay" data-target=".targets">Add Targets</a></li>
         </ul>
-      </div>
-      <button type="button" class="btn btn-primary">Save Draft</button>
-      <button type="button" class="btn btn-success">Publish</button>
+      </div> -->
+      <button type="button" class="btn btn-primary">임시 저장</button>
+      <button type="button" class="btn btn-success">작성</button>
     </div>
-    <div class="post-form-overlay closed activities">
+    <!-- <div class="post-form-overlay closed activities">
       <h4>Add Activity <button type="button" class="close">&times;</button></h4>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit deserunt necessitatibus eveniet tenetur repellat, eligendi doloremque maxime corporis modi iusto consectetur accusamus commodi dignissimos voluptates, dolor ipsam quasi soluta deleniti!</p>
     </div>
@@ -177,18 +177,18 @@
         <input autofocus id="target-text" type="text" class="form-control" />
       </div>
       <button class="btn btn-primary">Add</button>
-    </div>
+    </div> -->
   </div>
 </div>
 <script>
-	$('#people-entry').magicSuggest({
-	  data: [
-	    {name: 'Jimmy Hoffa'},
-	    {name: 'Elvis Presley'},
-	    {name: 'DB Cooper'},
-	    {name: 'Marylin Monroe'}
-	  ]
-	})
+	// $('#people-entry').magicSuggest({
+	//   data: [
+	//     {name: 'Jimmy Hoffa'},
+	//     {name: 'Elvis Presley'},
+	//     {name: 'DB Cooper'},
+	//     {name: 'Marylin Monroe'}
+	//   ]
+	// })
 
 	$('.post-form').on('click', '.open-overlay', function(e) {
 	  e.preventDefault()

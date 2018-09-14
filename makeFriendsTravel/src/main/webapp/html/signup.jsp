@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>로그인 페이지 입니다</title>
+
 <style>
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Lora");
 body {
@@ -312,6 +313,7 @@ input[type=checkbox] {
     opacity: 0;
     transform: scale(1) rotate(0) translate3d(-300px, 300px, 0);
   }
+ 
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
@@ -343,7 +345,13 @@ input[type=checkbox] {
             <input type="checkbox" id="remember" /><label for="remember">remember me</label>
           </div>
 
-          <button class="button submit">login</button>
+          	  
+       	  <button class="button submit">login</button>
+       	  <a href="#" target="_blank">
+       	 		 <img  src="https://static.wixstatic.com/media/4de886_d8be86231d7b48c6a5c8f5c4b7c387f6~mv2.png"
+       	    width="20%">
+       	  </a>
+          
         </form>
       </div>
     </div>

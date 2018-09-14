@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Lato');
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Lora");
+
 
 * {
   margin: 0;
@@ -20,8 +22,14 @@
 h1 {
   margin: 20px;
   text-align: center;
-  font-size: 34px;
+  font-size: 50px;
 }
+h2 {
+  margin: 10px;
+  text-align: left;
+  font-size: 30px;
+}
+
 
 .settings-message {
   font-size: 20px;
@@ -44,10 +52,10 @@ form {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  max-width: 900px;
+  max-width: 1500px;
   width: 100%;
   margin: auto;
-  padding: 20px;
+  padding: 10px;
 }
 form > *:not(:first-of-type) {
   margin-top: 20px;
@@ -116,9 +124,13 @@ form > *:not(:first-of-type) {
     flex-basis: 49%;
   }
 }
-.input__container > * input {
+.input__container > * input,select {
   width: 100%;
 }
+#email {
+  width: 204%;
+}
+
 
 .input-action {
   display: block;
@@ -130,8 +142,11 @@ form > *:not(:first-of-type) {
 
 input[type="text"],
 input[type="email"],
-input[type="password"] {
-  padding: 5px 8px;
+input[type="password"],
+input[type="radio"],
+select {
+  padding: 10px 8px;
+  border-radius: 3px;
 }
 
 input[type="submit"] {
@@ -147,6 +162,12 @@ input[type="submit"]:hover, input[type="submit"]:focus {
   background-color: #333;
   color: #eee;
 }
+@media (min-width: 750px){
+	.input__container > h2{
+		flex-basis: 100%;
+	}
+}
+
 </style>
 
 </head>
@@ -161,42 +182,59 @@ input[type="submit"]:hover, input[type="submit"]:focus {
   </div>
   
   <div class="input__container">
-          <h1>필수 사항</h1>
+          <h2>Essential Point</h2>
 
+    <div class="input-container__single">
+      <label for="id">UserId:</label>
+      <input type="text" name="id" id="id" />
+    </div>
+    
     <div class="input-container__single">
       <label for="name">Name:</label>
       <input type="text" name="name" id="name" />
     </div>
     
     <div class="input-container__single">
-      <label for="email">Email:</label>
-      <input type="text" name="email" id="email" />
-    </div>
-    <div class="input-container__single">
       <label for="js-password">Password:</label>
       <input type="password" id="js-password" name="password" />
       <span id="js-toggle-password" class="input-action">Display Password</span>
     </div>
+    
     <div class="input-container__single">
       <label for="js-password-confirm">Confirm Password:</label>
       <input type="password" id="js-password-confirm" name="confirm-password" />
       <span class="input-action" id="js-suggest-password">Suggest Password</span>
     </div>
-      <h1>선택 사항</h1>
+      
+      <h2>Option</h2>
 
     <div class="input-container__single">
-      <label for="name1">Name:</label>
-      <input type="text" name="name1" id="name" />
+      <label for="name">Name:</label>
+      <select name="select">
+	        <option value='1' selected>-- 선택 --</option>
+	      	<option value='2'>서울</option>
+	  		<option value='3'>경기</option>
+	  		<option value='4'>강원</option>
+	  		<option value='5'>충청</option>
+	  		<option value='6'>전라</option>
+	  		<option value='7'>경상</option>
+	  		<option value='8'>제주</option>
+      </select>
     </div>
     
     <div class="input-container__single">
-      <label for="email1">Email:</label>
-      <input type="text" name="email1" id="email1" />
+      <label for="gender">Gender:</label>
+      <select name="select">
+	        <option value='1' selected>-- 선택 --</option>
+	      	<option value='2'>남성</option>
+	      	<option value='2'>여성</option>
+      </select>
     </div>
+    
     <div class="input-container__single">
         <div class="input-container__single">
-      <label for="name1">Name:</label>
-      <input type="text"  name="name1" id="name" />
+      <label for="email">Email:</label>
+      <input type="text"  name="email" id="email"/>
     </div>
     
     

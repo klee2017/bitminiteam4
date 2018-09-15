@@ -6,11 +6,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Q&AWrite</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magicsuggest/2.1.4/magicsuggest-min.css"/>
 
 <style>
+hr{
+	height:3px;
+	background: black;
+}
+
 .post-form {
   padding: 10px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.6);
@@ -127,16 +132,21 @@
     <div class="post-section post-tagged-people">
       <div class="form-group">
         <label for="people-entry">작성일</label>
+        <span><strong>4월 20일</strong></span>
         <div id="people-entry"></div>
       </div>
     </div>
+    <br>
     <div class="post-section">
       <label for="post-title">작성자</label>
+      <span><strong>익룡</strong></span>
+      <br>
       <div class="post-title">
         <input type="text" name="title" id="post-title" class="post-input large"  placeholder="제목을 입력하세요"/>
       </div>
+      <br>
       <div class="post-content">
-        <textarea name="content" class="post-input" placeholder="Content..."></textarea>
+        <textarea name="content" class="post-input" placeholder="내용을 입력하세요"></textarea>
       </div>
     </div>
 

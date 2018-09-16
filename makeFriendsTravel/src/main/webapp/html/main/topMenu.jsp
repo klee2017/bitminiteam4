@@ -38,7 +38,7 @@
         <li><a href="/makeFriendsTravel/html/Q&AList.jsp">Q&A</a></li>
       </ul>
       <button><a href="searchList.jsp">search</a></button>
-      <input style="margin-right:100px;" class="search float-right" placeholder="Search..">
+      <input  class="search float-right" placeholder="Search..">
       
     </div>
   </header>

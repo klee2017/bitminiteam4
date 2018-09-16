@@ -6,8 +6,18 @@
 
 
 <style>
-  
 
+body {
+  
+  background: url('ttt.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment:local;
+  
+  
+}
 
 .sunny {
   position: relative;
@@ -374,6 +384,7 @@
   text-align:center;
   color:#555;
   box-shadow:0 0 50px -14px rgba(0,0,0,.8);
+  
 }
 
 #calendar h1{
@@ -463,6 +474,7 @@ h3 {
 .action a:hover{
   background:#000;
 }
+
 </style>
 <script src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -496,10 +508,10 @@ h3 {
                 <table>
                   <tr><td class="lastmonth">26</td><td class="lastmonth">27</td><td class="lastmonth">28</td><td class="lastmonth">29</td><td class="lastmonth">30</td><td class="lastmonth">31</td><td>1</td></tr>
                   <tr><td>2</td><td>3</td><td >4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr>
-                  <tr><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td class="current">15</td></tr>
-                  <tr><td class>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td class>21</td><td>22</td></tr>
-                  <tr><td>23</td><td>24</td><td class>25</td><td>26</td><td class="nextmonth">27</td><td>28</td><td>29</td></tr>
-                  <tr><td>30</td></tr>
+                  <tr><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td></tr>
+                  <tr><td>16</td><td class="current">17</td><td>18</td><td>19</td><td>20</td><td class>21</td><td>22</td></tr>
+                  <tr><td>23</td><td>24</td><td class>25</td><td>26</td><td>27</td><td>28</td><td>29</td></tr>
+                  <tr><td>30</td> <td class="nextmonth">1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
                 </table>
               </div>
         
@@ -568,6 +580,8 @@ e.preventDefault();
 var slideno = $(this).data('slide');
 $('.slider-nav').slick('slickGoTo', slideno - 1);
 });
+
+
  </script>   
 </body>
 </html>

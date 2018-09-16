@@ -1,233 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<c:import url="topMenu.jsp"></c:import> 
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css"/>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css"/>
-<script src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
 
 <style>
   
-body {
-  
-  background-color: #e5e5e5;
-  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  color: #484858;
-  margin: 0 ;
-  padding: 10px;
-  
-}
 
-a {
-  text-decoration: none !important;
-  color: inherit !important;
-}
-
-header {
-  background-color: #fff;
-  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.25);
-}
-
-header .title {
-  border-bottom: 1px solid #e3e3e3;
-}
-
-.content {
-  max-width: 1000px;
-  margin-left: calc((100% - 1000px) / 2);
-}
-
-@media (max-width: 1080px) {
-  .content {
-    width: calc(100% - 80px);
-    margin-left: 40px;
-  }
-}
-
-header .title h1 {
-  display: inline-block;
-  margin: 0;
-  padding: 15px 0 20px 0;
-  font-size: 35pt;
-  font-family: "Pacifico", cursive;
-  font-weight: 200;
-}
-
-header .title .icons {
-  float: right;
-  margin-top: 35px;
-  display: inline-block;
-}
-
-header .title .icons li {
-  cursor: pointer;
-  display: inline;
-  margin: 0 6px;
-  font-size: 13pt;
-}
-
-header .title .icons li:hover {
-  color: #6f707d;
-  transition: all 0.5s;
-}
-
-header .nav {
-  padding: 15px 0 3px 0;
-  display: inherit !important;
-}
-
-header .nav ul {
-  padding: 0;
-}
-
-header .nav li {
-  display: inline;
-  cursor: pointer;
-  margin: 0 40px 0 0;
-  text-transform: uppercase;
-  font-size: 10pt;
-  font-family: "Open Sans", sans-serif;
-  padding-bottom: 19px;
-}
-
-header .nav li:hover {
-  color: #9797b5;
-  transition: all 0.2s;
-  border-bottom: 2px solid #484858;
-}
-
-header .nav .search {
-  display: inline;
-  height: 30px;
-  padding: 8px 60px 8px 10px;
-  margin-top: -41px;
-  background-color: #484858;
-  color: #fff;
-  font-size: 8pt;
-  font-family: "Open Sans", sans-serif;
-  border: none;
-}
-
-::-webkit-input-placeholder {
-  color: #fff;
-}
-:-moz-placeholder {
-  color: #fff;
-}
-::-moz-placeholder {
-  color: #fff;
-  opacity: 1;
-}
-:-ms-input-placeholder {
-  color: #fff;
-}
-::-ms-input-placeholder {
-  color: #fff;
-}
-::placeholder {
-  color: #fff;
-}
-
-header .nav .search p {
-  margin: 0;
-}
-
-main {
-  margin-top: 40px;
-}
-
-.article {
-  background-color: #fff;
-  padding: 15px;
-  margin-bottom: 22px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-}
-
-.article img {
-  cursor: pointer;
-  width: 100%;
-}
-
-.article .location {
-  cursor: pointer;
-  font-style: italic;
-  text-align: center;
-  font-size: 9pt;
-  margin-top: 15px;
-  font-family: "Open Sans", sans-serif;
-}
-
-.article .location b {
-  text-transform: uppercase;
-  font-style: normal;
-  font-size: 12pt;
-  font-weight: 600;
-}
-
-.article .desc {
-  margin-top: 12px;
-  font-size: 10pt;
-  font-family: "Open Sans", sans-serif;
-  padding-bottom: 18px;
-  border-bottom: 1px solid #eee;
-}
-
-.article .info {
-  text-align: center;
-  font-family: "Open Sans", sans-serif;
-  margin-top: -5px;
-  color: #9a9ab3;
-}
-
-.article .info .comment {
-  cursor: pointer;
-  margin-left: 20px;
-}
-
-.article .info .comment:hover {
-  color: #b5b5e0;
-  transition: all 0.5s;
-}
-
-.article .info .date, .article .info .comment {
-  font-size: 8pt;
-} 
-
-.info .fa-calendar,  .info .fa-comment-alt{
-  margin-right: 3px;
-}
-
-.quote {
-  font-size: 15pt;
-  text-align: center;
-  background-color: #484858;
-  color: #fff;
-}
-
-.quote p {
-  margin-bottom: 0;
-  font-style: italic;
-}
-
-.quote span {
-  font-style: normal;
-  font-size: 10pt;
-  color: #999;
-}
-
-h2 {
-  margin-bottom: 4rem;
-  font-size: 1rem;
-  text-transform: uppercase;
-}
 
 .sunny {
   position: relative;
@@ -689,30 +469,7 @@ h3 {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
 </head>
 <body>
-    <header>
-    <div class="title content">
-      <h1><a href="">travel</a></h1>
-      <div class="icons">
-        <ul>
-          <li><i class="fab fa-twitter"></i></li>
-          <li><i class="fab fa-facebook-f"></i></li>
-          <li><i class="fab fa-instagram"></i></li>
-          <li><i class="fab fa-google-plus-g"></i></li>
-          <li><i class="fas fa-rss"></i></li>
-        </ul>
-      </div>
-    </div>
-    <div class="nav content">
-      <ul>
-        <li class="current">Home</li>
-        <li>Review</li>
-        <li>Best Photo</li>
-        <li>Q&A</li>
-      </ul>
-      <input class="search float-right" placeholder="Search..">
-      
-    </div>
-  </header>
+    
 
   <main>
     <div class="row content">
@@ -747,30 +504,14 @@ h3 {
               </div>
         
       </div>
-      <div style="padding-left: 0;"  class="col-md-4">
-        <div class="article quote">
-          
-            <div class="rainy">
-              <br><br><br>
-                <div class="rainy__cloud"></div>
-                <div class="rainy__rain"></div>
-            </div>
-            <br><br><br>
-            
-            <h2 class="location">
-            	<b>비</b>
-            	<br><br>18  ℃
-            </h2>
-            
-            <div class="info">
-                <span class="date"><i class="far fa-calendar"></i>  September 09 15, 2018</span>
-            </div>
-        </div>
-        <div class="main">
-            <div class="slider slider-for">
-                <div><img src="asd.jpg" width="300px"/></div>
-                <div><img src="b.jpg" width="300px"/></div>
-                <div><img src="c.jpg" width="300px"/></div>
+      
+      <div style=" padding-left: 100px; padding-top: 150px;">
+        
+        <div style="width: 500px;" class="main">
+            <div style ="padding-left: 60px;"  class="slider slider-for">
+                <div><img src="asd.jpg" width="400px"/></div>
+                <div><img src="b.jpg" width="400px"/></div>
+                <div><img src="c.jpg" width="400px"/></div>
                 <div><img src="d.jpg" width="700px"/></div>
                 <div><h3>5</h3></div>
             </div>
@@ -783,7 +524,8 @@ h3 {
             </div>        
         </div>
       </div>
-      <div style="padding-right: 0;" class="col-md-4">
+      <%--
+      	<div style="padding-right: 0;" class="col-md-4">
         <div class="article">
             <div class="rainy">
                 <div class="rainy__cloud"></div>
@@ -797,7 +539,10 @@ h3 {
               
             
         </div>
-      </div>   
+      </div>
+      
+       --%>
+         
       </div>
     </div>
   </main>

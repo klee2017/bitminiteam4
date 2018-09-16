@@ -14,20 +14,28 @@
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
 	
 	<style>
-		
 		.board-button {
 			float: right;
+		}
+		
+		#board-write-form {
+			max-width: 1000px;
+			margin: auto;
+			padding-top: 50px;
 		}
 	</style>
 </head>
 <body>
+	<div id="board-write-form">
 	<form method="post" action="">
 		<div id="title" name="title">
-			<h2>제목 : <input type="text" /></h2>
+			<h4>제목 : <input type="text" /></h4>
 		</div>
 		<textarea id="summernote" name="editordata"></textarea>
 	</form>
 	<button class="board-button">등록</button>
+	</div>
+	
 	<script>
 		$(document).ready(function() {
 		  $('#summernote').summernote();

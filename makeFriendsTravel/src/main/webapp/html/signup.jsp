@@ -221,6 +221,9 @@ input[type=checkbox] {
   width: 7px;
   background: #ce7d88;
 }
+.forget{
+
+}
 
 .checkbox input[type="checkbox"]:checked + label {
   color: #ce7d88;
@@ -336,15 +339,20 @@ input[type=checkbox] {
           <button class="button submit">create account </button>
         </form>
       </div>
+      
+      
+ 
+      
       <div class="signin">
         <h1>sign in</h1>
         <form class="more-padding" action="<c:url value='/login/login.do'/>" method="post" autocomplete="off">
           <input type="text" name="id" placeholder="username">
           <input type="password" name="pass" placeholder="password">
           <div class="checkbox">
-            <input type="checkbox" id="remember" /><label for="remember">remember me</label>
+            <input type="checkbox" id="remember" /><label for="remember">remember me</label><br>
           </div>
-
+          
+          
           	  
        	  <button class="button submit">login</button>
        	  <a href="#" target="_blank">
@@ -368,6 +376,8 @@ input[type=checkbox] {
 	      <img class="flower" src="https://i.imgur.com/aqUl8XD.jpg" alt="travel.jpg"/>
 	      <p class="account">don't have an account?</p>
 	      <button class="button" id="signup">sign up</button>
+	      <button class="button" id="pass">password</button>
+	      
     </div>
   </div>
  </div>
@@ -385,6 +395,8 @@ input[type=checkbox] {
 	  $('.signup').addClass('nodisplay');
 	  $('.signin').removeClass('nodisplay');
 	});
+	
+
 </script>
 </body>
 </html>

@@ -119,12 +119,13 @@ img {
 <body>
 	<div class="wrapper">
 
+	 <a href="bestDetail.jsp">
         <div class="item">
           <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/dXAhQuT.jpg">
             <div class="caption">By Joshua Sortino</div>
           </div>
         </div>
-      
+      </a>
         <div class="item">
           <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/LZkivxR.jpg">
             <div class="caption">By Cole Patrick</div>

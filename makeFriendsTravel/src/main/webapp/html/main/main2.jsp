@@ -7,7 +7,9 @@
 
 
 <style>
-
+main{
+background-color: rgba( 255, 255, 255, 0.5 );
+}
 body {
   
   background: url('ttt.jpg') no-repeat center center fixed;

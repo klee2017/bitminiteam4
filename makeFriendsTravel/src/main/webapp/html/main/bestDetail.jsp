@@ -1,21 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<c:import url="topMenu.jsp"></c:import>      
+
+
 <title>Review Detail</title>
 <style>
 		@import url(https://fonts.googleapis.com/css?family=Merriweather:400,700,400italic,700italic);
 	
 	body {
-	  color: #222;
+	  background-color: white;
 	  font: 18px/1.555555555 Merriweather, serif;
-	  margin: 2em auto;
-	  width: 90%;
-	  max-width: 40em;
+	  margin: 0 auto;
+	  padding:10px;
+
+	  
 	}
+	
+
 	
 	img {
 	  border: 0;
+	  width:100%;
 	  max-width: 100%;
 	}
 	
@@ -99,7 +103,7 @@
 	html {
 
   font-family: "PT Sans", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
-  color: #555f77;
+ 
   -webkit-font-smoothing: antialiased;
 }
 
@@ -205,10 +209,11 @@ p {
 	
 </style>
 </head>
-<body>
+<body><br>
+<div style="margin: 2em auto; width: 90%; max-width: 40em;">
 	<article itemscope itemtype="http://schema.org/BlogPosting" class="post">
 
-  <img itemprop="image" src="https://lorempixel.com/720/460/cats/1/" alt="A descriptive alt" class="featured-image">
+  <img itemprop="image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/dXAhQuT.jpg" alt="A descriptive alt" class="featured-image">
 
   <header class="post-header">
       <h2 itemprop="headline" class="post-title">A typical blog post title</h2>
@@ -293,5 +298,6 @@ p {
 		</div>
 	
 </article>
+</div>
 </body>
 </html>

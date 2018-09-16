@@ -19,7 +19,7 @@
 
 	<header>
     <div class="title content">
-      <h1><a href="">travel</a></h1>
+      <h1><a href="/makeFriendsTravel/html/main/main2.jsp">travel</a></h1>
       <div class="icons">
         <ul>
           <li><i class="fab fa-twitter"></i></li>
@@ -37,7 +37,8 @@
         <li><a href="/makeFriendsTravel/html/main/photoBoard.jsp">Best Photo</a></li>
         <li><a href="/makeFriendsTravel/html/Q&AList.jsp">Q&A</a></li>
       </ul>
-      <input class="search float-right" placeholder="Search..">
+      <button><a href="searchList.jsp">search</a></button>
+      <input style="margin-right:100px;" class="search float-right" placeholder="Search..">
       
     </div>
   </header>

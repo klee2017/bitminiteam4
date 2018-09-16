@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <c:import url="topMenu.jsp"></c:import> 
-
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
 
 
 <style>
@@ -439,7 +439,7 @@
 }
 h3 {
     background: #fff;
-    color: #3498db;
+    color: #815dc2;
     font-size: 36px;
     line-height: 100px;
     margin: 10px;
@@ -508,7 +508,7 @@ h3 {
       <div style=" padding-left: 100px; padding-top: 150px;">
         
         <div style="width: 500px;" class="main">
-            <div style ="padding-left: 60px;"  class="slider slider-for">
+            <div style ="padding-left: 60px; "  class="slider slider-for">
                 <div><img src="asd.jpg" width="400px"/></div>
                 <div><img src="b.jpg" width="400px"/></div>
                 <div><img src="c.jpg" width="400px"/></div>
@@ -516,9 +516,9 @@ h3 {
                 <div><h3>5</h3></div>
             </div>
             <div class="slider slider-nav">
-                <div><h3>1</h3></div>
-                <div><h3>2</h3></div>
-                <div><h3>3</h3></div>
+                <div><h3 style="font-family: Nanum Pen Script, cursive;"><a href="/makeFriendsTravel/html/main/photoBoard.jsp">BEST</a></h3></div>
+                <div><h3 style="font-family: Nanum Pen Script, cursive;"><a href="/makeFriendsTravel/html/reviewList.jsp">Review</a></h3><</div>
+                <div><h3 style="font-family: Nanum Pen Script, cursive;"><a href="/makeFriendsTravel/html/Q&AList.jsp">Q&A</a></h3><</div>
                 <div><h3>4</h3></div>
                 <div><h3>5</h3></div>
             </div>        

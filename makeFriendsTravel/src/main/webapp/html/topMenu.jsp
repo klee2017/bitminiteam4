@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>TOP MENU</title>
 <style>
 	@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 
@@ -278,7 +278,7 @@
     </form>
     <div id="madeby">
       <span>
-        Photo by <a href="https://unsplash.com/@benblenner" target="_blank">Ben Blennerhassett</a>
+        Photo by Ben Blennerhassett
       </span>
     </div>
   </div>

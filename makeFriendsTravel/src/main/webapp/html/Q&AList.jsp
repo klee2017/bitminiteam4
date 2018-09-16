@@ -15,6 +15,7 @@ table.type10 {
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     margin: 20px 10px;
+    backguound:
 }
 
 table.type10 thead th {
@@ -23,7 +24,7 @@ table.type10 thead th {
     font-weight: bold;
     vertical-align: top;
     color: #fff;
-    background: grey;
+    background: #ed1c40;
     margin: 20px 10px;
     text-align: middle;
 }
@@ -34,7 +35,7 @@ table.type10 tbody th {
 table.type10 tbody tr:hover{
     width: 150px;
     padding: 10px;
-    background: grey;
+    background: rgba(237,28,64,.1);
 }
 table.type10 td {
     width: 350px;
@@ -48,9 +49,9 @@ hr{
 
 #write{
 	left: 81%;
-	background: rgb(209, 213, 214);
+	background:rgba(237,28,64,.1);
 	position: absolute;
-	border: solid 1px;
+	border: solid 2px;
 	border-color:black;
 	
 	}
@@ -58,9 +59,10 @@ hr{
 	background: white;
 }
 #search{
-	background: rgb(201, 209, 213);
+	background: rgba(237,28,64,.1);
 }
 }
+
 </style>
 </head>
 <body>
@@ -132,6 +134,8 @@ hr{
 			<a href="Q&AWrite.jsp">글쓰기</a>
 		</button>
 	</div>
+
+
 </body>
 
 </html>

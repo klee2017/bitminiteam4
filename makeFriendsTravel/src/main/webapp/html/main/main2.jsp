@@ -16,9 +16,11 @@ body {
   background-size: cover;
   background-attachment:local;
   
-  
 }
 
+main{
+	background-color: rgba( 255, 255, 255, 0.5 );
+}
 .sunny {
   position: relative;
   width:7rem;

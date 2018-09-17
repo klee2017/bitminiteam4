@@ -25,8 +25,6 @@
 	
 	img {
 	  border: 0;
-	  width:90%;
-	  height:400px;
 	  max-width: 100%;
 	}
 	
@@ -405,12 +403,12 @@
 		<article itemscope itemtype="http://schema.org/BlogPosting" class="post">
 
 			<header class="post-header">
-				<h3 itemprop="headline" class="post-title">travel review</h3>
-				<p class="post-subtitle" itemprop="alternativeHeadline">Joshua Sortino</p>
+				<h3 itemprop="headline" class="post-title">title</h3>
+				<p class="post-subtitle" itemprop="alternativeHeadline">writer</p>
 				<p class="post-meta">Posted on <time datetime="2015-06-05T17:44-07:00" itemprop="datePublished">June 05, 2015</time></p>
 			</header>
 	  
-			<img itemprop="image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/dXAhQuT.jpg" alt="A descriptive alt" class="featured-image">
+			<img itemprop="image" src="https://lorempixel.com/720/460/cats/1/" alt="A descriptive alt" class="featured-image">
 
 			<p itemprop="description" class="post-intro">A summary or introduction. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, eius! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia aperiam, illum architecto eligendi placeat, quo!</p>
 	  

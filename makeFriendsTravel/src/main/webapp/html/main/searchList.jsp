@@ -126,7 +126,7 @@ table {
   line-height: 40px;
   border-collapse: separate;
   border-spacing: 0;
-  border: 2px solid #ed1c40;
+  border: 2px solid #484858;
   width: 1500px;
   margin: 50px auto;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,.16);
@@ -134,12 +134,12 @@ table {
 }
 
 th {
-  background: #ed1c40;
+  background: #484858;
   color: #fff;
   border: none;
 }
 
-tr:hover:not(th) {background-color: rgba(237,28,64,.1);}
+tr:hover:not(th) {background-color: rgba(30,28,64,.1);}
 
 
 input[type="button"] {
@@ -156,7 +156,7 @@ input[type="button"]:not(.active) {
 }
 
 .active {
-	background-color: #ff4d4d;
+	background-color: #484858;
 	color :#fff;
 }
 
@@ -189,7 +189,7 @@ ul {
 	</div>
  	
  		<div style = " margin-left:7%" class="wrapper">
-			 <table id="myTable">
+			 <table style = "width:1250px;"id="myTable">
 				<tr>
 					<th>Photo</th>
 					<th>Content</th>

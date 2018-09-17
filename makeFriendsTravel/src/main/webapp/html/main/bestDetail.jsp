@@ -102,13 +102,7 @@
 	  text-align: center;
 	}
 	
-	form {
-	 position: relative;
-	 border-radius: 4px;
-	 width: 720px;
-	 height: 180px;
-	 margin: 0 auto;
-	}
+	
 	
 	form textarea {
 	 border-radius: 2px;
@@ -395,6 +389,14 @@
 				width: 320px;
 			}
 		}
+		
+	#comment-regist-form {
+	 position: relative;
+	 border-radius: 4px;
+	 width: 720px;
+	 height: 180px;
+	 margin: 0 auto;
+	}
 	
 </style>
 </head>

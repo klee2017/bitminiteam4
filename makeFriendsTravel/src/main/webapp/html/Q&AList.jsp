@@ -6,8 +6,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<style >
+<title>Q&AList</title>
+<style>
 table.type10 {
     border-collapse: collapse;
     text-align: left;
@@ -16,13 +16,14 @@ table.type10 {
     border-bottom: 1px solid #ccc;
     margin: 20px 10px;
 }
+
 table.type10 thead th {
     width: 300px;
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
     color: #fff;
-    background: skyblue;
+    background: grey;
     margin: 20px 10px;
     text-align: middle;
 }
@@ -33,18 +34,33 @@ table.type10 tbody th {
 table.type10 tbody tr:hover{
     width: 150px;
     padding: 10px;
-    background: cornsilk;
+    background: grey;
 }
 table.type10 td {
     width: 350px;
     padding: 10px;
     vertical-align: top;
 }
-button{
-	margin-left: 1235px;
-	background: cornsilk;
-	}
+hr{
+	height:3px;
+	background: black;
+}
 
+#write{
+	left: 81%;
+	background: rgb(209, 213, 214);
+	position: absolute;
+	border: solid 1px;
+	border-color:black;
+	
+	}
+#write:hover{
+	background: white;
+}
+#search{
+	background: rgb(201, 209, 213);
+}
+}
 </style>
 </head>
 <body>
@@ -54,35 +70,68 @@ button{
 <table class="type10">
     <thead>
     <tr>
-    	<th scope="cols">글번호</th>
-        <th scope="cols">작성자</th>
-        <th scope="cols">제목</th>
-        <th scope="cols">작성일</th>
+    	<th scope="cols" id="no">글번호</th>
+        <th scope="cols" id="writer">작성자</th>
+        <th scope="cols" id="title">제목</th>
+        <th scope="cols" id="date">작성일</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-    	<th>3</th>
+    	<th>7</th>
         <th>개구리</th>
         <th>내용이 들어갑니다.</th>
         <th>5:02pm</th>
     </tr>
     <tr>
-    	<th>2</th>
+    	<th>6</th>
         <th>도마뱀</th>
         <th>내용이 들어갑니다.</th>
         <th>5월4일</th>
     </tr>
     <tr>
-    	<th>1</th>
+    	<th>5</th>
         <th>강아지</th>
         <th>내용이 들어갑니다.</th>
-        <th>3월2일</th>
+        <th>5월2일</th>
     </tr>
-    <div>
-    	<button>글쓰기</button>
+        <tr>
+    	<th>4</th>
+        <th>아저씨</th>
+        <th>내용이 들어갑니다.</th>
+        <th>4월2일</th>
+    </tr>    <tr>
+    	<th>3</th>
+        <th>따오기</th>
+        <th>내용이 들어갑니다.</th>
+        <th>3월2일</th>
+    </tr>    <tr>
+    	<th>2</th>
+        <th>노숙자</th>
+        <th>내용이 들어갑니다.</th>
+        <th>2월2일</th>
+    </tr>    <tr>
+    	<th>1</th>
+        <th>직박구리</th>
+        <th>내용이 들어갑니다.</th>
+        <th>1월2일</th>
+    </tr>
+    
     </div>
 	</tbody>
 </table>
+	<div>	
+	<select id="sort">
+		<option value="no">글번호</option>
+		<option value="no">작성자</option>
+		<option value="no">제목</option>
+	</select>
+		<input id="search" placeholder="게시물 검색...">
+		<button id="searchbtn">검색</button>
+		<button id="write">
+			<a href="Q&AWrite.jsp">글쓰기</a>
+		</button>
+	</div>
 </body>
+
 </html>

@@ -107,11 +107,10 @@ form > *:not(:first-of-type) {
 }
 .profile-pic__foreground:hover {
   color: #fff;
-<<<<<<< HEAD
+
   background-color: lightsteelblue;
-=======
+
   background-color: lightsteelblue ;
->>>>>>> 79316deb5dc8e5e932cc4a22c3444bcd1b5acf8b
 }
 
 .input__container {

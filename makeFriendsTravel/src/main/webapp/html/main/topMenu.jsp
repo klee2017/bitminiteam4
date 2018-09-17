@@ -20,16 +20,15 @@
 	<header>
     <div class="title content">
       <h1><a href="/makeFriendsTravel/html/main/main2.jsp">travel</a></h1>
-      <div class="icons">
-        <ul>
-          <li><i class="fab fa-twitter"></i></li>
-          <li><i class="fab fa-facebook-f"></i></li>
-          <li><i class="fab fa-instagram"></i></li>
-          <li><i class="fab fa-google-plus-g"></i></li>
-          <li><i class="fas fa-rss"></i></li>
-        </ul>
+     	 <div>
+     	 <div class="nav1 content">
+      		<input name="test" class="search float-right" placeholder="Id를 입력하세요..."><br>
+    	 </div>
+      	 <div class="nav content">
+      		 <input name="test" class="search float-right" placeholder="비밀번호를 입력하세요...">   
+     	 </div>
+     	 </div>
       </div>
-    </div>
     <div class="nav content">
       <ul>
         <li class="current"><a href="/makeFriendsTravel/html/main/main2.jsp">Home</a></li>
@@ -37,8 +36,22 @@
         <li><a href="/makeFriendsTravel/html/main/photoBoard.jsp">Best Photo</a></li>
         <li><a href="/makeFriendsTravel/html/Q&AList.jsp">Q&A</a></li>
       </ul>
-      <button><a href="searchList.jsp">search</a></button>
-      <input  class="search float-right" placeholder="Search..">
-      
+       <form name="mForm" action = "searchList.jsp"  onsubmit="return Enter_Check()">
+      <input name="test" class="search float-right" placeholder="Search..">
+      </form>
     </div>
   </header>
+
+  <script>
+	  function Enter_Check(){
+		
+	      // 엔터키의 코드는 13입니다.
+
+			var test = document.mForm.test
+		   if(test.value =="") {
+		  		alert("입력해라")
+		  		return false;
+		  	}    
+	  }
+		
+  </script>

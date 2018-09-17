@@ -333,16 +333,17 @@ input[type=checkbox] {
       <div class="signup nodisplay">
         <h1>register</h1>
         <form  action="<c:url value='/login/sign.do'/>" autocomplete="off">
-          <input type="text" name="id" placeholder="id">
-          <button class="button submit">Overlap Check</button>
+          <input type="text" name="id" placeholder="id"><button class="button" id="signup">sign up</button>
+          
           <input type="text" name="name" placeholder="name">
           <input type="password" name="pass" placeholder="pass">
           <button class="button submit">create account </button>
         </form>
       </div>
       
+     
       
- 
+
       
       <div class="signin">
         <h1>sign in</h1>
@@ -385,7 +386,7 @@ input[type=checkbox] {
 </div>
 <script>
 	$('#signup').click(function() {
-	  $('.bluebox').css('transform', 'translateX(80%)');
+	  $('.bluebox').css('transform', 'translateX(90%)');
 	  $('.signin').addClass('nodisplay');
 	  $('.signup').removeClass('nodisplay');
 	});
@@ -395,6 +396,7 @@ input[type=checkbox] {
 	  $('.signup').addClass('nodisplay');
 	  $('.signin').removeClass('nodisplay');
 	});
+	
 	
 
 </script>

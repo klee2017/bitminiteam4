@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,13 +17,14 @@
   padding: 0;
   box-sizing: border-box;
   font-size: 16px;
-  font-family: "Lato", sans-serif;
+  font-family:  "Lora", serif;
 }
 
 h1 {
   margin: 20px;
   text-align: center;
   font-size: 50px;
+   
 }
 h2 {
   margin: 10px;
@@ -86,7 +88,7 @@ form > *:not(:first-of-type) {
 .profile-pic__container {
   overflow: hidden;
   position: relative;
-  border: 3px solid #333;
+  border: 3px solid lightsteelblue;
   border-radius: 100%;
   width: 300px;
   height: 300px;
@@ -105,7 +107,10 @@ form > *:not(:first-of-type) {
 }
 .profile-pic__foreground:hover {
   color: #fff;
-  background-color: rgba(20, 20, 20, 0.85);
+
+  background-color: lightsteelblue;
+
+  background-color: lightsteelblue ;
 }
 
 .input__container {
@@ -168,6 +173,14 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 	}
 }
 
+#hrone{
+		width : 20%;
+		
+}
+#hrtwo{
+	width: 10%;
+}
+
 </style>
 
 </head>
@@ -178,11 +191,13 @@ input[type="submit"]:hover, input[type="submit"]:focus {
   <input id="js-file-uploader" class="hidden" name="profile-picture" type="file" accept="image/png, image/jpeg" />
 
   <div id="js-profile-pic" class="profile-pic__container">Upload Profile Pic
+  
     <div id="js-profile-trigger" class="profile-pic__foreground">Upload Profile Pic</div>
+    
   </div>
   
   <div class="input__container">
-          <h2>Essential Point</h2>
+          <h2>Essential Point<hr id="hrone"></h2>
 
     <div class="input-container__single">
       <label for="id">UserId:</label>
@@ -190,7 +205,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
     </div>
     
     <div class="input-container__single">
-      <label for="name">Name:</label>
+      <label for="name">asdasd:</label>
       <input type="text" name="name" id="name" />
     </div>
     
@@ -206,10 +221,10 @@ input[type="submit"]:hover, input[type="submit"]:focus {
       <span class="input-action" id="js-suggest-password">Suggest Password</span>
     </div>
       
-      <h2>Option</h2>
+      <h2>Option<hr id="hrtwo"></h2>
 
     <div class="input-container__single">
-      <label for="name">Name:</label>
+      <label for="name">Favorite Place:</label>
       <select name="select">
 	        <option value='1' selected>-- 선택 --</option>
 	      	<option value='2'>서울</option>
@@ -240,52 +255,54 @@ input[type="submit"]:hover, input[type="submit"]:focus {
     
     </div>
   </div>
-  <input type="submit" value="Save Profile" />
+ 		 <input type="submit" value="Save Profile" />
+
 </form>
 <script>
 const messageElement = document.querySelector("#js-message");
 
-//Image elements
+
+//이미지 요소
 const fileUpload = document.querySelector("#js-file-uploader");
 const profileTrigger = document.querySelector("#js-profile-trigger");
 const profileBackground = document.querySelector("#js-profile-pic");
 
-//Password objects
+//암호 개체
 const password = document.querySelector("#js-password");
 const passwordConfirm = document.querySelector("#js-password-confirm");
 const passwordToggle = document.querySelector("#js-toggle-password");
 const passwordSuggest = document.querySelector("#js-suggest-password");
 let passwordDisplayed = false;
 
-//On form submission, check the passwords match and display a message if the password (would have) been saved.
+//양식 제출시 암호가 일치하는지 확인하고 암호가 저장되어 있으면 메시지를 표시합니다.
 document.querySelector("form").addEventListener("submit", function(event) {
 event.preventDefault();
 
 if (password.value != passwordConfirm.value) {
- messageElement.innerText = "The passwords don't match!";
+ messageElement.innerText = "오류:비밀번호가 일치하지 않으니 다시 확인해 주십시오.";
  messageElement.classList.add("settings-message--error");
  messageElement.classList.remove("settings-message--success");
 } else {
- messageElement.innerText = "Settings successfully saved!";
+ messageElement.innerText = "수정이 완료되었습니다!";
  messageElement.classList.add("settings-message--success");
  messageElement.classList.remove("settings-message--error");
 }
 });
 
-//Trigger the file upload to set the profile picture
+// 프로필 사진을 설정하기 위해 파일 업로드를 트리거합니다.
 profileTrigger.addEventListener("click", function(event) {
 event.preventDefault();
 fileUpload.click();
 });
 
-//new profile pic added, display it
+//새 프로필 사진이 추가되고 표시됩니다
 fileUpload.addEventListener("change", function(event) {
 if (fileUpload.files && fileUpload.files[0]) {
  let reader = new FileReader();
  reader.onload = function(event) {
-   // Remove the initial 'set picture image' text
+   // 초기 '사진 이미지 설정'텍스트 제거
    profileBackground.childNodes[0].nodeValue = "";
-   // Set the new image src as the background
+   // 새 이미지 src를 배경으로 설정하십시오
    profileBackground.style.backgroundImage =
      "url('" + event.target.result + "')";
  };
@@ -293,7 +310,7 @@ if (fileUpload.files && fileUpload.files[0]) {
 }
 });
 
-//Add a suggested password for the user (to both password & confirm password inputs)
+//사용자에게 제안 된 암호를 추가하십시오 (암호 및 암호 입력에 모두 해당).
 passwordSuggest.addEventListener("click", function(event) {
 let newPassword = btoa(
  Math.random()
@@ -304,7 +321,7 @@ password.value = newPassword;
 passwordConfirm.value = newPassword;
 });
 
-//Toggle the type of input the password field is (for user visibility)
+//비밀번호 입력란의 입력 유형을 토글합니다 (사용자에게 공개).
 passwordToggle.addEventListener("click", function(event) {
 passwordDisplayed = !passwordDisplayed;
 

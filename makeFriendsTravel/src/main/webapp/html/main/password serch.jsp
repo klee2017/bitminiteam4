@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>로그인 페이지 입니다</title>
+<title>아이디 패스워드 찾기</title>
 
 <style>
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Lora");
@@ -334,15 +334,15 @@ input[type=checkbox] {
         <h1>register</h1>
         <form  action="<c:url value='/login/sign.do'/>" autocomplete="off">
           <input type="text" name="id" placeholder="id">
-          <button class="button submit">Overlap Check</button>
           <input type="text" name="name" placeholder="name">
           <input type="password" name="pass" placeholder="pass">
           <button class="button submit">create account </button>
         </form>
       </div>
       
+     
       
- 
+
       
       <div class="signin">
         <h1>sign in</h1>
@@ -354,13 +354,6 @@ input[type=checkbox] {
           </div>
           
           
-          	  
-       	  <button class="button submit">login</button>
-       	  <a href="#" target="_blank">
-       	 		 <img  src="https://static.wixstatic.com/media/4de886_d8be86231d7b48c6a5c8f5c4b7c387f6~mv2.png"
-       	    width="20%">
-       	  </a>
-          
         </form>
       </div>
     </div>
@@ -369,14 +362,14 @@ input[type=checkbox] {
       	<p class="desc">Make your  <span>Travel</span></p>
 	    <img class="flower smaller" src="https://i.imgur.com/xQSXJrX.jpg" alt="left.jpg"/>
 	    <p class="account">have an account?</p>
-	    <button class="button" id="signin">login</button>
+	    <button class="button" id="signin">Id serch</button>
     </div>
     <div class="rightbox">
 	      <h2 class="title"><span>여행가서</span><br>추억을 삼조</h2>
 	      <p class="desc">Make your  <span>Travel</span></p>
 	      <img class="flower" src="https://i.imgur.com/aqUl8XD.jpg" alt="travel.jpg"/>
 	      <p class="account">don't have an account?</p>
-	      <button class="button" id="signup">sign up</button>
+	      <button class="button" id="signup">password serch</button>
 	      
     </div>
   </div>
@@ -395,6 +388,7 @@ input[type=checkbox] {
 	  $('.signup').addClass('nodisplay');
 	  $('.signin').removeClass('nodisplay');
 	});
+	
 	
 
 </script>

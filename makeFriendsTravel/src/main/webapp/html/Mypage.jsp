@@ -86,7 +86,7 @@ form > *:not(:first-of-type) {
 .profile-pic__container {
   overflow: hidden;
   position: relative;
-  border: 3px solid #333;
+  border: 3px solid lightsteelblue;
   border-radius: 100%;
   width: 300px;
   height: 300px;
@@ -105,7 +105,7 @@ form > *:not(:first-of-type) {
 }
 .profile-pic__foreground:hover {
   color: #fff;
-  background-color: rgba(20, 20, 20, 0.85);
+  background-color: lightsteelblue;
 }
 
 .input__container {

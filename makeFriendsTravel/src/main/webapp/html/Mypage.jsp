@@ -107,11 +107,10 @@ form > *:not(:first-of-type) {
 }
 .profile-pic__foreground:hover {
   color: #fff;
-<<<<<<< HEAD
+
   background-color: lightsteelblue;
-=======
+
   background-color: lightsteelblue ;
->>>>>>> 79316deb5dc8e5e932cc4a22c3444bcd1b5acf8b
 }
 
 .input__container {
@@ -206,7 +205,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
     </div>
     
     <div class="input-container__single">
-      <label for="name">Name:</label>
+      <label for="name">asdasd:</label>
       <input type="text" name="name" id="name" />
     </div>
     

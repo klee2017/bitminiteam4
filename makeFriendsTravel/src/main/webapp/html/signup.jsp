@@ -334,6 +334,7 @@ input[type=checkbox] {
         <h1>register</h1>
         <form  action="<c:url value='/login/sign.do'/>" autocomplete="off">
           <input type="text" name="id" placeholder="id">
+          <button class="button submit">Overlap Check</button>
           <input type="text" name="name" placeholder="name">
           <input type="password" name="pass" placeholder="pass">
           <button class="button submit">create account </button>
@@ -376,7 +377,6 @@ input[type=checkbox] {
 	      <img class="flower" src="https://i.imgur.com/aqUl8XD.jpg" alt="travel.jpg"/>
 	      <p class="account">don't have an account?</p>
 	      <button class="button" id="signup">sign up</button>
-	      <button class="button" id="pass">password</button>
 	      
     </div>
   </div>

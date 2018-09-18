@@ -41,12 +41,12 @@
 	#title{
 		width:50%;
 	}
-	#board-search{
-		width: 300px;
-		margin: auto;
-	}
 	#board-search-form {
+		width: 700px;
 		float: right;
+	}
+	#board-search {
+		width: 300px;
 	}
 </style>
 </head>
@@ -86,11 +86,14 @@
 		    </tbody>
 		</table>
     
+ 	
     <a id="write" href="reviewWriteForm.jsp">글쓰기</a>
-    <form action="" method="get" id="board-search-form"></form>
-	    <input type="text" id="board-search" placeholder="검색어를 입력하세요">
-	    <button type="submit">검색</button>
-    </form>
+    <div id="div-board-search">
+	    <form action="" method="get" id="board-search-form">
+		    <input type="text" id="board-search" placeholder="검색어를 입력하세요">
+		    <button type="submit">검색</button>
+	    </form>
+    </div>
 
     </div>
 

@@ -23,6 +23,9 @@
 	.dataTables_wrapper .dataTables_length {
 		float: right;
 	}
+	.dataTables_info {
+		display:none;
+	}
 </style>
 </head>
 <body>

@@ -10,7 +10,7 @@
 <style>
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Lora");
 body {
-  background: lavender;
+  background: #e5e5e5;
 }
 
 /* div box styling */
@@ -36,7 +36,7 @@ body {
   position: absolute;
   top: -10%;
   left: 5%;
-  background: lightsteelblue;
+  background: #484858;
   width: 320px;
   height: 500px;
   border-radius: 5px;
@@ -104,7 +104,7 @@ p {
 }
 
 span {
-  color: lightsteelblue;
+  color: #e5e5e5;
 }
 
 .flower {
@@ -177,9 +177,9 @@ form {
 }
 
 input {
-  background: lightsteelblue;
+  background: #e5e5e5;
   width: 65%;
-  color: #ce7d88;
+  color: #484858;
   border: none;
   border-bottom: 1px solid rgba(246, 246, 246, 0.5);
   padding: 9px;
@@ -192,9 +192,9 @@ input::placeholder {
   font-weight: 100;
 }
 input:focus {
-  color: #ce7d88;
+  color: gray;
   outline: none;
-  border-bottom: 1.2px solid rgba(206, 125, 136, 0.7);
+  border-bottom: 1.2px solid gray;
   font-size: 1em;
   transition: .8s all ease;
 }
@@ -291,7 +291,11 @@ input[type=checkbox] {
   border-color: transparent transparent transparent white;
   animation-delay: 5.8s;
 }
-
+ #maintag{
+ 	color:white;
+ 	text-decoration: none;
+ 	font-family: "Open Sans", sans-serif;
+ }
 @-webkit-keyframes shooting-ani {
   0% {
   }
@@ -355,11 +359,8 @@ input[type=checkbox] {
           
           
           	  
-       	  <button class="button submit">login</button>
-       	  <a href="#" target="_blank">
-       	 		 <img  src="https://static.wixstatic.com/media/4de886_d8be86231d7b48c6a5c8f5c4b7c387f6~mv2.png"
-       	    width="20%">
-       	  </a>
+       	  <button class="button submit">login</button><br>
+            <a href="main/main2.jsp" id="maintag">메인으로 이동</a>
           
         </form>
       </div>

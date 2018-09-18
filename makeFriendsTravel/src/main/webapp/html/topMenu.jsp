@@ -32,9 +32,11 @@
     <div class="nav content">
       <ul>
         <li class="current"><a href="/makeFriendsTravel/html/main/main2.jsp">Home</a></li>
+        <li><a href="/makeFriendsTravel/html/Mypage.jsp">Mypage</a></li>
         <li><a href="/makeFriendsTravel/html/reviewList.jsp">Review</a></li>
         <li><a href="/makeFriendsTravel/html/main/photoBoard.jsp">Best Photo</a></li>
         <li><a href="/makeFriendsTravel/html/Q&AList.jsp">Q&A</a></li>
+        
       </ul>
        <form name="mForm" action = "searchList.jsp"  onsubmit="return Enter_Check()">
       <input name="test" class="search float-right" placeholder="Search..">

@@ -14,6 +14,7 @@
 <style>
 	body{
 		background: lightsteelblue;
+		
 	}
 	#board-list {
 		max-width: 1000px;
@@ -43,6 +44,10 @@
 	}
 	#search{
 		width: 300px;
+	}
+	#qnasearchform{
+		width:700px;
+		float: right;
 	}
 </style>
 </head>
@@ -76,10 +81,13 @@
 	    </tbody>
     </div>
 </table>
+
 	<div>
-	    <button><a href="Q&AWrite.jsp">글쓰기</a></button>
+	    <a href="Q&AWrite.jsp">글쓰기</a>
+	    <form action="" method="get" id="qnasearchform">
 	    <input type="text" id="search" placeholder="검색어를 입력하세요">
 	    <button>검색</button>
+	    </form>
 	</div>
 <script>
 $(document).ready( function () {

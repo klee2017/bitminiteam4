@@ -151,8 +151,8 @@ hr{
     </div>
 
     <div class="post-section post-buttons">
-      <button type="button" class="btn btn-primary">목록</button>
-      <button type="button" class="btn btn-success">제출</button>
+      <button type="button" class="btn btn-primary"><a href="Q&AList.jsp">목록</a></button>
+      <button type="submit" class="btn btn-success">제출</button>
       <div class="dropup pull-left">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="add-more-post-items">첨부파일 <i class="caret"></i></button>
 

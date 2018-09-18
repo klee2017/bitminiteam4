@@ -102,13 +102,7 @@
 	  text-align: center;
 	}
 	
-	form {
-	 position: relative;
-	 border-radius: 4px;
-	 width: 720px;
-	 height: 180px;
-	 margin: 0 auto;
-	}
+	
 	
 	form textarea {
 	 border-radius: 2px;

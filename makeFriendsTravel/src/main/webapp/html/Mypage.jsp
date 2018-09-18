@@ -12,6 +12,9 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Lora");
 
 
+body{
+	background-color: #e5e5e5; 
+}
 * {
   margin: 0;
   padding: 0;
@@ -24,6 +27,8 @@ h1 {
   margin: 20px;
   text-align: center;
   font-size: 50px;
+    font-family: "Pacifico", cursive;
+  
    
 }
 h2 {
@@ -88,7 +93,7 @@ form > *:not(:first-of-type) {
 .profile-pic__container {
   overflow: hidden;
   position: relative;
-  border: 3px solid lightsteelblue;
+  border: 3px solid gray;
   border-radius: 100%;
   width: 300px;
   height: 300px;
@@ -96,21 +101,22 @@ form > *:not(:first-of-type) {
   background-position: center;
 }
 
+
 .profile-pic__foreground {
   position: absolute;
   top: 0;
   width: 300px;
   height: 300px;
-  color: transparent;
+  color: #484858;
   cursor: pointer;
   transition: color 0.2s, background-color 0.2s;
+  background-color: white;
 }
 .profile-pic__foreground:hover {
   color: #fff;
 
-  background-color: lightsteelblue;
 
-  background-color: lightsteelblue ;
+  background-color: lightgray ;
 }
 
 .input__container {
@@ -180,7 +186,15 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 #hrtwo{
 	width: 10%;
 }
-
+#maintag{
+ 	color:gray;
+ 	text-decoration: none;
+ 	position : relative;
+ 	left : 550px;
+ 	top : 8px;
+ 	font-size: 30px;
+ 	font-family: "Open Sans", sans-serif;
+ }
 </style>
 
 </head>
@@ -256,6 +270,8 @@ input[type="submit"]:hover, input[type="submit"]:focus {
     </div>
   </div>
  		 <input type="submit" value="Save Profile" />
+ 		 <a href="main/main2.jsp" id="maintag">Privious..</a>
+ 		 
 
 </form>
 <script>

@@ -6,6 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+</script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 <style>
 
@@ -107,15 +111,12 @@ form > *:not(:first-of-type) {
   top: 0;
   width: 300px;
   height: 300px;
-  color: #484858;
+  color: transparent;
   cursor: pointer;
   transition: color 0.2s, background-color 0.2s;
-  background-color: white;
 }
 .profile-pic__foreground:hover {
   color: #fff;
-
-
   background-color: lightgray ;
 }
 
@@ -195,14 +196,54 @@ input[type="submit"]:hover, input[type="submit"]:focus {
  	font-size: 30px;
  	font-family: "Open Sans", sans-serif;
  }
+ <!-- -->
+ #board-list {
+		max-width: 1000px;
+		margin: auto;
+		padding-top: 50px;
+	}
+	#board-list {
+		max-width: 1000px;
+		margin: auto;
+		padding-top: 50px;
+	}
+	#table_id_filter {
+		display: none;
+	}
+	.dataTables_wrapper{
+		position: relative;
+		clear: both;
+		zoom : 1;
+		width: 148%;
+		left: -26%;
+	}
+	.dataTables_wrapper .dataTables_length {
+		float: right;
+	}
+	.dataTables_info {
+		display:none;
+	}
+	#board-name {
+		text-align: center;
+	}
+	#no{
+		width:10%;
+	}
+	#writer{
+		width:20%;
+	}
+	#title{
+		width:50%;
+	}
 </style>
 
 </head>
 <body>
 <h1>Update Profile</h1>
 <div class="settings-message" id="js-message"></div>
+
 <form>
-  <input id="js-file-uploader" class="hidden" name="profile-picture" type="file" accept="image/png, image/jpeg" />
+  <input id="js-file-uploader" class="hidden" name="profile-picture" type="file" accept="image/png, image/jpeg">
 
   <div id="js-profile-pic" class="profile-pic__container">Upload Profile Pic
   
@@ -215,23 +256,23 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 
     <div class="input-container__single">
       <label for="id">UserId:</label>
-      <input type="text" name="id" id="id" />
+      <input type="text" name="id" id="id">
     </div>
     
     <div class="input-container__single">
       <label for="name">asdasd:</label>
-      <input type="text" name="name" id="name" />
+      <input type="text" name="name" id="name">
     </div>
     
     <div class="input-container__single">
       <label for="js-password">Password:</label>
-      <input type="password" id="js-password" name="password" />
+      <input type="password" id="js-password" name="password">
       <span id="js-toggle-password" class="input-action">Display Password</span>
     </div>
     
     <div class="input-container__single">
       <label for="js-password-confirm">Confirm Password:</label>
-      <input type="password" id="js-password-confirm" name="confirm-password" />
+      <input type="password" id="js-password-confirm" name="confirm-password">
       <span class="input-action" id="js-suggest-password">Suggest Password</span>
     </div>
       
@@ -240,38 +281,78 @@ input[type="submit"]:hover, input[type="submit"]:focus {
     <div class="input-container__single">
       <label for="name">Favorite Place:</label>
       <select name="select">
-	        <option value='1' selected>-- 선택 --</option>
-	      	<option value='2'>서울</option>
-	  		<option value='3'>경기</option>
-	  		<option value='4'>강원</option>
-	  		<option value='5'>충청</option>
-	  		<option value='6'>전라</option>
-	  		<option value='7'>경상</option>
-	  		<option value='8'>제주</option>
+	        <option value="1" selected="">-- 선택 --</option>
+	      	<option value="2">서울</option>
+	  		<option value="3">경기</option>
+	  		<option value="4">강원</option>
+	  		<option value="5">충청</option>
+	  		<option value="6">전라</option>
+	  		<option value="7">경상</option>
+	  		<option value="8">제주</option>
       </select>
     </div>
     
     <div class="input-container__single">
       <label for="gender">Gender:</label>
       <select name="select">
-	        <option value='1' selected>-- 선택 --</option>
-	      	<option value='2'>남성</option>
-	      	<option value='2'>여성</option>
+	        <option value="1" selected="">-- 선택 --</option>
+	      	<option value="2">남성</option>
+	      	<option value="2">여성</option>
       </select>
     </div>
     
     <div class="input-container__single">
         <div class="input-container__single">
       <label for="email">Email:</label>
-      <input type="text"  name="email" id="email"/>
+      <input type="text" name="email" id="email">
     </div>
     
     
     </div>
   </div>
- 		 <input type="submit" value="Save Profile" />
+ 		 <input type="submit" value="Save Profile">
  		 <a href="main/main2.jsp" id="maintag">Privious..</a>
  		 
+
+</form>
+<!-- 내가쓴글 확인하기 -->
+<form>
+  <div id="board-list">
+		<table id="table_id" class="display">
+		    <thead>
+		        <tr>
+		            <th id="no">글 번호</th>
+		            <th id="title">글 제목</th>
+		            <th id="writer">작성자</th>
+		            <th id="reg_date">작성일</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr>
+		            <td>3</td>
+		            <td>안녕하세요. 제가 글 제목을 길게 써보겠습니다. 옛날 옛적에 호랑이가 한마리 살았다는데</td>
+		            <td>김건모</td>
+		            <td>2018/09/18</td>
+		        </tr>
+		        <tr>
+		            <td>2</td>
+		            <td>김수한무거북이와두루미그다음은 모르는데 뭐였더라</td>
+		            <td>김건모<td>
+		            <td>2020/04/28</td>
+		        </tr>
+		        <tr>
+		            <td>1</td>
+		            <td>난 너를 믿었던만큼 내 친구도 믿었기에 내 친구를 소개시켜줫꼬 그런 날들이</td>
+		            <td>김건모</td>
+		            <td>1997/01/01</td>
+		        </tr>
+		    </tbody>
+		</table>
+    
+</div>
+  
+
+
 
 </form>
 <script>
@@ -351,6 +432,15 @@ if (passwordDisplayed) {
  password.type = "password";
 }
 });
+$(document).ready( function () {
+    $('#table_id').DataTable();
+/*    $('#table_id').DataTable({
+    	data: dataSet,
+    	columns: col_kor,
+        language : lang_kor
+    }); */
+} );
 </script>
+
 </body>
 </html>

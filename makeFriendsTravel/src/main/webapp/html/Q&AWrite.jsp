@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:import url="topMenu.jsp"></c:import>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,8 +13,8 @@
 
 <style>
 hr{
-	height:3px;
-	background: black;
+	height:1px;
+	background: grey;
 }
 
 .post-form {
@@ -115,6 +116,9 @@ hr{
 .post-form-overlay.closed {
   display: none;
 }
+h1{
+	text-align: center;
+}
 </style>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/magicsuggest/2.1.4/magicsuggest-min.js"></script>
@@ -141,6 +145,7 @@ hr{
       <label for="post-title">작성자</label>
       <span><strong>익룡</strong></span>
       <br>
+      <hr id="titleline">
       <div class="post-title">
         <input type="text" name="title" id="post-title" class="post-input large"  placeholder="제목을 입력하세요"/>
       </div>

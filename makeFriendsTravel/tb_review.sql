@@ -12,4 +12,3 @@ select *
  
 commit;
 
-create table tb_comment (

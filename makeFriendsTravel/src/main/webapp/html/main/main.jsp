@@ -267,6 +267,7 @@ h2 {
   position: relative;
   width: 5rem;
   height: 5rem;
+  margin-left: 90px;
 }
 
 .cloudy:before,

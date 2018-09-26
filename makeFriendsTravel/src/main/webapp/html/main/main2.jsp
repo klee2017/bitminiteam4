@@ -1,10 +1,54 @@
 <%--주석 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="java.util.*"%>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <c:import url="topMenu.jsp"></c:import> 
 <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
+<%
+List<String> weatherList = (List<String>)request.getAttribute("weatherList");
 
+String weather ="";
+
+if(weatherList.get(1).equals("맑음")) weather ="sunny";
+if(weatherList.get(1).equals("구름조금")) weather ="partly_cloudy";
+if(weatherList.get(1).equals("구름많음")) weather ="cloudy";
+if(weatherList.get(1).equals("비")) weather ="rainy";
+
+
+Calendar cal = Calendar.getInstance();
+Calendar cal2 = Calendar.getInstance();
+Calendar cal3 = Calendar.getInstance();
+
+
+String monthName="";
+
+
+int year = cal.get(cal.YEAR); //년도
+int month = cal.get ( cal.MONTH ) +1 ; //월
+int date = cal.get (cal.DATE);
+
+cal.set(Calendar.YEAR, year); //입력받은 년도로 세팅
+cal.set(Calendar.MONTH, month); //입력받은 월로 세팅
+
+cal2.set(cal2.YEAR, year); //입력받은 년도로 세팅
+cal2.set(cal2.MONTH, cal.get ( cal.MONTH ) ); //입력받은 월로 세팅
+
+cal3.set(cal.YEAR, year);
+cal3.set(cal.MONTH, cal.get ( cal.MONTH ));
+
+
+
+cal.set(year,month-1,1); //입력받은 월의 1일로 세팅
+                         //month는 0이 1월이므로 -1을 해준다
+cal3.set(year,month,1);                         
+   
+int end = cal.getActualMaximum(Calendar.DATE); //해당 월 마지막 날짜
+int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK); //해당 날짜의 요일(1:일요일 … 7:토요일)
+int nextDoW = cal3.get(cal3.DAY_OF_WEEK);
+ 
+int end2 = cal2.getActualMaximum(cal2.DATE);
+%>
 
 <style>
 main{
@@ -63,6 +107,7 @@ main{
   position: relative;
   width: 5rem;
   height: 5rem;
+  margin-left: 95px;
 }
 
 .cloudy:before,
@@ -110,6 +155,7 @@ main{
   width: 100%;
   height: 100%;
   z-index: 1;
+  margin-left:36px;
 }
 .partly_cloudy__cloud {
   position: absolute;
@@ -117,6 +163,7 @@ main{
   height: 60%;
   top: 40%;
   z-index: 2;
+  left:91px;
   will-change: transform;
   -webkit-animation: translateUp 2s linear infinite alternate;
           animation: translateUp 2s linear infinite alternate;
@@ -415,7 +462,7 @@ main{
 #calendar td{
   width:100px;
   height:41px;
-  background:#eee;
+  background:#fff;
   border-right:1px solid #ddd;
   border-bottom:1px solid #ddd;
   padding:6px;
@@ -429,7 +476,7 @@ main{
 }
 
 #calendar .lastmonth,#calendar .nextmonth,#calendar .nextmonth ~ *{
-  background:#fff;
+  background:#eee;
   color:#999;
 }
 
@@ -492,12 +539,52 @@ h3 {
     <div class="row content">
       <div style="padding-left: 0;" class="col-md-4">
         <div class="article">
-            <div class="sunny" ></div>
-          <%--<h2 class="location"><b>맑음</b>
-          	<br><br>23 ℃</h2> --%>
+        	<%
+        		if(weather=="sunny"){
+        	        	
+        	%>	
+        		<div class="sunny"></div>
+        	<% 
+        		} else if(weather=="partly_cloudy"){
+        			
+        	%>
+        		<div class="partly_cloudy">
+	            	<div class="partly_cloudy__sun"></div>
+	            	<div class="partly_cloudy__cloud"></div>    
+           		</div>
+        	<%
+        		} else if(weather=="cloudy") {
+        	%>
+        		<div class="cloudy"></div>
+        	<% 		
+        		} else if(weather=="rainy"){
+        	%>
+        		 <div class="rainy">
+	                <div class="rainy__cloud"></div>
+	                <div class="rainy__rain"></div>
+           		 </div>
+        	<% 		
+        		}
+        	%>
+        			
+        			
+        			
+		
+        	
+        <!--
+        	<div class="partly_cloudy">
+            	 <div class="partly_cloudy__sun"></div>
+            	 <div class="partly_cloudy__cloud"></div>    
+            </div>
+        	<div class="rainy">
+                <div class="rainy__cloud"></div>
+                <div class="rainy__rain"></div>
+            </div>  
+         -->
           	<h2 class="location">
-          		<b>맑음</b>
-          		<br><br>23 ℃
+          		<b><%=weatherList.get(0) %></b></br></br>
+          		<b><%=weatherList.get(1) %></b>
+          		<br><br><%=weatherList.get(2) %>
           	</h2>
           	
             
@@ -509,14 +596,94 @@ h3 {
         </div>
         
             <div id="calendar">
-                <h1>September</h1>
+            	<%
+            		
+            		switch(month) {
+            			case 1: monthName ="january"; break;
+            			case 2: monthName ="February"; break;
+            			case 3: monthName ="March"; break;
+            			case 4: monthName ="April"; break;
+            			case 5: monthName ="May"; break;
+            			case 6: monthName ="June"; break;
+            			case 7: monthName ="July"; break;
+            			case 8: monthName ="August"; break;
+            			case 9: monthName ="September"; break;
+            			case 10: monthName ="October"; break;
+            			case 11: monthName ="November"; break;
+            			case 12: monthName ="December"; break;
+            		}
+            	%>
+                <h1><%=monthName %></h1>
                 <table>
-                  <tr><td class="lastmonth">26</td><td class="lastmonth">27</td><td class="lastmonth">28</td><td class="lastmonth">29</td><td class="lastmonth">30</td><td class="lastmonth">31</td><td>1</td></tr>
+                	
+				        <%
+				        String result;
+				        int next=1;
+				        List<Integer> list = new ArrayList<>();
+
+				        
+				        for(int i=1; i<=end; i++) {
+				            if(i==1) {
+				                for(int j=1; j<dayOfWeek; j++) { 
+				                	list.add((end2+1)-j);
+				             
+				         %>			
+				                    
+				        <% 
+				                }
+				                for(int j=0; j<list.size(); j++){
+				                	
+				        %>
+				        		<td class="lastmonth"><%=list.get(list.size()-1-j)%></td>
+				        <%         	
+				                }
+				            }
+				            if(i<10) { //한자릿수일 경우 공백을 추가해서 줄맞추기
+				                
+				            }
+				           
+				            result = " "+i+" ";
+				            if(i == date){
+				        %>
+								<td class ="current">
+								<%=result %>
+								</td>
+						<% 
+				            } else {  	
+						%>			
+							 <td> <%=result%></td>           	
+						<% 
+				            }
+						%>					        
+				            
+				           
+				        <% 
+				            if(dayOfWeek%7==0) { //한줄에 7일씩 출력
+				                
+				        %>
+				          	<tr></tr>
+				       <%   	
+				            }
+				            dayOfWeek++;
+				            if(i==end) {
+				            	for(; nextDoW<=7; nextDoW++) {
+				            		
+				       %>     		
+				            		<td class="nextmonth"><%=next++ %></td>
+				       <%       		
+				            	}
+				            }
+				        } 
+				        %>    	
+                	
+                <!--  
+                  <tr><td class ="lastmonth"></td><td></td><td></td><td></td><td></td><td>31</td><td>1</td></tr>
                   <tr><td>2</td><td>3</td><td >4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr>
                   <tr><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td></tr>
                   <tr><td>16</td><td class="current">17</td><td>18</td><td>19</td><td>20</td><td class>21</td><td>22</td></tr>
                   <tr><td>23</td><td>24</td><td class>25</td><td>26</td><td>27</td><td>28</td><td>29</td></tr>
-                  <tr><td>30</td> <td class="nextmonth">1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+                  <tr><td>30</td> <td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                -->
                 </table>
               </div>
         

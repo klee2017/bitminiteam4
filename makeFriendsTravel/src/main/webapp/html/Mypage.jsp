@@ -311,7 +311,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
     </div>
   </div>
  		 <input type="submit" value="Save Profile">
- 		 <a href="main/main2.jsp" id="maintag">Privious..</a>
+ 		 <a href="/makeFriendsTravel/html/main/main.do" id="maintag">Privious..</a>
  		 
 
 </form>

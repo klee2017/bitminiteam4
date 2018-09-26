@@ -48,7 +48,7 @@
 
 	<header>
     <div class="title content">
-      <h1><a href="/makeFriendsTravel/html/main/main2.jsp">travel</a></h1>
+      <h1><a href="/makeFriendsTravel/html/main/main.do">travel</a></h1>
      	 <div>
      	 <div class="nav1 content">
       		<div class="item pic1"></div><br>
@@ -61,7 +61,7 @@
       </div>
     <div class="nav content">
       <ul>
-        <li class="current"><a href="/makeFriendsTravel/html/main/main2.jsp">Home</a></li>
+        <li class="current"><a href="/makeFriendsTravel/html/main/main.do">Home</a></li>
         <li><a href="/makeFriendsTravel/html/Mypage.jsp">Mypage</a></li>
         <li><a href="/makeFriendsTravel/html/reviewList.jsp">Review</a></li>
         <li><a href="/makeFriendsTravel/html/main/photoBoard.jsp">Best Photo</a></li>

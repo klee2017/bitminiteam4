@@ -7,6 +7,7 @@
 	<typeAliases>
 		<typeAlias alias="Board" type="kr.co.tt.repository.domain.Board" />
 		<typeAlias alias="Member" type="kr.co.tt.repository.domain.Member" />
+		<typeAlias alias="ReviewBoard" type="kr.co.tt.repository.domain.ReviewBoard" />
 		
 	</typeAliases>
 	
@@ -25,6 +26,7 @@
 	<mappers>
 		<mapper resource="config/sqlmap/board.xml" />
 		<mapper resource="config/sqlmap/login.xml" />
+		<mapper resource="config/sqlmap/reviewboard.xml" />
 		
 	</mappers>
 </configuration>

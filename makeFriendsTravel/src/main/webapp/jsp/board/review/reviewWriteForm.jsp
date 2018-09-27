@@ -32,8 +32,8 @@
 			<h4>제목 : <input type="text" /></h4>
 		</div>
 		<textarea id="summernote" name="editordata"></textarea>
+		<button class="board-button">등록</button>
 	</form>
-	<button class="board-button">등록</button>
 	</div>
 	
 	<script>

@@ -6,4 +6,6 @@ public interface LoginMapper {
 	
 	Member selectMember(Member member);
 	void insertMember(Member member);
+	Member selectBoardByNo(int no);
+	void updateMember(Member member);
 }

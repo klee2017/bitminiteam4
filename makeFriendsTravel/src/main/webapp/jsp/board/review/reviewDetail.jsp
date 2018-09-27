@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <c:import url="topMenu.jsp"></c:import>
 <!DOCTYPE html>
 <html>
@@ -397,9 +398,9 @@
 		<article itemscope itemtype="http://schema.org/BlogPosting" class="post">
 
 			<header class="post-header">
-				<h3 itemprop="headline" class="post-title">title</h3>
-				<p class="post-subtitle" itemprop="alternativeHeadline">writer</p>
-				<p class="post-meta">Posted on <time datetime="2015-06-05T17:44-07:00" itemprop="datePublished">June 05, 2015</time></p>
+				<h3 itemprop="headline" class="post-title">${board.title}</h3>
+				<p class="post-subtitle" itemprop="alternativeHeadline">${board.memNo}</p>
+				<p class="post-meta">Posted on <fmt:formatDate value="${board.modDate}" pattern="yyyy/MM/dd"/></time></p>
 			</header>
 	  
 			<img itemprop="image" src="https://lorempixel.com/720/460/cats/1/" alt="A descriptive alt" class="featured-image">

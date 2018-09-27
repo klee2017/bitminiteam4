@@ -69,7 +69,7 @@
 		        <c:forEach var="b" items="${list}">
 		        	<tr>
 		        		<td>${b.no}</td>
-		        		<td>${b.title}</td>
+		        		<td><a href="detail.do?no=${b.no}">${b.title}</a></td>
 		        		<td>${b.memNo}</td>
 		        		<td><fmt:formatDate value="${b.modDate}" pattern="yyyy/MM/dd"/></td>
 		        	</tr>

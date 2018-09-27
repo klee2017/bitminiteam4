@@ -13,6 +13,8 @@
 	<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
 	
+	<!-- include summernote-ko-KR --> <script src="lang/summernote-ko-KR.js"></script>
+
 	<style>
 		.board-button {
 			float: right;
@@ -42,7 +44,8 @@
 			  height: 300,                 // set editor height
 			  minHeight: null,             // set minimum height of editor
 			  maxHeight: null,             // set maximum height of editor
-			  focus: true                  // set focus to editable area after initializing summernote
+			  focus: false,                  // set focus to editable area after initializing summernote
+			  lang: 'ko-KR'
 			});
 		});
 	</script>

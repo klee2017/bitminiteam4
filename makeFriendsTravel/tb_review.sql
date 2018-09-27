@@ -75,6 +75,12 @@ insert into tb_member (
     m_member_no.nextval, 'id', 'name', 'pass', 'hint'
 );
 
+insert into tb_member (
+    mem_no, mem_id, mem_name, mem_pass, mem_pass_hint 
+) values (
+    5, 'id', 'name', 'pass', 'hint'
+);
+
 insert into tb_board_review (
     no, title, content, mem_no
 ) values (

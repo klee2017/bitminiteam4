@@ -81,6 +81,7 @@ insert into tb_board_review (
     S_BOARD_REVIEW.nextval, 'title1', 'content1', 2
 );
 
+delete from tb_board_review;
 
 commit;
 

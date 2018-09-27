@@ -27,9 +27,9 @@
 </head>
 <body>
 	<div id="board-write-form">
-	<form method="post" action="">
-		<div id="title" name="title">
-			<h4>제목 : <input type="text" /></h4>
+	<form method="post" action="<c:url value='/jsp/board/review/write.do' />">
+		<div id="title">
+			<h4>제목 : <input type="text" name="title" /></h4>
 		</div>
 		<textarea id="summernote" name="editordata"></textarea>
 		<button class="board-button">등록</button>
@@ -38,7 +38,12 @@
 	
 	<script>
 		$(document).ready(function() {
-		  $('#summernote').summernote();
+		  $('#summernote').summernote({
+			  height: 300,                 // set editor height
+			  minHeight: null,             // set minimum height of editor
+			  maxHeight: null,             // set maximum height of editor
+			  focus: true                  // set focus to editable area after initializing summernote
+			});
 		});
 	</script>
 </body>

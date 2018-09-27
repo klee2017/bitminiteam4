@@ -37,6 +37,7 @@ public class WriteController extends HttpServlet {
 //		String title = mRequest.getParameter("title");
 //		String content = mRequest.getParameter("content");
 		
+		
 		String title = request.getParameter("title");
 		String content = request.getParameter("editordata");
 		
@@ -45,10 +46,13 @@ public class WriteController extends HttpServlet {
 		
 		board.setTitle(title);
 		board.setContent(content);
-		board.setMemNo(2);
-		mapper.insertBoard(board);
+		board.setMemNo(5);
 		
-		response.sendRedirect("/makeFriendsTravel/jsp/board/review/detail.do?no="+board.getNo());
+		mapper.insertBoard(board);
+		ReviewBoard r =mapper.sqcNo(title);
+		int no = r.getNo();
+		
+		response.sendRedirect("/makeFriendsTravel/jsp/board/review/detail.do?no="+no);
 	}
 	
 }

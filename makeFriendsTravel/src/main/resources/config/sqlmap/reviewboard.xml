@@ -25,6 +25,12 @@
     	 where no = #{no} 
     </select>		
 	
+	<select id="sqcNo" parameterType="string" resultMap="reviewBoardMap">
+		select no
+		 from  tb_board_review
+		where title=#{title} 
+	</select>
+	
 	<insert id="insertBoard" parameterType="ReviewBoard">
 		insert into tb_board_review (
 			no, title, mem_no, content
@@ -46,7 +52,7 @@
     	 where no = #{no}
     </update>	  
     
-
+	
 </mapper>
 
 

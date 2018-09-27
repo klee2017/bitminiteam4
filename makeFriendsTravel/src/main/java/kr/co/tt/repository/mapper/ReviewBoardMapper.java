@@ -12,4 +12,5 @@ public interface ReviewBoardMapper {
 	void insertBoard(ReviewBoard board);
 	void deleteBoard(int no);
 	void updateBoard(ReviewBoard board);
+	ReviewBoard sqcNo(String title);
 }

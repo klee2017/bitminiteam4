@@ -43,22 +43,22 @@ img {
   text-align: center;
   line-height: 2em;
 }
-.item {
+.itemPhoto {
   display: inline-block;
   margin-top: 2rem;
   
 }
-.item .polaroid:before {
+.itemPhoto .polaroid:before {
   content: '';
   position: absolute;
   z-index: -1;
   transition: all 0.35s;
 }
-.item:nth-of-type(4n+1) {
+.itemPhoto:nth-of-type(4n+1) {
   transform: scale(0.8, 0.8) rotate(5deg);
   transition: all 0.35s;
 }
-.item:nth-of-type(4n+1) .polaroid:before {
+.itemPhoto:nth-of-type(4n+1) .polaroid:before {
   transform: rotate(6deg);
   height: 20%;
   width: 47%;
@@ -66,11 +66,11 @@ img {
   right: 12px;
   box-shadow: 0 2.1rem 2rem rgba(0,0,0,0.4);
 }
-.item:nth-of-type(4n+2) {
+.itemPhoto:nth-of-type(4n+2) {
   transform: scale(0.8, 0.8) rotate(-5deg);
   transition: all 0.35s;
 }
-.item:nth-of-type(4n+2) .polaroid:before {
+.itemPhoto:nth-of-type(4n+2) .polaroid:before {
   transform: rotate(-6deg);
   height: 20%;
   width: 47%;
@@ -78,11 +78,11 @@ img {
   left: 12px;
   box-shadow: 0 2.1rem 2rem rgba(0,0,0,0.4);
 }
-.item:nth-of-type(4n+4) {
+.itemPhoto:nth-of-type(4n+4) {
   transform: scale(0.8, 0.8) rotate(3deg);
   transition: all 0.35s;
 }
-.item:nth-of-type(4n+4) .polaroid:before {
+.itemPhoto:nth-of-type(4n+4) .polaroid:before {
   transform: rotate(4deg);
   height: 20%;
   width: 47%;
@@ -90,11 +90,11 @@ img {
   right: 12px;
   box-shadow: 0 2.1rem 2rem rgba(0,0,0,0.3);
 }
-.item:nth-of-type(4n+3) {
+.itemPhoto:nth-of-type(4n+3) {
   transform: scale(0.8, 0.8) rotate(-3deg);
   transition: all 0.35s;
 }
-.item:nth-of-type(4n+3) .polaroid:before {
+.itemPhoto:nth-of-type(4n+3) .polaroid:before {
   transform: rotate(-4deg);
   height: 20%;
   width: 47%;
@@ -102,12 +102,12 @@ img {
   left: 12px;
   box-shadow: 0 2.1rem 2rem rgba(0,0,0,0.3);
 }
-.item:hover {
+.itemPhoto:hover {
   filter: none;
   transform: scale(1, 1) rotate(0deg) !important;
   transition: all 0.35s;
 }
-.item:hover .polaroid:before {
+.itemPhoto:hover .polaroid:before {
   content: '';
   position: absolute;
   z-index: -1;
@@ -223,38 +223,38 @@ ul {
  	
  		<div style = "border:1px solid black; margin-left: 9%; background: #c5d8e6;" class="wrapper">
 		<a href="bestDetail.jsp">
-        <div class="item">
+        <div class="itemPhoto">
           <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/dXAhQuT.jpg">
           	
             <div class="caption">By Joshua Sortino</div>
           </div>
         </div>
       	</a>
-        <div   class="item">
+        <div   class="itemPhoto">
           <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/LZkivxR.jpg">
             <div class="caption">By Cole Patrick</div>
           </div>
         </div>
       
-        <div class="item">
+        <div class="itemPhoto">
           <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/hqcMtrF.jpg">
             <div class="caption">By Luke Pamer</div>
           </div>
         </div>
         
-        <div class="item">
+        <div class="itemPhoto">
           <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/hqcMtrF.jpg">
             <div class="caption">By Luke Pamer</div>
           </div>
         </div>
       
-        <div class="item">
+        <div class="itemPhoto">
           <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/l867sBU.jpg">
             <div class="caption">By Alissa Smith</div>
           </div>
         </div>
         
-        <div class="item">
+        <div class="itemPhoto">
           <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/7cQCk5I.jpg">
             <div class="caption">By Ales Krivec</div>
           </div>

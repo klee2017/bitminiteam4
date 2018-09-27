@@ -33,7 +33,7 @@
       <ul>
         <li class="current"><a href="/makeFriendsTravel/html/main/main.do">Home</a></li>
         <li><a href="/makeFriendsTravel/html/Mypage.jsp">Mypage</a></li>
-        <li><a href="/makeFriendsTravel/html/reviewList.jsp">Review</a></li>
+        <li><a href="/makeFriendsTravel/jsp/board/review/list.do">Review</a></li>
         <li><a href="/makeFriendsTravel/html/main/photoBoard.jsp">Best Photo</a></li>
         <li><a href="/makeFriendsTravel/html/Q&AList.jsp">Q&A</a></li>
         <li><a href="/makeFriendsTravel/html/main/loginNextMain.jsp">로그인후 테스트</a></li>

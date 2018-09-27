@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 @WebServlet("/html/main/main.do")
@@ -21,20 +20,16 @@ public class MainController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
+		List<String> weatherList = new ArrayList<>();
 		try {
-			List<String> weatherList = new ArrayList<>();
-			Document doc = Jsoup.connect("http://www.daum.net").get(); 
-			Elements list = doc.select("ul.list_weather > li.hide");
-			for(Element e : list) {
-				if(e.select("span.txt_part").html().equals("부산시")) {
-					weatherList.add(e.child(1).html());
-					weatherList.add(e.child(2).html());
-					weatherList.add(e.child(4).html()+e.child(5).text());
-
-				}
-				
+			Document doc = Jsoup.connect("https://search.daum.net/search?w=tot&q=%EB%82%A0%EC%94%A8&DA=TMN").get(); 
 			
-			}
+			Elements list1 = doc.select("div.info_detail > div.wrap_today > a > div.info_weather > span.wrap_desc > span.desc_temp");
+			Elements list2 = doc.select("div.info_detail > strong.tit_info");
+			weatherList.add(list2.text().substring(0,9));
+			weatherList.add(list1.text().substring(0,2));
+			weatherList.add(list1.text().substring(3,6));
+				
 			
 			req.setAttribute("weatherList", weatherList);
 			// 공유가 되었다면 페이지를 이동

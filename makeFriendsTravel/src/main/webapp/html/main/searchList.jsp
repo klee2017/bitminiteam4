@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <%@page import="java.util.*"%>   
 <c:import url="topMenu.jsp"></c:import>
 <%
+int i=0;
 List<String> bookList = (List<String>)request.getAttribute("bookList");
+List<String> linkList = (List<String>)request.getAttribute("linkList");
+List<String> reviewList = (List<String>)request.getAttribute("reviewList");
 %>
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
 </script>
@@ -195,53 +199,21 @@ ul {
  		<div style = " margin-left:7%" class="wrapper">
 			 <table style = "width:1250px;"id="myTable">
 				<tr>
-					<th>Photo</th>
-					<th>Content</th>
+					<th>글 번호</th>
+					<th>글 제목</th>
+					<th>작성자</th>
+					<th>작성일</th>
 				</tr>
-				<tr>
-					<td>first row col1</td>
-					<td>first row col2</td>
-				</tr>
-				<tr>
-					<td>row #2 col1</td>
-					<td>row #2 col2</td>
-				</tr>
-				<tr>
-					<td>row #3 col1</td>
-					<td>row #3 col2</td>
-				</tr>
-				<tr>
-					<td>row #4 col1</td>
-					<td>row #4 col2</td>
-				</tr>
-				<tr>
-					<td>row #5 col1</td>
-					<td>row #5 col2</td>
-				</tr>
-				<tr>
-					<td>row #6 col1</td>
-					<td>row #6 col2</td>
-				</tr>
-				<tr>
-					<td>row #7 col1</td>
-					<td>row #7 col2</td>
-				</tr>
-				<tr>
-					<td>row #8 col1</td>
-					<td>row #8 col2</td>
-				</tr>
-				<tr>
-					<td>row #9 col1</td>
-					<td>row #9 col2</td>
-				</tr>
-				<tr>
-					<td>row #10 col1</td>
-					<td>row #10 col2</td>
-				</tr>
-				<tr>
-					<td>row #11 col1</td>
-					<td>row #11 col2</td>
-				</tr>
+				<c:forEach var="r" items="${reviewList}">
+					<tr>
+						<td>${r.no}</td>
+						<td><a href="detail.do?no=${r.no}">${r.title}</a></td>
+		        		<td>${r.memNo}</td>
+		        		<td><fmt:formatDate value="${r.modDate}" pattern="yyyy/MM/dd"/></td>
+					</tr>	
+				
+				</c:forEach>
+				
 			</table>
  	
  	</div>
@@ -296,7 +268,7 @@ ul {
       <div style = "border:1px solid black; margin-left: 9%; background: #c5d8e6; background: #EAEDF1;" class="wrapper">
       	<ul class="book-list">
 	      	<c:forEach var="b" items="${bookList}" >
-				<li class="book"><a href="">
+				<li class="book"><a href="<%=linkList.get(i++) %>">
 					<img src=${b}/>
 					</a>
 				</li>

@@ -27,7 +27,7 @@ public class MainController extends HttpServlet {
 			
 			Elements list1 = doc.select("div.info_detail > div.wrap_today > a > div.info_weather > span.wrap_desc > span.desc_temp");
 			Elements list2 = doc.select("div.info_detail > strong.tit_info");
-			System.out.println(list1);
+			
 			String weather="";
 			
 			

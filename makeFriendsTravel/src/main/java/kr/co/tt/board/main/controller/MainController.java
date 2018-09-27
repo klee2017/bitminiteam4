@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 @WebServlet("/html/main/main.do")
@@ -22,13 +23,17 @@ public class MainController extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		List<String> weatherList = new ArrayList<>();
 		try {
-			Document doc = Jsoup.connect("https://search.daum.net/search?w=tot&q=%EB%82%A0%EC%94%A8&DA=TMN").get(); 
+			Document doc = Jsoup.connect("https://search.daum.net/search?w=tot&q=날씨&DA=TMN").get(); 
 			
 			Elements list1 = doc.select("div.info_detail > div.wrap_today > a > div.info_weather > span.wrap_desc > span.desc_temp");
 			Elements list2 = doc.select("div.info_detail > strong.tit_info");
-			weatherList.add(list2.text().substring(0,9));
-			weatherList.add(list1.text().substring(0,2));
-			weatherList.add(list1.text().substring(3,6));
+			System.out.println(list1);
+			String weather="";
+			
+			
+			weatherList.add(list2.text());
+			weatherList.add(list1.select("span.txt_weather").text());
+			weatherList.add(list1.select("strong").text());
 				
 			
 			req.setAttribute("weatherList", weatherList);

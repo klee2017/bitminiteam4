@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.mlec.repository.mapper.LoginMapper">
+<mapper namespace="kr.co.tt.repository.mapper.LoginMapper">
+
+	<resultMap type="Member" id="MemberMap">
+		<result column="mem_no" property="no"/>
+  		<result column="mem_id" property="id"/>
+  		<result column="mem_pass_hint" property="passHint"/>
+  		<result column="mem_email" property="email"/>
+  		<result column="mem_gender" property="gender"/>
+  		<result column="mem_favorite_place" property="favoritePlace"/>
+  		<result column="mem_poto" property="poto"/>
+  		<result column="mem_reg_date" property="regDate"/>	
+	</resultMap>
 	
-	<select id="selectMemberInfo" parameterType="Member" resultType="Member">
+	
+	<select id="selectMember" parameterType="Member" resultMap="MemberMap">
 		select *
 		  from tb_member
-		 where id = #{id}
-		   and pass = #{pass}
+		 where mem_id = #{id}
+		   and mem_pass = #{pass}
 	</select>
+
+	<insert id="insertMember" parameterType="Member" >
+		insert into tb_member(mem_no, mem_id, mem_name, mem_pass)values(m_member_no.nextval, #{id}, #{name}, #{pass})
+	</insert>
 	
 </mapper>
 

@@ -15,19 +15,60 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css"/>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css"/>
 <script src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+<style>
+.item{
+		-moz-border-radius: 100%;
+		-webkit-border-radius: 100%;
+		overflow: hidden;
+		height: 100px;
+		width: 100px;
+		    margin-left: 850px;
+    	margin-top: -82px;
+    	margin-bottom: 30px;
+}
+	.item.pic1{
+		background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?dpr=1&auto=format&fit=crop&w=1500&h=1001&q=80&cs=tinysrgb&crop=');
+		background-repeat: no-repeat;
+		position: relative;
+		background-size: auto 100%;
+		background-position: center center;
+		transition: background-size 0.3s ease;
+		-webkit-filter: grayscale(1);
+		        filter: grayscale(1);
 
+	}
+	.item.pic1:hover{
+		background-size: auto 130%;
+		transition: background-size 0.3s ease;
+		-webkit-filter: grayscale(0);
+		        filter: grayscale(0);
+	}
+</style>
 
 	<header>
     <div class="title content">
       <h1><a href="/makeFriendsTravel/html/main/main.do">travel</a></h1>
-     	 <div>
-     	 <div class="nav1 content">
-      		<input name="test" class="search float-right" placeholder="Id를 입력하세요..."><br>
-    	 </div>
-      	 <div class="nav content">
-      		 <input name="test" class="search float-right" placeholder="비밀번호를 입력하세요...">   
-     	 </div>
-     	 </div>
+     	 <c:choose>
+        <c:when test="${empty user}">
+     	 	<div>
+     	 	<div class="nav1 content">
+    	 	</div>
+      	 	<div class="nav content">
+     	 	</div>
+     	 	</div>
+        </c:when>   
+        <c:otherwise>
+         	<div>
+     	 	<div class="nav1 content">
+      			<div class="item pic1"></div><br>
+      			<span style="float: right; margin-top: -52px; margin-right: 22px;font-weight: 800;">"${user.id}"님 환영합니다.</span> 
+    			 </div>
+      	 		<div class="nav content" style="margin-bottom: -46px;">
+      		  
+     	 		</div>
+     	 		</div>
+         </c:otherwise>   	 	
+     	 </c:choose>
       </div>
     <div class="nav content">
       <ul>
@@ -37,6 +78,14 @@
         <li><a href="/makeFriendsTravel/html/main/photoBoard.jsp">Best Photo</a></li>
         <li><a href="/makeFriendsTravel/html/Q&AList.jsp">Q&A</a></li>
         <li><a href="/makeFriendsTravel/html/main/loginNextMain.jsp">로그인후 테스트</a></li>
+        <c:choose>
+        <c:when test="${empty user}">
+       	 	<li><a href='<c:url value='/login/login-form.do'/>'>로그인</a></li>
+        </c:when>
+        <c:otherwise>        
+        	<li><a href='<c:url value='/login/logout.do'/>'>로그아웃</a></li>
+        </c:otherwise>
+        </c:choose>
       </ul>
        <form name="mForm" action = "searchlist.do"  onsubmit="return Enter_Check()">
       <input id="search_word"name="search_word" class="search float-right" placeholder="Search..">

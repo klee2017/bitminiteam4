@@ -20,6 +20,6 @@ public class LoginOut extends HttpServlet{
 		HttpSession session  = request.getSession();
 		session.invalidate();
 		//메인페이지로 이동하기
-		response.sendRedirect(request.getContextPath()+"/main.do");
+		response.sendRedirect(request.getContextPath()+"/html/main/main.do");
 	}
 }

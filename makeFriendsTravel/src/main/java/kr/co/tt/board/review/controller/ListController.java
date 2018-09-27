@@ -14,7 +14,7 @@ import kr.co.tt.common.db.MyAppSqlConfig;
 import kr.co.tt.repository.domain.ReviewBoard;
 import kr.co.tt.repository.mapper.ReviewBoardMapper;
 
-@WebServlet("/board/review/list.do")
+@WebServlet("/jsp/board/review/list.do")
 public class ListController extends HttpServlet {
 
 	@Override

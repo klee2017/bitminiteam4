@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <c:import url="topMenu.jsp"></c:import>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -70,7 +71,7 @@
 		        		<td>${b.no}</td>
 		        		<td>${b.title}</td>
 		        		<td>${b.memNo}</td>
-		        		<td>${b.regDate}</td>
+		        		<td><fmt:formatDate value="${b.modDate}" pattern="yyyy/MM/dd"/></td>
 		        	</tr>
 		        </c:forEach>
 		    </tbody>

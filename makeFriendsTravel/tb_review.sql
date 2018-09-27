@@ -10,6 +10,9 @@ create table tb_member(
     mem_poto VARCHAR2(100)
 );
 
+create SEQUENCE m_member_no
+  INCREMENT BY 1 MAXVALUE 5000 CYCLE;
+
 create table tb_board_review (
     no number primary key,
     title varchar2(200) not null,
@@ -27,6 +30,10 @@ drop sequence s_board_review;
 drop table tb_board_review purge;
 
 drop table tb_member purge;
+
+select *
+  from tb_member
+ order by mem_no desc;
 
 select *
   from tb_board_review
@@ -61,6 +68,19 @@ create sequence s_comment_review;
 select *
   from tb_comment_review
  order by no desc;
+
+insert into tb_member (
+    mem_no, mem_id, mem_name, mem_pass, mem_pass_hint 
+) values (
+    m_member_no.nextval, 'id', 'name', 'pass', 'hint'
+);
+
+insert into tb_board_review (
+    no, title, content, mem_no
+) values (
+    S_BOARD_REVIEW.nextval, 'title1', 'content1', 2
+);
+
 
 commit;
 

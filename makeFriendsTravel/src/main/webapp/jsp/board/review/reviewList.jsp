@@ -65,24 +65,14 @@
 		        </tr>
 		    </thead>
 		    <tbody>
-		        <tr>
-		            <td>3</td>
-		            <td>안녕하세요. 제가 글 제목을 길게 써보겠습니다. 옛날 옛적에 호랑이가 한마리 살았다는데</td>
-		            <td>접니다</td>
-		            <td>2018/09/18</td>
-		        </tr>
-		        <tr>
-		            <td>2</td>
-		            <td>김수한무거북이와두루미그다음은 모르는데 뭐였더라</td>
-		            <td>미래에서 온 사람</td>
-		            <td>2020/04/28</td>
-		        </tr>
-		        <tr>
-		            <td>1</td>
-		            <td>난 너를 믿었던만큼 내 친구도 믿었기에 내 친구를 소개시켜줫꼬 그런 날들이</td>
-		            <td>김건모</td>
-		            <td>1997/01/01</td>
-		        </tr>
+		        <c:forEach var="b" items="${list}">
+		        	<tr>
+		        		<td>${b.no}</td>
+		        		<td>${b.title}</td>
+		        		<td>${b.memNo}</td>
+		        		<td>${b.regDate}</td>
+		        	</tr>
+		        </c:forEach>
 		    </tbody>
 		</table>
     

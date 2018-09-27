@@ -38,8 +38,8 @@
         <li><a href="/makeFriendsTravel/html/Q&AList.jsp">Q&A</a></li>
         <li><a href="/makeFriendsTravel/html/main/loginNextMain.jsp">로그인후 테스트</a></li>
       </ul>
-       <form name="mForm" action = "searchList.jsp"  onsubmit="return Enter_Check()">
-      <input name="test" class="search float-right" placeholder="Search..">
+       <form name="mForm" action = "searchlist.do"  onsubmit="return Enter_Check()">
+      <input id="search_word"name="search_word" class="search float-right" placeholder="Search..">
       </form>
     </div>
   </header>
@@ -49,7 +49,7 @@
 		
 	      // 엔터키의 코드는 13입니다.
 
-			var test = document.mForm.test
+			var test = document.mForm.search_word
 		   if(test.value =="") {
 		  		alert("입력해라")
 		  		return false;

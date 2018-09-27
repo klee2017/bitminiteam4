@@ -1,7 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@page import="java.util.*"%>   
 <c:import url="topMenu.jsp"></c:import>
+<%
+List<String> bookList = (List<String>)request.getAttribute("bookList");
+%>
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
 </script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
@@ -291,48 +295,12 @@ ul {
       
       <div style = "border:1px solid black; margin-left: 9%; background: #c5d8e6; background: #EAEDF1;" class="wrapper">
       	<ul class="book-list">
-		  <li class="book"><a href="">
-		    <img src="https://s3.amazonaws.com/titlepages.leanpub.com/hands-on-nodejs/large?1352289061" alt="" />
-		    </a>
-
-		  </li>
-		  <li class="book"><a href=""><img class="bookimg" src="https://s3.amazonaws.com/titlepages.leanpub.com/codebright/large?1385420819" alt="" />
-		    </a>
-		  </li>
-		  <li class="book">
-		    <a href=""><img class="bookimg" src="https://s3.amazonaws.com/titlepages.leanpub.com/build-apis-you-wont-hate/large?1385395345" alt="" />
-		    </a>
-		  </li>
-		  <li class="book">
-		    <a href="">
-		      <img class="bookimg" src="https://s3.amazonaws.com/titlepages.leanpub.com/characterhooks/large?1385430423" alt="" />
-		    </a>
-		  </li>
-		  <li class="book">
-		    <a href="">
-		      <img class="bookimg" src="https://s3.amazonaws.com/titlepages.leanpub.com/everydayrailsrspec/large?1383017471" alt="" />
-		    </a>
-		  </li>
-		  <li class="book">
-		    <a href="">
-		      <img class="bookimg" src="https://s3.amazonaws.com/titlepages.leanpub.com/tr4w/large?1385233687" alt="" />
-		    </a>
-		  </li>
-		  <li class="book">
-		    <a href="">
-		      <img class="bookimg" src="https://s3.amazonaws.com/titlepages.leanpub.com/laravel/large?1378268457" alt="" />
-		    </a>
-		  </li>
-		  <li class="book">
-		    <a href="">
-		      <img class="bookimg" src="https://s3.amazonaws.com/titlepages.leanpub.com/a-year-with-symfony/large?1385627226" alt="" />
-		    </a>
-		  </li>
-		  <li class="book">
-		    <a href="">
-		      <img class="bookimg" src="https://s3.amazonaws.com/titlepages.leanpub.com/the-lost-ten-years-of-taiwan-software-industry/large?1385365440" alt="" />
-		    </a>
-		  </li>
+	      	<c:forEach var="b" items="${bookList}" >
+				<li class="book"><a href="">
+					<img src=${b}/>
+					</a>
+				</li>
+			</c:forEach>
 		</ul>
       </div>
  

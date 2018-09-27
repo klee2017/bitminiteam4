@@ -316,7 +316,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
     
     </div>
   </div>
- 		 <button>등록완료</button>
+ 		<input type="submit" value="수정완료" id="update">
  		 <a href="/makeFriendsTravel/html/main/main.do" id="maintag">Privious..</a>
  </form>
  

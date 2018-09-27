@@ -39,6 +39,11 @@
 			mem_name = #{name} , mem_email = #{email}, mem_gender = #{gender}, mem_favorite_place = #{favoritePlace}
 			where mem_no = #{no}
 	</update>
+	
+	<select id="idcheck" resultType="string">
+		select mem_id
+		  from tb_member
+	</select>
 </mapper>
 
 

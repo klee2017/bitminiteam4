@@ -23,7 +23,8 @@ public class MainController extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		try {
 			List<String> weatherList = new ArrayList<>();
-			Document doc = Jsoup.connect("http://www.daum.net").get(); 
+			Document doc =  Jsoup.connect("http://www.daum.net").get();
+			
 			Elements list = doc.select("ul.list_weather > li.hide");
 			for(Element e : list) {
 				if(e.select("span.txt_part").html().equals("부산시")) {

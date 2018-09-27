@@ -3,13 +3,13 @@ package kr.co.tt.repository.domain;
 import java.util.Date;
 
 public class ReviewBoard {
-	int no;
-	String title;
-	String content;
-	Date regDate;
-	Date modDate;
-	int recCnt;
-	int memNo;
+	private int no;
+	private String title;
+	private String content;
+	private Date regDate;
+	private Date modDate;
+	private int recCnt;
+	private int memNo;
 	
 	
 	public int getNo() {

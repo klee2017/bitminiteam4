@@ -6,6 +6,7 @@
 	<properties resource="config/mybatis/db.properties"/>
 	<typeAliases>
 		<typeAlias alias="Board" type="kr.co.tt.repository.domain.Board" />
+		<typeAlias alias="ReviewBoard" type="kr.co.tt.repository.domain.ReviewBoard" />
 		
 	</typeAliases>
 	
@@ -23,6 +24,7 @@
 
 	<mappers>
 		<mapper resource="config/sqlmap/board.xml" />
+		<mapper resource="config/sqlmap/reviewboard.xml" />
 		
 	</mappers>
 </configuration>

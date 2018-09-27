@@ -360,7 +360,7 @@ input[type=checkbox] {
           
           	  
        	  <button class="button submit">login</button><br>
-            <a href="main/main2.jsp" id="maintag">메인으로 이동</a>
+            <a href="/makeFriendsTravel/html/main/main.do" id="maintag">메인으로 이동</a>
           
         </form>
       </div>

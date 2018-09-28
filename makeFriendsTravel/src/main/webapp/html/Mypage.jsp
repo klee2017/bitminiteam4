@@ -246,10 +246,10 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 <h1>Update Profile</h1>
 <div class="settings-message" id="js-message"></div>
 
-<form action="<c:url value='/login/update.do'/>" method="post">
+<form action="<c:url value='/login/update.do'/>" method="post" encType="multipart/form-data">
 	<input type="hidden" name="no" value="<%=Integer.parseInt(request.getParameter("no"))%>">
 
-  <input id="js-file-uploader" class="hidden" name="poto" type="file">
+  <input id="js-file-uploader" name="poto" type="file"/>
 
   <div id="js-profile-pic" class="profile-pic__container">Upload Profile Pic
   
@@ -391,9 +391,10 @@ if (password.value != passwordConfirm.value) {
  messageElement.classList.remove("settings-message--error");
 }
 });
+*/
 // 프로필 사진을 설정하기 위해 파일 업로드를 트리거합니다.
 profileTrigger.addEventListener("click", function(event) {
-event.preventDefault();
+//event.preventDefault();
 fileUpload.click();
 });
 
@@ -412,6 +413,7 @@ if (fileUpload.files && fileUpload.files[0]) {
 }
 });
 
+/*
 //사용자에게 제안 된 암호를 추가하십시오 (암호 및 암호 입력에 모두 해당).
 passwordSuggest.addEventListener("click", function(event) {
 let newPassword = btoa(
@@ -438,8 +440,8 @@ if (passwordDisplayed) {
 }
 });
 $(document).ready( function () {
+*/ 
     $('#table_id').DataTable();
-*/
 /*    $('#table_id').DataTable({
     	data: dataSet,
     	columns: col_kor,

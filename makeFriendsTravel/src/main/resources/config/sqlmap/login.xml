@@ -43,7 +43,7 @@
 	
 	<update id="updateMember" parameterType="Member">
 			update tb_member set
-				mem_name = #{name}, mem_email = #{email}, mem_gender = #{gender}, mem_favorite_place = #{favoritePlace},mem_pass = #{pass}
+				mem_name = #{name}, mem_email = #{email}, mem_gender = #{gender}, mem_favorite_place = #{favoritePlace},mem_pass = #{pass}, mem_poto =#{poto}, mem_potoAddr =#{potoAddr}
 				where mem_no = #{no}
 	</update>
 	

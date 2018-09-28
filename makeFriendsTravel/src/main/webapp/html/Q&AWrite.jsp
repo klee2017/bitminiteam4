@@ -143,7 +143,7 @@ h1{
     <br>
     <div class="post-section">
       <label for="post-title">작성자</label>
-      <span><strong>익룡</strong></span>
+      <span><strong>aaa</strong></span>
       <br>
       <hr id="titleline">
       <div class="post-title">

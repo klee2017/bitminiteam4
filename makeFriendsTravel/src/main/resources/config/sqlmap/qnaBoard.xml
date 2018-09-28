@@ -42,7 +42,7 @@
     	   set title = #{title},
     	       content = #{content}
     	 where no = #{no}
-    </update>	  
+    </update>	 
     
 
 </mapper>

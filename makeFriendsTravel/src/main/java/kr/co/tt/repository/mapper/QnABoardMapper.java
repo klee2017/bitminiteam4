@@ -12,4 +12,5 @@ public interface QnABoardMapper {
 	void insertBoard(QnABoard board);
 	void deleteBoard(int no);
 	void updateBoard(QnABoard board);
+
 }

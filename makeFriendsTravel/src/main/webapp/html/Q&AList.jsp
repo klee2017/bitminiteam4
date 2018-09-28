@@ -72,12 +72,7 @@
 	            <td>물대포발사</td>
 	            <td>18-01-16</td>
 	        </tr>
-	        <tr>
-	            <td>2</td>
-	            <td>꼬부기</td>
-	            <td>불대포발사</td>
-	            <td>5:11pm</td>
-	        </tr>
+
 	    </tbody>
     </div>
 </table>

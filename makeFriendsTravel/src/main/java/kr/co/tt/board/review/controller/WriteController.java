@@ -27,7 +27,7 @@ public class WriteController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		String uploadPath = "c:/git/upload";
+//		String uploadPath = "c:/git/upload";
 		
 //		MultipartRequest mRequest = new MultipartRequest(
 //				request, 

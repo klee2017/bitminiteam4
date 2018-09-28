@@ -9,6 +9,7 @@
 		<typeAlias alias="Member" type="kr.co.tt.repository.domain.Member" />
 		<typeAlias alias="ReviewBoard" type="kr.co.tt.repository.domain.ReviewBoard" />
 		<typeAlias alias="QnABoard" type="kr.co.tt.repository.domain.QnABoard" />
+		<typeAlias alias="ReviewFile" type="kr.co.tt.repository.domain.ReviewFile" />
 		
 	</typeAliases>
 	

@@ -13,13 +13,35 @@
 		<result column="mem_no" property="memNo" />
 	</resultMap>
 	
+	<resultMap id="reviewBoardDetailMap" type="ReviewBoard">
+		<result column="no" property="no" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="reg_date" property="regDate" />
+		<result column="mod_date" property="modDate" />
+		<result column="rec_cnt" property="recCnt" />
+		<result column="mem_no" property="memNo" />
+		<collection property="fileList"
+					column="no"
+					select="selectFileList"></collection>
+	</resultMap>
+	
+	<resultMap type="ReviewFile" id="FileMap">
+		<result column="file_no" property="fileNo"/>
+		<result column="file_original_name" property="fileOriginalName"/>
+		<result column="file_server_name" property="fileServerName"/>
+		<result column="file_path" property="filePath"/>
+		<result column="file_size" property="fileSize"/>
+		<result column="no" property="no"/>
+	</resultMap>
+	
 	<select id="selectBoard" resultMap="reviewBoardMap">
 		select *
 		  from tb_board_review
 		 order by no desc 
 	</select>
 	
-    <select id="selectBoardByNo" parameterType="int" resultMap="reviewBoardMap">
+    <select id="selectBoardByNo" parameterType="int" resultMap="reviewBoardDetailMap">
     	select *
     	  from tb_board_review
     	 where no = #{no} 
@@ -27,8 +49,8 @@
 	
 	<select id="sqcNo" parameterType="string" resultMap="reviewBoardMap">
 		select no
-		 from  tb_board_review
-		where title=#{title} 
+		  from tb_board_review
+		 where title=#{title} 
 	</select>
 	
 	<insert id="insertBoard" parameterType="ReviewBoard">
@@ -52,7 +74,19 @@
     	 where no = #{no}
     </update>	  
     
+	<insert id="insertFile" parameterType="ReviewFile">
+		insert into tb_file_review (
+			file_no, no, file_original_name, file_server_name, file_path, file_size
+		) values (
+			s_file_review.nextval, #{no}, #{fileOriginalName}, #{fileServerName}, #{filePath}, #{fileSize}
+		)
+	</insert>
 	
+	<select id="selectFileList" parameterType="int" resultMap="FileMap">
+		select *
+		  from tb_file_review
+		 where no = #{no}
+	</select>
 </mapper>
 
 

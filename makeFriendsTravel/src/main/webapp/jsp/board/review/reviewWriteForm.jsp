@@ -12,8 +12,6 @@
 	<!-- include summernote css/js -->
 	<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
-	
-	<!-- include summernote-ko-KR --> <script src="lang/summernote-ko-KR.js"></script>
 
 	<style>
 		.board-button {
@@ -29,7 +27,7 @@
 </head>
 <body>
 	<div id="board-write-form">
-	<form method="post" action="<c:url value='/jsp/board/review/write.do' />">
+	<form method="post" action="/makeFriendsTravel/jsp/board/review/write.do">
 		<div id="title">
 			<h4>제목 : <input type="text" name="title" /></h4>
 		</div>
@@ -51,28 +49,28 @@
 						  sendFile(files[i], this);
 					  }
 				  }
-		  	  },
-			  lang: 'ko-KR'
+		  	  }
 			});
 		});
 		
-		function sendFile(file, el) {
-		      var form_data = new FormData();
-		      form_data.append('file', file);
-		      $.ajax({
-		        data: form_data,
-		        type: "POST",
-		        url: '/image',
-		        cache: false,
-		        contentType: false,
-		        enctype: 'multipart/form-data',
-		        processData: false,
-		        success: function(url) {
-		          $(el).summernote('editor.insertImage', url);
-		          $('#imageBoard > ul').append('<li><img src="'+url+'" width="480" height="auto"/></li>');
-		        }
-		      });
-		    }
+		function sendFile(file, editor) {
+            // 파일 전송을 위한 폼생성
+	 		data = new FormData();
+	 	    data.append("uploadFile", file);
+	 	    $.ajax({ // ajax를 통해 파일 업로드 처리
+	 	        data : data,
+	 	        type : "POST",
+	 	        url : "/makeFriendsTravel/jsp/board/review/imgUpload.do",
+	 	        cache : false,
+	 	        contentType : false,
+	 	        processData : false,
+	 	        success : function(data) { // 처리가 성공할 경우
+                    // 에디터에 이미지 출력
+                    // alert(data);
+                    $(editor).summernote('editor.insertImage', data);
+	 	        }
+	 	    });
+	 	}
 
 	</script>
 </body>

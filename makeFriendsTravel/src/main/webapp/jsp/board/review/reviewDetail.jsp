@@ -2,7 +2,7 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
-<c:import url="topMenu.jsp"></c:import>
+<c:import url="/html/main/topMenu.jsp"></c:import>
 <!DOCTYPE html>
 <html>
 <head>
@@ -420,7 +420,8 @@
 			</div>
 			
 			<div>
-				<button></button>
+				<a href="#">수정</a>
+				<a href="#">삭제</a>
 			</div>
 	
 			<footer class="post-footer">

@@ -249,7 +249,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 <form action="<c:url value='/login/update.do'/>" method="post">
 	<input type="hidden" name="no" value="<%=Integer.parseInt(request.getParameter("no"))%>">
 
-  <input id="js-file-uploader" class="hidden" name="profile-picture" type="file" accept="image/png, image/jpeg">
+  <input id="js-file-uploader" class="hidden" name="poto" type="file">
 
   <div id="js-profile-pic" class="profile-pic__container">Upload Profile Pic
   
@@ -272,13 +272,13 @@ input[type="submit"]:hover, input[type="submit"]:focus {
     
     <div class="input-container__single">
       <label for="js-password">Password:</label>
-      <input type="password" id="js-password" name="password"/>
+      <input type="password" id="js-password" name="pass"/>
       <span id="js-toggle-password" class="input-action">Display Password</span>
     </div>
     
     <div class="input-container__single">
       <label for="js-password-confirm">Confirm Password:</label>
-      <input type="password" id="js-password-confirm" name="confirm-password">
+      <input type="password" id="js-password-confirm" name="pass">
       <span class="input-action" id="js-suggest-password">Suggest Password</span>
     </div>
       
@@ -360,7 +360,8 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 
 
 </form>
-<!-- <script>
+<script>
+/*
 const messageElement = document.querySelector("#js-message");
 
 
@@ -390,7 +391,6 @@ if (password.value != passwordConfirm.value) {
  messageElement.classList.remove("settings-message--error");
 }
 });
-
 // 프로필 사진을 설정하기 위해 파일 업로드를 트리거합니다.
 profileTrigger.addEventListener("click", function(event) {
 event.preventDefault();
@@ -439,13 +439,15 @@ if (passwordDisplayed) {
 });
 $(document).ready( function () {
     $('#table_id').DataTable();
+*/
 /*    $('#table_id').DataTable({
     	data: dataSet,
     	columns: col_kor,
         language : lang_kor
     }); */
 } );
-</script> -->
+</script> 
+
 
 </body>
 </html>

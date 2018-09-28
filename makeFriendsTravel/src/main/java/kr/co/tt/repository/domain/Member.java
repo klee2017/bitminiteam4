@@ -13,8 +13,15 @@ public class Member {
 	private String favoritePlace;
 	private Date regDate;
 	private String poto;
+	private String potoAddr;
 	
 	
+	public String getPotoAddr() {
+		return potoAddr;
+	}
+	public void setPotoAddr(String potoAddr) {
+		this.potoAddr = potoAddr;
+	}
 	public String getEmail() {
 		return email;
 	}

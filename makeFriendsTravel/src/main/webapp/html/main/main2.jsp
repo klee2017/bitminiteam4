@@ -14,6 +14,7 @@ if(weatherList.get(1).equals("맑음")) weather ="sunny";
 if(weatherList.get(1).equals("구름조금")) weather ="partly_cloudy";
 if(weatherList.get(1).equals("구름많음")) weather ="cloudy";
 if(weatherList.get(1).equals("비")) weather ="rainy";
+if(weatherList.get(1).equals("흐림")) weather ="rainyCloudy";
 
 
 Calendar cal = Calendar.getInstance();
@@ -563,6 +564,13 @@ h3 {
 	                <div class="rainy__cloud"></div>
 	                <div class="rainy__rain"></div>
            		 </div>
+        	<% 		
+        		} else if(weather=="rainyCloudy"){
+        	%>
+        		<div class="rainy">
+	                <div class="rainy__cloud"></div>
+	                
+           		 </div>	
         	<% 		
         		}
         	%>

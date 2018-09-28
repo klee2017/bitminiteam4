@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
-<c:import url="topMenu.jsp"></c:import>
+<c:import url="/html/main/topMenu.jsp"></c:import>
 
 
 	<!-- include libraries(jQuery, bootstrap) -->
@@ -45,9 +45,35 @@
 			  minHeight: null,             // set minimum height of editor
 			  maxHeight: null,             // set maximum height of editor
 			  focus: false,                  // set focus to editable area after initializing summernote
+			  callbacks: {
+				  onImageUpload: function(files, editor, welEditable) {
+					  for (var i = files.length - 1; i >= 0; i--) {
+						  sendFile(files[i], this);
+					  }
+				  }
+		  	  },
 			  lang: 'ko-KR'
 			});
 		});
+		
+		function sendFile(file, el) {
+		      var form_data = new FormData();
+		      form_data.append('file', file);
+		      $.ajax({
+		        data: form_data,
+		        type: "POST",
+		        url: '/image',
+		        cache: false,
+		        contentType: false,
+		        enctype: 'multipart/form-data',
+		        processData: false,
+		        success: function(url) {
+		          $(el).summernote('editor.insertImage', url);
+		          $('#imageBoard > ul').append('<li><img src="'+url+'" width="480" height="auto"/></li>');
+		        }
+		      });
+		    }
+
 	</script>
 </body>
 </html>

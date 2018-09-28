@@ -8,6 +8,8 @@
 		<typeAlias alias="Board" type="kr.co.tt.repository.domain.Board" />
 		<typeAlias alias="Member" type="kr.co.tt.repository.domain.Member" />
 		<typeAlias alias="ReviewBoard" type="kr.co.tt.repository.domain.ReviewBoard" />
+		<typeAlias alias="QnABoard" type="kr.co.tt.repository.domain.QnABoard" />
+		<typeAlias alias="ReviewFile" type="kr.co.tt.repository.domain.ReviewFile" />
 		
 	</typeAliases>
 	
@@ -27,6 +29,7 @@
 		<mapper resource="config/sqlmap/board.xml" />
 		<mapper resource="config/sqlmap/login.xml" />
 		<mapper resource="config/sqlmap/reviewboard.xml" />
+		<mapper resource="config/sqlmap/qnaBoard.xml" />
 		
 	</mappers>
 </configuration>

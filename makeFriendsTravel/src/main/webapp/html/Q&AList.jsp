@@ -1,7 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
-<c:import url="topMenu.jsp"></c:import>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
+<%@page import="kr.co.tt.repository.domain.QnABoard" %>
+<%@page import="kr.co.tt.repository.domain.Member" %>
+<%@page import="java.util.*" %>
+<c:import url="./main/topMenu.jsp"></c:import>
+<%
+List<QnABoard> list = (List<QnABoard>)request.getAttribute("list");
+List<String> idList = (List<String>)request.getAttribute("idList");
+int i=0;
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -52,6 +61,7 @@
 </style>
 </head>
 <body>
+	
 	<br>
 	<h1>Q&A</h1>
 	<hr>
@@ -59,40 +69,41 @@
 		<table id="table_id" class="display">
 	    <thead>
 	        <tr>
-	            <th id="no">±Û¹øÈ£</th>
-	            <th id="writer">ÀÛ¼ºÀÚ</th>
-	            <th id="title">Á¦¸ñ</th>
-	            <th id="reg_date">ÀÛ¼ºÀÏÀÚ</th>
+	            <th id="no">ê¸€ë²ˆí˜¸</th>
+	            <th id="writer">ì‘ì„±ì</th>
+	            <th id="title">ì œëª©</th>
+	            <th id="reg_date">ì‘ì„±ì¼ì</th>
 	        </tr>
 	    </thead>
-	    <tbody>
-	        <tr>
-	            <td>1</td>
-	            <td>ÆÄÀÌ¸®</td>
-	            <td>¹°´ëÆ÷¹ß»ç</td>
-	            <td>18-01-16</td>
-	        </tr>
-	        <tr>
-	            <td>2</td>
-	            <td>²¿ºÎ±â</td>
-	            <td>ºÒ´ëÆ÷¹ß»ç</td>
-	            <td>5:11pm</td>
-	        </tr>
+	    <tbody>    
+       	<c:forEach var="b" items="${list}" >
+			<tr>
+				<td>${b.no}</td>
+				<td><%=idList.get(i++) %></td>
+				<td><a href="">${b.title}</a></td>
+				<td><fmt:formatDate value="${b.regDate}" pattern="yyyy-MM-dd"/></td>
+			</tr>
+		</c:forEach>
 	    </tbody>
     </div>
 </table>
 
 	<div>
-	    <a href="Q&AWrite.jsp">±Û¾²±â</a>
+	    <a id="writing" onclick="writing()">ê¸€ì“°ê¸°</a>
 	    <form action="" method="get" id="qnasearchform">
-	    <input type="text" id="search" placeholder="°Ë»ö¾î¸¦ ÀÔ·ÂÇÏ¼¼¿ä">
-	    <button>°Ë»ö</button>
+	    <input type="text" id="search" placeholder="ê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•˜ì„¸ìš”">
+	    <button>ê²€ìƒ‰</button>
 	    </form>
 	</div>
 <script>
+
+
+
+
 $(document).ready( function () {
     $('#table_id').DataTable();
 } );
+
 </script>
 </body>
 </html>

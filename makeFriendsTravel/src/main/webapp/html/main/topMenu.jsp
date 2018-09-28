@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css">
-<link rel="stylesheet" href="<c:url value='../main/menu.css'/> "/>
+<link rel="stylesheet" href="<c:url value='./menu.css'/> "/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css"/>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css"/>
 <script src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
@@ -76,7 +76,7 @@
         <li><a href="/makeFriendsTravel/html/Mypage.jsp?no=${user.no}">Mypage</a></li>
         <li><a href="/makeFriendsTravel/jsp/board/review/list.do">Review</a></li>
         <li><a href="/makeFriendsTravel/html/main/photoBoard.jsp">Best Photo</a></li>
-        <li><a href="/makeFriendsTravel/html/Q&AList.jsp">Q&A</a></li>
+        <li><a href="/makeFriendsTravel/html/qnaList.do">Q&A</a></li>
         <c:choose>
         <c:when test="${empty user}">
        	 	<li><a href='<c:url value='/login/login-form.do'/>'>로그인</a></li>

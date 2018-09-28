@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.tt.repository.mapper.QnABoardMapper">
+	<resultMap id="boardMap" type="QnABoard">
+		<result column="no" property="no" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="reg_date" property="regDate" />
+		<result column="mod_date" property="modDate" />
+		<result column="mem_no" property="memNo" />
+	</resultMap>
+	
+	<!-- 전체 목록 가져오기 -->
+	<select id="selectQnaBoard" resultMap="boardMap">
+		select *
+		  from tb_board_qna
+		 order by no desc 
+	</select>
+	
+	<!-- 게시물 등록하기 : insertBoard -->
+	<insert id="insertQnaBoard" parameterType="QnABoard">
+		insert into tb_board_qna(
+			no, title, content,mem_no
+		) values (
+			s_board_qna.nextval, #{title}, #{content}, #{memNo}
+		)
+	</insert>
+	
+    <select id="selectBoardByNo" parameterType="int" resultMap="boardMap">
+    	select *
+    	  from tb_board_qna
+    	 where no = #{no} 
+    </select>		
+    <delete id="deleteBoard" parameterType="int">
+    	delete 
+    	  from tb_board_qna
+    	 where no = #{no}
+    </delete>    
+    <update id="updateBoard" parameterType="board">
+    	update tb_board_qna
+    	   set title = #{title},
+    	       content = #{content}
+    	 where no = #{no}
+    </update>	 
+    
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

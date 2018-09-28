@@ -17,6 +17,11 @@
   		<result column="mem_reg_date" property="regDate"/>	
 	</resultMap>
 	
+	<select id="selectMemberId" parameterType="int" resultType="string">
+		select mem_id
+		 from  tb_member
+		where  mem_no=#{memNo} 
+	</select>
 	
 	<select id="selectMember" parameterType="Member" resultMap="MemberMap">
 		select *

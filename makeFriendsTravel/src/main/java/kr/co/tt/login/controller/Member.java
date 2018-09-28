@@ -1,4 +1,4 @@
-package kr.co.tt.member.controller;
+package kr.co.tt.login.controller;
 
 public class Member {
 

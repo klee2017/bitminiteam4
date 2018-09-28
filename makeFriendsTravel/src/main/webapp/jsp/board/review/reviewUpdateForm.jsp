@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
-<c:import url="topMenu.jsp"></c:import>
+<c:import url="/html/main/topMenu.jsp"></c:import>
 
 
 	<!-- include libraries(jQuery, bootstrap) -->
@@ -12,7 +12,7 @@
 	<!-- include summernote css/js -->
 	<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
-	
+
 	<style>
 		.board-button {
 			float: right;
@@ -27,19 +27,50 @@
 </head>
 <body>
 	<div id="board-write-form">
-	<form method="post" action="">
-		<div id="title" name="title">
-			<h4>제목 : <input type="text" /></h4>
+	<form method="post" action="/makeFriendsTravel/jsp/board/review/update.do">
+		<input type="hidden" name="no" value="${param.no}" />
+		<div id="title">
+			<h4>제목 : <input type="text" name="title" /></h4>
 		</div>
 		<textarea id="summernote" name="editordata"></textarea>
+		<button class="board-button">등록</button>
 	</form>
-	<button class="board-button">수정</button>
 	</div>
 	
 	<script>
 		$(document).ready(function() {
-		  $('#summernote').summernote();
+		  $('#summernote').summernote({
+			  height: 300,                 // set editor height
+			  minHeight: null,             // set minimum height of editor
+			  maxHeight: null,             // set maximum height of editor
+			  focus: false,                  // set focus to editable area after initializing summernote
+			  callbacks: {
+				  onImageUpload: function(files, editor, welEditable) {
+					  for (var i = files.length - 1; i >= 0; i--) {
+						  sendFile(files[i], this);
+					  }
+				  }
+		  	  }
+			});
 		});
+		
+		function sendFile(file, editor) {
+            // 파일 전송을 위한 폼생성
+	 		data = new FormData();
+	 	    data.append("uploadFile", file);
+	 	    $.ajax({ // ajax를 통해 파일 업로드 처리
+	 	        data : data,
+	 	        type : "POST",
+	 	        url : "/makeFriendsTravel/jsp/board/review/imgUpload.do",
+	 	        cache : false,
+	 	        contentType : false,
+	 	        processData : false,
+	 	        success : function(data) { // 처리가 성공할 경우
+                    $(editor).summernote('editor.insertImage', data);
+	 	        }
+	 	    });
+	 	}
+
 	</script>
 </body>
 </html>

@@ -2,7 +2,7 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
-<c:import url="topMenu.jsp"></c:import>
+<c:import url="/html/main/topMenu.jsp"></c:import>
 <!DOCTYPE html>
 <html>
 <head>
@@ -391,6 +391,11 @@
 			}
 		}
 	
+	#update-delete {
+		float: right;
+		font-family: sans-serif;
+	}
+	
 </style>
 </head>
 <body>
@@ -402,8 +407,6 @@
 				<p class="post-subtitle" itemprop="alternativeHeadline">${board.memNo}</p>
 				<p class="post-meta">Posted on <fmt:formatDate value="${board.modDate}" pattern="yyyy/MM/dd"/></time></p>
 			</header>
-	  
-			<img itemprop="image" src="https://lorempixel.com/720/460/cats/1/" alt="A descriptive alt" class="featured-image">
 
 			<p itemprop="description" class="post-intro">${board.content}</p>
 	  
@@ -419,8 +422,9 @@
 				<p>Ratione quasi non, est veritatis necessitatibus quibusdam possimus sit aspernatur aperiam dolores quod nemo odio ea nostrum. Consequuntur quas quos quisquam deleniti, facere, officiis ratione ipsum, odio hic enim adipisci quia. Dolorum assumenda alias corporis expedita illo vitae, incidunt illum doloribus cupiditate quibusdam tempore quasi laudantium quod nesciunt nisi, vero, tenetur est, dolorem obcaecati!</p>
 			</div>
 			
-			<div>
-				<button></button>
+			<div id="update-delete">
+				<a href="/makeFriendsTravel/jsp/board/review/reviewUpdateForm.jsp?no=${board.no}">수정</a>
+				<a href="#">삭제</a>
 			</div>
 	
 			<footer class="post-footer">

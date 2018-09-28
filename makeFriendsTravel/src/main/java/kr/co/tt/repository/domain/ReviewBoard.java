@@ -1,6 +1,7 @@
 package kr.co.tt.repository.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class ReviewBoard {
 	private int no;
@@ -10,8 +11,15 @@ public class ReviewBoard {
 	private Date modDate;
 	private int recCnt;
 	private int memNo;
+	private List<ReviewFile> fileList;
 	
 	
+	public List<ReviewFile> getFileList() {
+		return fileList;
+	}
+	public void setFileList(List<ReviewFile> fileList) {
+		this.fileList = fileList;
+	}
 	public int getNo() {
 		return no;
 	}

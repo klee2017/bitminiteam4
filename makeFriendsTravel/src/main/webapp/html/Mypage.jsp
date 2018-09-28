@@ -1,6 +1,8 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -239,10 +241,14 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 
 </head>
 <body>
+
+
 <h1>Update Profile</h1>
 <div class="settings-message" id="js-message"></div>
 
-<form>
+<form action="<c:url value='/login/update.do'/>" method="post">
+	<input type="hidden" name="no" value="<%=Integer.parseInt(request.getParameter("no"))%>">
+
   <input id="js-file-uploader" class="hidden" name="profile-picture" type="file" accept="image/png, image/jpeg">
 
   <div id="js-profile-pic" class="profile-pic__container">Upload Profile Pic
@@ -256,17 +262,17 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 
     <div class="input-container__single">
       <label for="id">UserId:</label>
-      <input type="text" name="id" id="id">
+      <input type="text" name="id" id="id" placeholder="${user.id}" readonly/>
     </div>
     
     <div class="input-container__single">
-      <label for="name">asdasd:</label>
-      <input type="text" name="name" id="name">
+      <label for="name">name:</label>
+      <input type="text" name="name" id="name" >
     </div>
     
     <div class="input-container__single">
       <label for="js-password">Password:</label>
-      <input type="password" id="js-password" name="password">
+      <input type="password" id="js-password" name="password"/>
       <span id="js-toggle-password" class="input-action">Display Password</span>
     </div>
     
@@ -279,8 +285,8 @@ input[type="submit"]:hover, input[type="submit"]:focus {
       <h2>Option<hr id="hrtwo"></h2>
 
     <div class="input-container__single">
-      <label for="name">Favorite Place:</label>
-      <select name="select">
+      <label for="favoriteplace">Favorite Place:</label>
+      <select name="favoriteplace">
 	        <option value="1" selected="">-- 선택 --</option>
 	      	<option value="2">서울</option>
 	  		<option value="3">경기</option>
@@ -294,10 +300,10 @@ input[type="submit"]:hover, input[type="submit"]:focus {
     
     <div class="input-container__single">
       <label for="gender">Gender:</label>
-      <select name="select">
+      <select name="gender">
 	        <option value="1" selected="">-- 선택 --</option>
 	      	<option value="2">남성</option>
-	      	<option value="2">여성</option>
+	      	<option value="3">여성</option>
       </select>
     </div>
     
@@ -310,11 +316,10 @@ input[type="submit"]:hover, input[type="submit"]:focus {
     
     </div>
   </div>
- 		 <input type="submit" value="Save Profile">
+ 		<input type="submit" value="수정완료" id="update">
  		 <a href="/makeFriendsTravel/html/main/main.do" id="maintag">Privious..</a>
- 		 
-
-</form>
+ </form>
+ 
 <!-- 내가쓴글 확인하기 -->
 <form>
   <div id="board-list">
@@ -355,7 +360,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 
 
 </form>
-<script>
+<!-- <script>
 const messageElement = document.querySelector("#js-message");
 
 
@@ -440,7 +445,7 @@ $(document).ready( function () {
         language : lang_kor
     }); */
 } );
-</script>
+</script> -->
 
 </body>
 </html>

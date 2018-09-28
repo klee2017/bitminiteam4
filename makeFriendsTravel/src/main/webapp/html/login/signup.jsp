@@ -336,11 +336,11 @@ input[type=checkbox] {
    	 
       <div class="signup nodisplay">
         <h1>register</h1>
-        <form  action="<c:url value='/login/sign.do'/>" autocomplete="off">
-          <input type="text" name="id" placeholder="id">
-          <button class="button submit">Overlap Check</button>
+        <form  name="mForm"   action="<c:url value='/login/sign1.do'/>" autocomplete="off"  onsubmit="return doSignAction()">
+          <input type="text" name="id" placeholder="id" id="id">
+          <button class="button submit" id="overlap">Overlap Check</button>
           <input type="text" name="name" placeholder="name">
-          <input type="password" name="pass" placeholder="pass">
+          <input type="password" name="pass" placeholder="pass" id="pass">
           <button class="button submit">create account </button>
         </form>
       </div>
@@ -350,7 +350,7 @@ input[type=checkbox] {
       
       <div class="signin">
         <h1>sign in</h1>
-        <form class="more-padding" action="<c:url value='/login/login.do'/>" method="post" autocomplete="off">
+        <form class="more-padding"  name="mForm2" action="<c:url value='/login/login.do'/>" method="post" autocomplete="off" onsubmit="return doLoginAction()">
           <input type="text" name="id" placeholder="username">
           <input type="password" name="pass" placeholder="password">
           <div class="checkbox">
@@ -396,6 +396,64 @@ input[type=checkbox] {
 	  $('.signup').addClass('nodisplay');
 	  $('.signin').removeClass('nodisplay');
 	});
+	
+	//아이디 중복체크
+		$("#overlap").click(function(){
+		var idArr = new Array();
+		<c:forEach var="item" items="${list}">
+			idArr.push( '${item}' );
+		</c:forEach>
+		for(var i = 0; i<idArr.length; i++){
+			if($("#id").val() == idArr[i]){
+				alert("중복된 아이디가 존재합니다.")
+				$("#id").val("").focus()
+				return false;
+			}
+		}
+			alert("중복된 아이디가 없습니다.")
+	 });
+	
+		function doSignAction(){
+            var f = document.mForm
+            if(f.id.value == ""){
+                f.id.focus()
+                alert("아이디를 입력하세요")
+                return false;
+            }   
+            if(f.id.value.length < 4 || f.id.value.length > 8 ){
+                f.id.focus()
+                alert("아이디를 최소 4~8자를 입력하세요")
+                return false;
+            }   
+            if(f.name.value == ""){
+                f.name.focus()
+                alert("이름을 입력하세요")
+                return false;
+            }   
+            if(f.pass.value == ""){
+                f.pass.focus()
+                alert("패스워드를 입력하세요")
+                return false;
+            }   
+            alert("회원가입완료되었습니다. 로그인해주세요");
+            
+		}
+		function doLoginAction() {
+			 var f = document.mForm2
+			 if(f.id.value == ""){
+	                f.id.focus()
+	                alert("아이디를 입력하세요")
+	                return false;
+	         }   
+			if(f.pass.value == ""){
+            f.pass.focus()
+            alert("패스워드를 입력하세요")
+            return false;
+        	}   
+			
+		}
+
+	
 	
 
 </script>

@@ -6,6 +6,7 @@
 	<resultMap type="Member" id="MemberMap">
 		<result column="mem_no" property="no"/>
   		<result column="mem_id" property="id"/>
+  		<result column="mem_name" property="name"/>  		
   		<result column="mem_pass_hint" property="passHint"/>
   		<result column="mem_email" property="email"/>
   		<result column="mem_gender" property="gender"/>
@@ -26,6 +27,23 @@
 		insert into tb_member(mem_no, mem_id, mem_name, mem_pass)values(m_member_no.nextval, #{id}, #{name}, #{pass})
 	</insert>
 	
+	<select id= "selectMemberByNo" parameterType="int" resultMap="MemberMap">
+		select *
+		  from tb_member
+		 where mem_no= #{no}
+	
+	</select>
+	
+	<update id="updateMember" parameterType="Member">
+			update tb_member set
+			mem_name = #{name} , mem_email = #{email}, mem_gender = #{gender}, mem_favorite_place = #{favoritePlace}
+			where mem_no = #{no}
+	</update>
+	
+	<select id="idcheck" resultType="string">
+		select mem_id
+		  from tb_member
+	</select>
 </mapper>
 
 

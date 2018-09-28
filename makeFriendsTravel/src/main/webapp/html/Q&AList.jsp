@@ -61,7 +61,7 @@ int i=0;
 </style>
 </head>
 <body>
-
+	
 	<br>
 	<h1>Q&A</h1>
 	<hr>
@@ -89,16 +89,21 @@ int i=0;
 </table>
 
 	<div>
-	    <a href="Q&AWrite.jsp">글쓰기</a>
+	    <a id="writing" onclick="writing()">글쓰기</a>
 	    <form action="" method="get" id="qnasearchform">
 	    <input type="text" id="search" placeholder="검색어를 입력하세요">
 	    <button>검색</button>
 	    </form>
 	</div>
 <script>
+
+
+
+
 $(document).ready( function () {
     $('#table_id').DataTable();
 } );
+
 </script>
 </body>
 </html>

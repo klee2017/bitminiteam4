@@ -2,6 +2,18 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@page import="java.text.SimpleDateFormat" %>
+<%@page import="java.util.Date" %>
+<%@page import="java.util.Locale" %>
+<%
+
+SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat ( "yyyy.MM.dd", Locale.KOREA );
+Date currentTime = new Date ();
+String mTime = mSimpleDateFormat.format ( currentTime );
+System.out.println ( mTime );
+
+%>
+
 <c:import url="./main/topMenu.jsp"></c:import>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -119,6 +131,16 @@ hr{
 h1{
 	text-align: center;
 }
+
+.QnaTitle::placeholder {
+ color: red;
+ font-style: italic;
+}
+.QnaContent::placeholder {
+  color: blue;
+  font-weight: bold;
+  width:800px;
+}
 </style>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/magicsuggest/2.1.4/magicsuggest-min.js"></script>
@@ -136,7 +158,7 @@ h1{
     <div class="post-section post-tagged-people">
       <div class="form-group">
         <label for="people-entry">작성일</label>
-        <span><strong>4월 20일</strong></span>
+        <span><strong><%=mTime %></strong></span>
         <div id="people-entry"></div>
       </div>
     </div>
@@ -144,15 +166,15 @@ h1{
     <form id="write" name="write" action="/makeFriendsTravel/html/qnaWrite.do" method="get">
 	    <div class="post-section">
 	      <label for="post-title"></label>
-	      <span><strong><input name="writer" type="hidden" value="test2"/></strong></span>
+	      <span><strong><input name="writerNo" type="hidden" value="${user.no}"/>${user.id}</strong></span>
 	      <br>
 	      <hr id="titleline">
 	      <div class="post-title">
-	        <input type="text" name="title" id="post-title" class="post-input large"  placeholder="제목을 입력하세요"/>
+	        <input class="QnaTitle" type="text" name="title" id="post-title" class="post-input large"  placeholder="제목을 입력하세요"/>
 	      </div>
 	      <br>
 	      <div class="post-content">
-	        <textarea name="content" class="post-input" placeholder="내용을 입력하세요"></textarea>
+	        <textarea class="QnaContent" name="content" class="post-input" placeholder="내용을 입력하세요"></textarea>
 	      </div>
 	    </div>
     </form>
@@ -168,7 +190,7 @@ h1{
 
 	
     <div class="post-section post-buttons">
-      <button type="button" class="btn btn-primary"><a href="Q&AList.jsp">목록</a></button>
+      <button type="button" class="btn btn-primary"><a href="qnaList.do">목록</a></button>
       <button type="submit" class="btn btn-success" onclick="sub()">제출</button>
       <div class="dropup pull-left">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="add-more-post-items">첨부파일 <i class="caret"></i></button>

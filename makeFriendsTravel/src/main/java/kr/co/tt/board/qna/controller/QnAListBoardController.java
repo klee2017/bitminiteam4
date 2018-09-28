@@ -34,7 +34,6 @@ public class QnAListBoardController extends HttpServlet{
 			idList.add(id);
 		}
 		
-		System.out.println(idList);
 		req.setAttribute("list", list);
 		req.setAttribute("idList", idList);
 		

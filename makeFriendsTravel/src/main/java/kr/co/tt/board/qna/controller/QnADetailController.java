@@ -24,12 +24,9 @@ public class QnADetailController extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		QnABoardMapper mapper = 
 				MyAppSqlConfig.getSqlSessionInstance().getMapper(QnABoardMapper.class);		
-		List<QnABoard> list = mapper.selectBoard();
-		// 화면에 보낸다.(json 문자열로 변환)
-		for(QnABoard l : list) {
-			System.out.println(l.getContent());
-		}
-		response.setContentType("application/json; charset=utf-8");
+//		List<QnABoard> list = mapper.selectBoard();
+
+//		response.setContentType("application/json; charset=utf-8");
 		
 	}
 }

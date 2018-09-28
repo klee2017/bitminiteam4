@@ -7,9 +7,9 @@ import kr.co.tt.repository.domain.QnABoard;
 
 
 public interface QnABoardMapper {
-	List<QnABoard> selectBoard();
+	List<QnABoard> selectQnaBoard();
 	QnABoard selectBoardByNo(int no);
-	void insertBoard(QnABoard board);
+	void insertQnaBoard(QnABoard board);
 	void deleteBoard(int no);
 	void updateBoard(QnABoard board);
 

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:import url="topMenu.jsp"></c:import>
+<c:import url="./main/topMenu.jsp"></c:import>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -141,23 +141,35 @@ h1{
       </div>
     </div>
     <br>
-    <div class="post-section">
-      <label for="post-title">작성자</label>
-      <span><strong>aaa</strong></span>
-      <br>
-      <hr id="titleline">
-      <div class="post-title">
-        <input type="text" name="title" id="post-title" class="post-input large"  placeholder="제목을 입력하세요"/>
-      </div>
-      <br>
-      <div class="post-content">
-        <textarea name="content" class="post-input" placeholder="내용을 입력하세요"></textarea>
-      </div>
-    </div>
+    <form id="write" name="write" action="/makeFriendsTravel/html/qnaWrite.do" method="get">
+	    <div class="post-section">
+	      <label for="post-title"></label>
+	      <span><strong><input name="writer" type="hidden" value="test2"/></strong></span>
+	      <br>
+	      <hr id="titleline">
+	      <div class="post-title">
+	        <input type="text" name="title" id="post-title" class="post-input large"  placeholder="제목을 입력하세요"/>
+	      </div>
+	      <br>
+	      <div class="post-content">
+	        <textarea name="content" class="post-input" placeholder="내용을 입력하세요"></textarea>
+	      </div>
+	    </div>
+    </form>
 
+<script>
+ 
+		function sub() {
+			document.write.submit();
+			
+		}
+	
+</script>
+
+	
     <div class="post-section post-buttons">
       <button type="button" class="btn btn-primary"><a href="Q&AList.jsp">목록</a></button>
-      <button type="submit" class="btn btn-success">제출</button>
+      <button type="submit" class="btn btn-success" onclick="sub()">제출</button>
       <div class="dropup pull-left">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="add-more-post-items">첨부파일 <i class="caret"></i></button>
 
@@ -177,5 +189,8 @@ h1{
     </div>
   </div>
 </div>
+
+
+
 </body>
 </html>

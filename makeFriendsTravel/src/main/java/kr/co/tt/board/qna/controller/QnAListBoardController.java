@@ -1,35 +1,45 @@
 package kr.co.tt.board.qna.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-
 import kr.co.tt.common.db.MyAppSqlConfig;
+import kr.co.tt.repository.domain.Member;
 import kr.co.tt.repository.domain.QnABoard;
-import kr.co.tt.repository.mapper.BoardMapper;
+import kr.co.tt.repository.mapper.LoginMapper;
 import kr.co.tt.repository.mapper.QnABoardMapper;
 
-@WebServlet("/qnaList.do")
+@WebServlet("/html/qnaList.do")
 public class QnAListBoardController extends HttpServlet{
 
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		QnABoardMapper mapper = 
-				MyAppSqlConfig.getSqlSessionInstance().getMapper(QnABoardMapper.class);	
-		List<QnABoard> list = mapper.selectBoard();
-		// 화면에 보낸다.(json 문자열로 변환)
-		for(QnABoard l : list) {
-			System.out.println(l.getTitle());
+	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		List<String> idList = new ArrayList<>();
+		String id;
+		QnABoardMapper mapper = MyAppSqlConfig.getSqlSessionInstance().getMapper(QnABoardMapper.class);	
+		LoginMapper mapper2 = MyAppSqlConfig.getSqlSessionInstance().getMapper(LoginMapper.class);
+		
+		List<QnABoard> list = mapper.selectQnaBoard();
+		
+		for(QnABoard b : list) {
+			id  = mapper2.selectMemberId(b.getMemNo());
+			idList.add(id);
 		}
-		response.setContentType("application/json; charset=utf-8");
+		
+		System.out.println(idList);
+		req.setAttribute("list", list);
+		req.setAttribute("idList", idList);
+		
+		RequestDispatcher rd = req.getRequestDispatcher("/html/Q&AList.jsp");
+		rd.forward(req, res);
 		
 	}
 }

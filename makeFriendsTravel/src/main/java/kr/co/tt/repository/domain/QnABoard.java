@@ -35,6 +35,8 @@ public class QnABoard {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
+	
+	
 	public Date getModDate() {
 		return modDate;
 	}

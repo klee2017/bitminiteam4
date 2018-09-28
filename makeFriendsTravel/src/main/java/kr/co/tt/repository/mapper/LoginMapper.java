@@ -11,4 +11,5 @@ public interface LoginMapper {
 	Member selectBoardByNo(int no);
 	void updateMember(Member member);
 	List<String> idcheck();
+	String selectMemberId(int memNo);
 }

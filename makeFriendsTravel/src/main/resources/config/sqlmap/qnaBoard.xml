@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.tt.repository.mapper.QnABoardMapper">
-	<resultMap id="boardMap" type="board">
+	<resultMap id="boardMap" type="QnABoard">
 		<result column="no" property="no" />
 		<result column="title" property="title" />
 		<result column="content" property="content" />
@@ -12,18 +12,18 @@
 	</resultMap>
 	
 	<!-- 전체 목록 가져오기 -->
-	<select id="selectBoard" resultMap="boardMap">
+	<select id="selectQnaBoard" resultMap="boardMap">
 		select *
 		  from tb_board_qna
 		 order by no desc 
 	</select>
 	
 	<!-- 게시물 등록하기 : insertBoard -->
-	<insert id="insertBoard" parameterType="board">
-		insert into tb_board(
-			no, title, writer, content
+	<insert id="insertQnaBoard" parameterType="QnABoard">
+		insert into tb_board_qna(
+			no, title, content,mem_no
 		) values (
-			s_board_qna.nextval, #{title}, #{mem_no}, #{content}
+			s_board_qna.nextval, #{title}, #{content}, #{memNo}
 		)
 	</insert>
 	

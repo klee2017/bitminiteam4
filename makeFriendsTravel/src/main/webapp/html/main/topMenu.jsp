@@ -76,7 +76,7 @@
         <li><a href="/makeFriendsTravel/html/Mypage.jsp?no=${user.no}">Mypage</a></li>
         <li><a href="/makeFriendsTravel/jsp/board/review/list.do">Review</a></li>
         <li><a href="/makeFriendsTravel/html/main/photoBoard.jsp">Best Photo</a></li>
-        <li><a href="/makeFriendsTravel/html/Q&AList.jsp">Q&A</a></li>
+        <li><a href="/makeFriendsTravel/html/qnaList.do">Q&A</a></li>
         <c:choose>
         <c:when test="${empty user}">
        	 	<li><a href='<c:url value='/login/login-form.do'/>'>로그인</a></li>

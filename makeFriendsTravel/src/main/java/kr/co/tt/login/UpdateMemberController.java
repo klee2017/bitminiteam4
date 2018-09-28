@@ -27,18 +27,16 @@ public class UpdateMemberController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 
 
-		String uploadPath = "c:/app/upload/";
-		SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/HH");
-		String datePath = sdf.format(new Date());
-		System.out.println("날짜"+ datePath);
+		String uploadPath = "C:/app/github/bitminiteam4/makeFriendsTravel/src/main/webapp/image";
+		
 		
 		//file 업로드
-		File file = new File(uploadPath + datePath);
+		File file = new File(uploadPath);
 		if(file.exists() == false) file.mkdirs();
 		
 		MultipartRequest mRequest = new MultipartRequest(
 				request,   
-				uploadPath + datePath,  // 사용자 선정한 파일 저장될 폴더 지정
+				uploadPath,  // 사용자 선정한 파일 저장될 폴더 지정
 				1024*1024*100,
 				"utf-8",
 				new MelcFileRenamePolicy() // 서버에 실제 저장되는 파일의 이름규칙

@@ -361,22 +361,22 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 
 </form>
 <script>
-/*
+
 const messageElement = document.querySelector("#js-message");
 
 
 //이미지 요소
-const fileUpload = document.querySelector("#js-file-uploader");
-const profileTrigger = document.querySelector("#js-profile-trigger");
-const profileBackground = document.querySelector("#js-profile-pic");
+//const fileUpload = document.querySelector("#js-file-uploader");
+//const profileTrigger = document.querySelector("#js-profile-trigger");
+//const profileBackground = document.querySelector("#js-profile-pic");
 
+/*
 //암호 개체
 const password = document.querySelector("#js-password");
 const passwordConfirm = document.querySelector("#js-password-confirm");
 const passwordToggle = document.querySelector("#js-toggle-password");
 const passwordSuggest = document.querySelector("#js-suggest-password");
 let passwordDisplayed = false;
-
 //양식 제출시 암호가 일치하는지 확인하고 암호가 저장되어 있으면 메시지를 표시합니다.
 document.querySelector("form").addEventListener("submit", function(event) {
 event.preventDefault();
@@ -446,8 +446,8 @@ $(document).ready( function () {
     	data: dataSet,
     	columns: col_kor,
         language : lang_kor
-    }); */
 } );
+    }); */
 </script> 
 
 

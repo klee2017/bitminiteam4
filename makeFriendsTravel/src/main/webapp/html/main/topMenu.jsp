@@ -27,7 +27,7 @@
     	margin-bottom: 30px;
 }
 	.item.pic1{
-		background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?dpr=1&auto=format&fit=crop&w=1500&h=1001&q=80&cs=tinysrgb&crop=');
+       background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?dpr=1&auto=format&fit=crop&w=1500&h=1001&q=80&cs=tinysrgb&crop=');
 		background-repeat: no-repeat;
 		position: relative;
 		background-size: auto 100%;
@@ -59,8 +59,9 @@
         </c:when>   
         <c:otherwise>
          	<div>
+         	
      	 	<div class="nav1 content">
-      			<div class="item pic1"></div><br>
+      			<div class="item pic1" style="background-image:url('/makeFriendsTravel/image/${user.poto}');"></div><br>
       			<span style="float: right; margin-top: -52px; margin-right: 22px;font-weight: 800;">"${user.id}"님 환영합니다.</span> 
     			 </div>
       	 		<div class="nav content" style="margin-bottom: -46px;">

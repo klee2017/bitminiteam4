@@ -424,7 +424,7 @@
 			
 			<div id="update-delete">
 				<a href="/makeFriendsTravel/jsp/board/review/reviewUpdateForm.jsp?no=${board.no}">수정</a>
-				<a href="#">삭제</a>
+				<a href="delete.do?no=${board.no}">삭제</a>
 			</div>
 	
 			<footer class="post-footer">

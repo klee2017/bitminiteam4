@@ -28,6 +28,4 @@ public class ListController extends HttpServlet {
 		rd.forward(request, response);
 	}
 	
-	
-	
 }

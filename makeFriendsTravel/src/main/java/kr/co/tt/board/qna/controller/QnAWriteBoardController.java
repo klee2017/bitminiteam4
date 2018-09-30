@@ -17,8 +17,8 @@ import kr.co.tt.repository.domain.QnABoard;
 import kr.co.tt.repository.mapper.LoginMapper;
 import kr.co.tt.repository.mapper.QnABoardMapper;
 
-@WebServlet("/html/qnaList.do")
-public class QnAListBoardController extends HttpServlet{
+@WebServlet("/html/qnaWrite.do")
+public class QnAWriteBoardController extends HttpServlet{
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -37,7 +37,7 @@ public class QnAListBoardController extends HttpServlet{
 		req.setAttribute("list", list);
 		req.setAttribute("idList", idList);
 		
-		RequestDispatcher rd = req.getRequestDispatcher("/html/qnaList.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/html/qnaWrite.jsp");
 		rd.forward(req, res);
 		
 	}

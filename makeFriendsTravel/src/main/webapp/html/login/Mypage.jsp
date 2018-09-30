@@ -216,8 +216,8 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 		position: relative;
 		clear: both;
 		zoom : 1;
-		width: 148%;
-		left: -26%;
+		width: 201%;
+		left: -54%;
 	}
 	.dataTables_wrapper .dataTables_length {
 		float: right;
@@ -249,7 +249,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 <form action="<c:url value='/login/update.do'/>" method="post" encType="multipart/form-data">
 	<input type="hidden" name="no" value="<%=Integer.parseInt(request.getParameter("no"))%>">
 
-  <input id="js-file-uploader" name="poto" type="file"/>
+  <input id="js-file-uploader" class="hidden " name="poto" type="file"/>
 
   <div id="js-profile-pic" class="profile-pic__container">Upload Profile Pic
   
@@ -333,23 +333,14 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 		        </tr>
 		    </thead>
 		    <tbody>
-		        <tr>
-		            <td>3</td>
-		            <td>안녕하세요. 제가 글 제목을 길게 써보겠습니다. 옛날 옛적에 호랑이가 한마리 살았다는데</td>
-		            <td>김건모</td>
-		            <td>2018/09/18</td>
-		        </tr>
-		        <tr>
-		            <td>2</td>
-		            <td>김수한무거북이와두루미그다음은 모르는데 뭐였더라</td>
-		            <td>김건모<td>
-		            <td>2020/04/28</td>
-		        </tr>
-		        <tr>
-		            <td>1</td>
-		            <td>난 너를 믿었던만큼 내 친구도 믿었기에 내 친구를 소개시켜줫꼬 그런 날들이</td>
-		            <td>김건모</td>
-		            <td>1997/01/01</td>
+		      	<c:forEach var="b" items="${list}">
+		        	<tr>
+		        		<td>${b.no}</td>
+		        		<td><a href="detail.do?no=${b.no}">${b.title}</a></td>
+		        		<td>${b.memNo}</td>
+		        		<td><fmt:formatDate value="${b.modDate}" pattern="yyyy/MM/dd"/></td>
+		        	</tr>
+		        </c:forEach>
 		        </tr>
 		    </tbody>
 		</table>
@@ -366,9 +357,9 @@ const messageElement = document.querySelector("#js-message");
 
 
 //이미지 요소
-//const fileUpload = document.querySelector("#js-file-uploader");
-//const profileTrigger = document.querySelector("#js-profile-trigger");
-//const profileBackground = document.querySelector("#js-profile-pic");
+const fileUpload = document.querySelector("#js-file-uploader");
+const profileTrigger = document.querySelector("#js-profile-trigger");
+const profileBackground = document.querySelector("#js-profile-pic");
 
 /*
 //암호 개체
@@ -394,7 +385,7 @@ if (password.value != passwordConfirm.value) {
 */
 // 프로필 사진을 설정하기 위해 파일 업로드를 트리거합니다.
 profileTrigger.addEventListener("click", function(event) {
-//event.preventDefault();
+event.preventDefault();
 fileUpload.click();
 });
 

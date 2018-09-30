@@ -11,6 +11,6 @@ public interface QnABoardMapper {
 	QnABoard selectBoardByNo(int no);
 	void insertQnaBoard(QnABoard board);
 	void deleteBoard(int no);
-	void updateBoard(QnABoard board);
+	void updateQnaBoard(QnABoard board);
 
 }

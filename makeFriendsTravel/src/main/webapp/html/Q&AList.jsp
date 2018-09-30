@@ -60,6 +60,11 @@ int i=0;
 	}
 </style>
 </head>
+<script>
+	function al() {
+		alert("로그인 이후")
+	}
+</script>
 <body>
 	
 	<br>
@@ -80,7 +85,7 @@ int i=0;
 			<tr>
 				<td>${b.no}</td>
 				<td><%=idList.get(i++) %></td>
-				<td><a href="">${b.title}</a></td>
+				<td><a href='qnaDetail.do?no=${b.no}&memNo=${b.memNo}'>${b.title}</a></td>
 				<td><fmt:formatDate value="${b.regDate}" pattern="yyyy-MM-dd"/></td>
 			</tr>
 		</c:forEach>
@@ -89,7 +94,16 @@ int i=0;
 </table>
 
 	<div>
-	    <a id="writing" onclick="writing()">글쓰기</a>
+		<c:choose>
+			<c:when test="${user.id ==null }">
+				<a id="writing" href="" onclick="al()">글쓰기</a>	
+			</c:when>
+	
+			<c:otherwise>
+				<a id="writing" href="Q&AWrite.jsp">글쓰기</a>
+			</c:otherwise>
+		</c:choose>
+	
 	    <form action="" method="get" id="qnasearchform">
 	    <input type="text" id="search" placeholder="검색어를 입력하세요">
 	    <button>검색</button>
@@ -97,12 +111,13 @@ int i=0;
 	</div>
 <script>
 
-
-
-
 $(document).ready( function () {
     $('#table_id').DataTable();
 } );
+
+function al() {
+	alert("로그인 이후 이용하 실 수 있습니다.")
+}
 
 </script>
 </body>

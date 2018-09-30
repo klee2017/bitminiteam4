@@ -102,5 +102,11 @@ delete from tb_board_review;
 
 delete from tb_member;
 
+insert into tb_comment_review (
+    comment_no, comment_content, no, mem_no
+) values (
+    s_comment_review.nextval, 'comment1', 2, 2
+);
+
 commit;
 

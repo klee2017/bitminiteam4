@@ -96,7 +96,7 @@
 	
 	<select id="selectFileList" parameterType="int" resultMap="FileMap">
 		select *
-		  from tb_file_review
+		  from tb_comment_review
 		 where no = #{no}
 		 order by comment_no
 	</select>

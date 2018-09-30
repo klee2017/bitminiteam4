@@ -29,7 +29,7 @@
 	.item.pic1{
 		background-repeat: no-repeat;
 		position: relative;
-		background-size: auto 100%;
+		background-size: auto 60%;
 		background-position: center center;
 		transition: background-size 0.3s ease;
 		-webkit-filter: grayscale(1);
@@ -73,7 +73,7 @@
     <div class="nav content">
       <ul>
         <li class="current"><a href="/makeFriendsTravel/html/main/main.do">Home</a></li>
-        <li><a href="/makeFriendsTravel/html/Mypage.jsp?no=${user.no}">Mypage</a></li>
+        <li><a href="/makeFriendsTravel/html/login/Mypage.jsp?no=${user.no}">Mypage</a></li>
         <li><a href="/makeFriendsTravel/jsp/board/review/list.do">Review</a></li>
         <li><a href="/makeFriendsTravel/html/main/photoBoard.jsp">Best Photo</a></li>
         <li><a href="/makeFriendsTravel/html/qnaList.do">Q&A</a></li>

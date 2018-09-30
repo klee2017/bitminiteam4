@@ -27,7 +27,6 @@
     	margin-bottom: 30px;
 }
 	.item.pic1{
-       background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?dpr=1&auto=format&fit=crop&w=1500&h=1001&q=80&cs=tinysrgb&crop=');
 		background-repeat: no-repeat;
 		position: relative;
 		background-size: auto 100%;

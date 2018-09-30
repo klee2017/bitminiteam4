@@ -5,9 +5,11 @@ create table tb_member(
     mem_pass varchar2(30) not null,
     mem_pass_hint varchar2(30) not null,
     mem_gender char,
+    mem_email varchar2(40),    
     mem_favorite_place varchar2(20),
     mem_reg_date date,
-    mem_poto VARCHAR2(100)
+    mem_poto VARCHAR2(100),
+    mem_potoAddr VARCHAR2(100)
 );
 
 create SEQUENCE m_member_no
@@ -22,6 +24,15 @@ create table tb_board_review (
     rec_cnt number default 0,
     mem_no number REFERENCES tb_member(mem_no)
 );
+
+alter table tb_member
+add (mem_email varchar2(40), mem_potoAddr VARCHAR2(100));
+
+alter table tb_member
+drop column mem_pass_hint;
+
+alter table tb_member
+add (mem_pass_hint varchar2(30));
 
 create sequence s_board_review;
 
@@ -88,6 +99,14 @@ insert into tb_board_review (
 );
 
 delete from tb_board_review;
+
+delete from tb_member;
+
+insert into tb_comment_review (
+    comment_no, comment_content, no, mem_no
+) values (
+    s_comment_review.nextval, 'comment1', 2, 2
+);
 
 commit;
 

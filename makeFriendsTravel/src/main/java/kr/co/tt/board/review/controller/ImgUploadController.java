@@ -26,7 +26,7 @@ public class ImgUploadController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		String uploadPath = "c:/git/upload";
+		String uploadPath = "C:/git/mini1/makeFriendsTravel/src/main/webapp/reviewFile";
 		
 		MultipartRequest mRequest = new MultipartRequest(
 				request, 

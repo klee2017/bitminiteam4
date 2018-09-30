@@ -1,6 +1,7 @@
 package kr.co.tt.board.review.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.tt.common.db.MyAppSqlConfig;
 import kr.co.tt.repository.domain.ReviewBoard;
+import kr.co.tt.repository.domain.ReviewComment;
 import kr.co.tt.repository.mapper.ReviewBoardMapper;
 
 @WebServlet("/jsp/board/review/detail.do")
@@ -23,6 +25,13 @@ public class DetailController extends HttpServlet {
 		ReviewBoard board = mapper.selectBoardByNo(no);
 		
 		request.setAttribute("board", board);
+		
+		List<ReviewComment> commentList = mapper.selectCommentList(no);
+		request.setAttribute("commentList", commentList);
+		
+		try {
+			request.setAttribute("commentNo", Integer.parseInt(request.getParameter("commentNo")));
+		} catch (NumberFormatException e) {	}
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/jsp/board/review/reviewDetail.jsp");
 		rd.forward(request, response);

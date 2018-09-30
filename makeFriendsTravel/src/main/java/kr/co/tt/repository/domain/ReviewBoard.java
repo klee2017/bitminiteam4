@@ -12,8 +12,15 @@ public class ReviewBoard {
 	private int recCnt;
 	private int memNo;
 	private List<ReviewFile> fileList;
+	private List<ReviewComment> commentList;
 	
 	
+	public List<ReviewComment> getCommentList() {
+		return commentList;
+	}
+	public void setCommentList(List<ReviewComment> commentList) {
+		this.commentList = commentList;
+	}
 	public List<ReviewFile> getFileList() {
 		return fileList;
 	}

@@ -393,9 +393,11 @@
 	
 	#update-delete {
 		float: right;
-		font-family: sans-serif;
 	}
 	
+	body {
+		font-family: sans-serif;
+	}
 </style>
 </head>
 <body>
@@ -409,18 +411,6 @@
 			</header>
 
 			<p itemprop="description" class="post-intro">${board.content}</p>
-	  
-			<div itemprop="articleBody" class="post-body">
-				<p>The body of the article. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo eius, minima libero atque dolores odio fugiat corporis deleniti odit quia doloribus totam consectetur numquam harum itaque laborum, officia iste voluptate?</p>
-				<p>Saepe numquam velit maiores provident, quae asperiores quidem voluptatibus, maxime temporibus sapiente facere! Quae harum, ad eaque, earum perspiciatis culpa in commodi.</p>
-				
-				<figure itemscope itemtype="http://schema.org/ImageObject">
-					<img src="https://lorempixel.com/720/460/cats/7/" itemprop="contentURL" alt="A descriptive alt" />
-					<figcaption itemprop="caption">An image caption by <span itemprop="author"><a href="#" rel="author">Photographer</a></span></figcaption>
-				</figure>
-	    
-				<p>Ratione quasi non, est veritatis necessitatibus quibusdam possimus sit aspernatur aperiam dolores quod nemo odio ea nostrum. Consequuntur quas quos quisquam deleniti, facere, officiis ratione ipsum, odio hic enim adipisci quia. Dolorum assumenda alias corporis expedita illo vitae, incidunt illum doloribus cupiditate quibusdam tempore quasi laudantium quod nesciunt nisi, vero, tenetur est, dolorem obcaecati!</p>
-			</div>
 			
 			<div id="update-delete">
 				<a href="/makeFriendsTravel/jsp/board/review/reviewUpdateForm.jsp?no=${board.no}">수정</a>
@@ -430,6 +420,50 @@
 			<footer class="post-footer">
 				<p class="comments-link"><a href="#" itemprop="discussionUrl">Leave a Comment</a> (<a href="#" itemprop="discussionUrl"><span itemprop="commentCount">3</span></a>)</p>
 			</footer>
+			
+	<form action="updatecomment.do" method="post">
+		<input type="hidden" name="no" value="${board.no}" />
+		<input type="hidden" name="commentNo" value="${commentNo}" />
+	<table width='80%' border='1'>
+	  <tr>
+		<c:forEach var="comment" items="${commentList}">
+		<c:choose>
+	  		<c:when test="${commentNo eq comment.commentNo}">	
+				<tr>
+				  <td><c:out value="${comment.memNo}" /></td>
+				  <td>
+				  	<textarea name="content" rows="2" cols="60"><c:out value="${comment.content}" /></textarea>
+				  </td>
+				  <td colspan="2">
+				  	  <input type="submit" value="수정" />	
+				  	  <a href="detail.do?no=${board.no}">취소</a>	
+				  </td>
+				 </tr>
+		 	</c:when>
+		 	<c:otherwise>
+				<tr>
+				  <td><c:out value="${comment.memNo}" /></td>
+				  <td>
+				  		<c:out value="${comment.content}" /></td>
+				  <td><fmt:formatDate var="regDate" value="${comment.regDate}" 
+				                      pattern="yyyy-MM-dd HH:mm:ss" />
+				      <c:out value="${regDate}" />
+				  </td>
+				  <td>
+				  	  <a href="deletecomment.do?commentNo=${comment.commentNo}&no=${comment.no}">삭제</a>	
+				  	  <a href="detail.do?commentNo=${comment.commentNo}&no=${comment.no}">수정</a>	
+				  </td>
+				 </tr>
+		 	</c:otherwise>
+		 </c:choose>	
+		 </c:forEach>
+		 <c:if test="${empty commentList}">
+		 <tr>
+		    <td colspan='4'>댓글이 존재하지 않습니다.</td>
+		 </tr>
+	 	</c:if>
+	 </table>
+	 </form>
 	  		
 	  		<!-- Contenedor Principal -->
 	<div class="comments-container">
@@ -514,8 +548,10 @@
 	  		
 	  		
 			<div class="comment-regist-form">
-				<form id="enquiry" action="">
-					<textarea maxlength="140" name="message" id="message" placeholder="Add your comment!"></textarea>
+				<form id="enquiry" action="registcomment.do" method="post">
+					<input type="hidden" name="no" value="${board.no}" />
+					<input type="text" name="memNo" />
+					<textarea maxlength="140" name="content" id="message" placeholder="Add your comment!"></textarea>
 					<input type="submit" value="Add Comment">
 				</form>
 			</div>

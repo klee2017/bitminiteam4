@@ -191,31 +191,42 @@ ul {
     
     </style>
 </head>
+
+
+
 <body>
 	<div style=" color:black; font-weight:bold; margin-top:50px; margin-left:170px;  margin-bottom: -50px; padding-left: 0" class="col-md-4">
 		<h2>Review</h2>
 	</div>
  	
  		<div style = " margin-left:7%" class="wrapper">
-			 <table style = "width:1250px;"id="myTable">
-				<tr>
-					<th>글 번호</th>
-					<th>글 제목</th>
-					<th>작성자</th>
-					<th>작성일</th>
-				</tr>
-				<c:forEach var="r" items="${reviewList}">
-					<tr>
-						<td>${r.no}</td>
-						<td><a href="detail.do?no=${r.no}">${r.title}</a></td>
-		        		<td>${r.memNo}</td>
-		        		<td><fmt:formatDate value="${r.modDate}" pattern="yyyy/MM/dd"/></td>
-					</tr>	
-				
-				</c:forEach>
-				
-			</table>
- 	
+ 			<c:choose>
+ 				<c:when test="${empty reviewList}">
+ 					<p>검색 결과가 없습니다.</p>
+ 				</c:when>
+ 				
+ 				<c:otherwise>
+					 <table style = "width:1250px;"id="myTable">
+						<tr>
+							<th>글 번호</th>
+							<th>글 제목</th>
+							<th>작성자</th>
+							<th>작성일</th>
+						</tr>
+					
+						<c:forEach var="r" items="${reviewList}">
+							<tr>
+								<td>${r.no}</td>
+								<td><a href="detail.do?no=${r.no}">${r.title}</a></td>
+				        		<td>${r.memNo}</td>
+				        		<td><fmt:formatDate value="${r.modDate}" pattern="yyyy/MM/dd"/></td>
+							</tr>	
+						
+						</c:forEach>	
+					 </table>
+
+ 				</c:otherwise>
+ 			</c:choose>
  	</div>
  	<div style="width:500px; color:black; margin-top:50px; margin-left:10px;  margin-bottom: -50px; padding-left: 160px" class="col-md-4">
 		<h2 style="font-weight:bold;">Best</h2>
@@ -280,6 +291,7 @@ ul {
 
 	
 <script>
+
 var $table = document.getElementById("myTable"),
 //number of rows per page
 $n = 5,
@@ -306,6 +318,7 @@ if ($pageCount > 1) {
 	$table.insertAdjacentHTML("afterend","<div id='buttons'></div");
 	// the first sort, default page is the first one
 	sort(1);
+
 }
 
 //($p) is the selected page number. it will be generated when a user clicks a button
@@ -343,6 +356,7 @@ function pageButtons($pCount,$cur) {
 	$buttons += "<input type='button' value='Next &gt;&gt;' onclick='sort("+($cur + 1)+")' "+$nextDis+">";
 	return $buttons;
 }
+
 </script>
 </body>
 </html>

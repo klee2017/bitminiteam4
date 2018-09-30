@@ -98,6 +98,7 @@
 		select *
 		  from tb_file_review
 		 where no = #{no}
+		 order by comment_no
 	</select>
 	
 	<select id="selectCommentList" parameterType="int" resultMap="CommentMap">
@@ -117,13 +118,13 @@
 	<update id="updateComment" parameterType="ReviewComment">
 		update tb_comment_review
 		   set comment_content = #{content}
-		 where no = #{no}
+		 where comment_no = #{commentNo}
 	</update>
 	
 	<delete id="deleteComment" parameterType="int">
 		delete
 		  from tb_comment_review
-		 where no = #{no}
+		 where comment_no = #{commentNo}
 	</delete>
 </mapper>
 

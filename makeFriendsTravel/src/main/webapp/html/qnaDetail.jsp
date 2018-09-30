@@ -1,25 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@page import="java.text.SimpleDateFormat" %>
-<%@page import="java.util.Date" %>
-<%@page import="java.util.Locale" %>
-<%
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
+<%@page import="kr.co.tt.repository.domain.QnABoard" %>
 
-SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat ( "yyyy.MM.dd", Locale.KOREA );
-Date currentTime = new Date ();
-String mTime = mSimpleDateFormat.format ( currentTime );
-System.out.println ( mTime );
-
-%>
-
-<c:import url="./main/topMenu.jsp"></c:import>
+<c:import url="./main/topMenu.jsp"></c:import>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Q&ADetail</title>
+<title>Q&AWrite</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magicsuggest/2.1.4/magicsuggest-min.css"/>
 
@@ -158,72 +148,110 @@ h1{
     <div class="post-section post-tagged-people">
       <div class="form-group">
         <label for="people-entry">작성일</label>
-        <span><strong><%=mTime %></strong></span>
+        <span><strong></strong></span>
         <div id="people-entry"></div>
       </div>
-    </div>   
+    </div>
     <br>
-    <form id="write" name="write" action="/makeFriendsTravel/html/qnaWrite.do" method="get">
+    <form id="write" action="/makeFriendsTravel/html/qnaUpate.do">
 	    <div class="post-section">
+	      	<strong>작성자</strong>
+	      <input type="hidden" name="no" value="${detail.no}"/>
+	     <input type="hidden" name="memNo" value="${detail.memNo}"/>
 	      <label for="post-title"></label>
-	      <span><strong><input name="writerNo" type="hidden" value="${user.no}"/>작성자 ${user.id}</strong></span>
+	      <span><strong>${id}</strong></span>
 	      <br>
 	      <hr id="titleline">
 	      <div class="post-title">
-	        ${user.title}
+	        <p id="pTitle">${detail.title}</p>
 	      </div>
 	      <br>
 	      <div class="post-content">
-	        ${user.content}
+	        <p id="pContent">${detail.content}</p>
 	      </div>
 	    </div>
     </form>
 
-<script>
- 
-		function sub() {
-			document.write.submit();
-			
-		}
-	
-</script>
 
 	
     <div class="post-section post-buttons">
       <button type="button" class="btn btn-primary"><a href="qnaList.do">목록</a></button>
-      <button type="submit" class="btn btn-success"><a href="qnaUpdate.do">수정</a></button>
+      <c:choose>
+      	<c:when test="${id!=user.id||user.id==null}">
+	      <button class="btn btn-success" onclick="al()">수정</button>
+      	</c:when>
+      	<c:otherwise>
+      	  <button  id ="updateBtn" class="btn btn-success">수정</button>
+      	</c:otherwise>
+      </c:choose>
+    </div> 
+  </div>
 
-    </div>
-    <div class="post-form-overlay closed activities">
-      <h4>Add Activity <button type="button" class="close">&times;</button></h4>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit deserunt necessitatibus eveniet tenetur repellat, eligendi doloremque maxime corporis modi iusto consectetur accusamus commodi dignissimos voluptates, dolor ipsam quasi soluta deleniti!</p>
-    </div>
-    <div class="post-form-overlay closed targets">
-      <h4>Add Target <button type="button" class="close">&times;</button></h4>
-      <div class="form-group">
-        <label for="target-text">Set Target:</label>
-        <input autofocus id="target-text" type="text" class="form-control" />
-      </div>
-      <button class="btn btn-primary">Add</button>
-    </div>
-		댓글
+  <div>
 	<hr>
+	<span><strong>댓글</strong></span>
+	<div>
+		<textarea rows="3" cols="140"></textarea>
+		<input type="submit" value="등록">
+	</div>
 	<div>
 		<c:forEach var="com" items="${commentList}"></c:forEach>
-			<table>
-				<tr>
-					<td>${com.content}</td>
-				</tr>
-			</table>
-	</div>
-	<div>
-		<textarea row="1" cols="140"></textarea>
+		<table>
+			<tr>
+				<td>${com.content}</td>
+			</tr>
+		</table>
 	</div>
   </div>
-</div>
-<script>
 
+</div>
+
+<script>
+	function al() {
+		alert("수정 할 수  없습니다.")
+	}
+	
+
+
+	$("#updateBtn").click(function(){
+		if(this.id!="updateBtn"){
+
+			  if($.trim($("#title1").val())==''){
+				  alert("수정할 제목을 입력하세요")
+				  return;
+			  } else if($.trim($("#content1").val())=='') {
+				  alert("수정할 내용을 입력하세요")
+				  return;	  
+			  } else {
+				 $("#write").submit();
+				return;				
+				  
+			  }
+			 
+			  
+		}
+		var title = $("#pTitle");
+		var content = $("#pContent")
+		var btnChange = $(this);
+		
+		title.remove();
+		content.remove();
+		
+		var input = "<input type='text'name='title' id='title1'/>"
+		var textArea ="<textarea name='content' id='content1'></textarea>" 
+		
+		$('.post-title').append(input);
+		$('.post-content').append(textArea);
+		
+		 btnChange.addClass("change")
+		 this.id="changeBtn";
+		 return;
+
+	})
+	
+	
 </script>
+
 
 </body>
 </html>

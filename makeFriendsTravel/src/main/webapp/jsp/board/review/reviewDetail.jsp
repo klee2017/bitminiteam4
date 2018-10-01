@@ -1,6 +1,6 @@
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <c:import url="/html/main/topMenu.jsp"></c:import>
@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Review Detail</title>
 <style>
 	@import url(https://fonts.googleapis.com/css?family=Merriweather:400,700,400italic,700italic);
@@ -424,13 +424,13 @@
 			<p itemprop="description" class="post-intro">${board.content}</p>
 			
 			<div id="update-delete">
-				<a href="update-form.do?no=${board.no}">¼öÁ¤</a>
-				<a href="delete.do?no=${board.no}">»èÁ¦</a>
+				<a href="update-form.do?no=${board.no}">ìˆ˜ì •</a>
+				<a href="delete.do?no=${board.no}">ì‚­ì œ</a>
 			</div>
 		</article>
 	
 			<footer class="post-footer">
-				<p class="comments-link"> ´ñ±Û ¼ö : <%= cIdList.size() %></p>
+				<p class="comments-link"> ëŒ“ê¸€ ìˆ˜ : <%= cIdList.size() %></p>
 			</footer>
 	  		
 
@@ -454,8 +454,8 @@
 												</div>
 												<div class="comment-content">
 													<textarea name="content" rows="2" cols="60"><c:out value="${comment.content}" /></textarea>
-													<input type="submit" value="¼öÁ¤" />	
-										  	  		<a href="detail.do?no=${board.no}">Ãë¼Ò</a>
+													<input type="submit" value="ìˆ˜ì •" />	
+										  	  		<a href="detail.do?no=${board.no}">ì·¨ì†Œ</a>
 												</div>
 									  	  	</div>	
 										</c:when>
@@ -488,8 +488,8 @@
 												</div>
 												<div class="comment-content">
 													<c:out value="${comment.content}" />
-										            <a href="deletecomment.do?commentNo=${comment.commentNo}&no=${comment.no}">»èÁ¦</a>	
-										  	  		<a href="detail.do?commentNo=${comment.commentNo}&no=${comment.no}">¼öÁ¤</a>
+										            <a href="deletecomment.do?commentNo=${comment.commentNo}&no=${comment.no}">ì‚­ì œ</a>	
+										  	  		<a href="detail.do?commentNo=${comment.commentNo}&no=${comment.no}">ìˆ˜ì •</a>
 												</div>
 											</div>
 										</c:otherwise>
@@ -498,7 +498,7 @@
 							</li>
 						</c:forEach>
 						<c:if test="${empty commentList}">
-							´ñ±ÛÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.
+							ëŒ“ê¸€ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
 						</c:if>
 					</ul>
 			</div>

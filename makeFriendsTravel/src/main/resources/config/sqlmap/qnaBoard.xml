@@ -41,7 +41,7 @@
     	  from tb_board_qna
     	 where no = #{no}
     </delete>    
-    <update id="updateQnaBoard" parameterType="QnABoard">
+    <update id="updateQnABoard" parameterType="QnABoard">
     	update tb_board_qna
     	   set title = #{title},
     	       content = #{content}

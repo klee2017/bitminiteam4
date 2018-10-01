@@ -98,7 +98,7 @@
 		select *
 		  from tb_comment_review
 		 where no = #{no}
-		 order by comment_no
+		 order by comment_no desc
 	</select>
 	
 	<select id="selectCommentList" parameterType="int" resultMap="CommentMap">

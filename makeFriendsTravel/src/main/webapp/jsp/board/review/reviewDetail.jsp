@@ -350,7 +350,7 @@
 		}
 		
 		.comment-box .comment-head span {
-			float: left;
+			float: right;
 			color: #999;
 			font-size: 13px;
 			position: relative;
@@ -433,6 +433,78 @@
 				<p class="comments-link"> 댓글 수 : <%= cIdList.size() %></p>
 			</footer>
 	  		
+
+		<form action="updatecomment.do" method="post">
+			<input type="hidden" name="no" value="${board.no}" />
+			<input type="hidden" name="commentNo" value="${commentNo}" />
+			<div class="comments-container">
+				<h1>Comment</h1>
+					<ul id="comments-list" class="comments-list">
+						<c:forEach var="comment" items="${commentList}">
+							<li>
+								<div class="comment-main-level">
+									<c:choose>
+										<c:when test="${commentNo eq comment.commentNo}">
+											<div class="comment-avatar" style="background-image:url('/makeFriendsTravel/image/${user.poto}');"></div>
+											<div class="comment-box">
+												<div class="comment-head">
+													<h6 class="comment-name by-author">
+														<c:out value="<%= cIdList.get(i++) %>" />
+													</h6>
+												</div>
+												<div class="comment-content">
+													<textarea name="content" rows="2" cols="60"><c:out value="${comment.content}" /></textarea>
+													<input type="submit" value="수정" />	
+										  	  		<a href="detail.do?no=${board.no}">취소</a>
+												</div>
+									  	  	</div>	
+										</c:when>
+										<c:otherwise>
+											<div class="comment-avatar" style="background-image:url('/makeFriendsTravel/image/${user.poto}');"></div>
+											<div class="comment-box">
+												<div class="comment-head">
+												<c:choose>
+													<c:when test="${user.no eq comment.memNo}">
+														<h6 class="comment-name by-author">
+															<c:out value="<%= cIdList.get(i++) %>" />
+															<span>
+																<fmt:formatDate var="regDate" value="${comment.regDate}" 
+											                      				pattern="yyyy-MM-dd" />
+											            		<c:out value="${regDate}" />
+											            	</span>
+														</h6>
+													</c:when>
+													<c:otherwise>
+														<h6 class="comment-name">
+															<c:out value="<%= cIdList.get(i++) %>" />
+															<span>
+																<fmt:formatDate var="regDate" value="${comment.regDate}" 
+											                      				pattern="yyyy-MM-dd" />
+											            		<c:out value="${regDate}" />
+											            	</span>
+														</h6>
+													</c:otherwise>
+												</c:choose>
+												</div>
+												<div class="comment-content">
+													<c:out value="${comment.content}" />
+										            <a href="deletecomment.do?commentNo=${comment.commentNo}&no=${comment.no}">삭제</a>	
+										  	  		<a href="detail.do?commentNo=${comment.commentNo}&no=${comment.no}">수정</a>
+												</div>
+											</div>
+										</c:otherwise>
+									</c:choose>
+								</div>
+							</li>
+						</c:forEach>
+						<c:if test="${empty commentList}">
+							댓글이 존재하지 않습니다.
+						</c:if>
+					</ul>
+			</div>
+		</form>
+
+
 		<div class="comment-regist-form">
 			<form id="enquiry" action="registcomment.do" method="post">
 				<input type="hidden" name="no" value="${board.no}" />
@@ -441,43 +513,8 @@
 				<input type="submit" value="Add Comment">
 			</form>
 		</div>
-		
-		<div class="comments-container">
-			<h4>Comment</h4>
-			<form action="updatecomment.do" method="post">
-				<input type="hidden" name="no" value="${board.no}" />
-				<input type="hidden" name="commentNo" value="${commentNo}" />
-				<ul id="comments-list" class="comments-list">
-					<c:forEach var="comment" items="${commentList}">
-						<li>
-							<div class="comment-main-level">
-								<c:choose>
-									<c:when test="${commentNo eq comment.commentNo}">
-										<c:out value="<%= cIdList.get(i++) %>" />
-										<textarea name="content" rows="2" cols="60"><c:out value="${comment.content}" /></textarea>
-										<input type="submit" value="수정" />	
-							  	  		<a href="detail.do?no=${board.no}">취소</a>	
-									</c:when>
-									<c:otherwise>
-										<c:out value="<%= cIdList.get(i++) %>" />
-										<c:out value="${comment.content}" />
-										<fmt:formatDate var="regDate" value="${comment.regDate}" 
-							                      		pattern="yyyy-MM-dd" />
-							            <c:out value="${regDate}" />
-							            <a href="deletecomment.do?commentNo=${comment.commentNo}&no=${comment.no}">삭제</a>	
-							  	  		<a href="detail.do?commentNo=${comment.commentNo}&no=${comment.no}">수정</a>
-									</c:otherwise>
-								</c:choose>
-							</div>
-						</li>
-					</c:forEach>
-					<c:if test="${empty commentList}">
-						댓글이 존재하지 않습니다.
-					</c:if>
-				</ul>
-			</form>
-		</div>
-
+	
+	
 	
 	</div>
 	

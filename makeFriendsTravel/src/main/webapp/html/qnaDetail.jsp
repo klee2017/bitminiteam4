@@ -155,19 +155,18 @@ h1{
     <br>
     <form id="write" action="/makeFriendsTravel/html/qnaUpate.do">
 	    <div class="post-section">
-	      	<strong>작성자</strong>
-	      <input type="hidden" name="no" value="${board.no}"/>
-	     <input type="hidden" name="memNo" value="${board.memNo}"/>
+	      <input type="hidden" name="no" value="${detail.no}"/>
+	      <input type="hidden" name="memNo" value="${detail.memNo}"/>
 	      <label for="post-title"></label>
 	      <span><strong>${id}</strong></span>
 	      <br>
 	      <hr id="titleline">
 	      <div class="post-title">
-	        <p id="pTitle">${board.title}</p>
+	        <p id="pTitle">${detail.title}</p>
 	      </div>
 	      <br>
 	      <div class="post-content">
-	        <p id="pContent">${board.content}</p>
+	        <p id="pContent">${detail.content}</p>
 	      </div>
 	    </div>
     </form>
@@ -184,28 +183,15 @@ h1{
       	  <button  id ="updateBtn" class="btn btn-success">수정</button>
       	</c:otherwise>
       </c:choose>
-    </div> 
-  </div>
+      <div class="dropup pull-left">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="add-more-post-items">첨부파일 <i class="caret"></i></button>
 
-  <div>
-	<hr>
-	<span><strong>댓글</strong></span>
-	<div>
-		<textarea rows="3" cols="140"></textarea>
-		<input type="submit" value="등록">
-	</div>
-	<div>
-		<c:forEach var="com" items="${commentList}"></c:forEach>
-		<table>
-			<tr>
-				<td>${com.content}</td>
-			</tr>
-		</table>
-	</div>
+      </div>
+    </div>
+   
+    
   </div>
-
 </div>
-
 <script>
 	function al() {
 		alert("수정 할 수  없습니다.")

@@ -11,6 +11,7 @@ import kr.co.tt.repository.domain.ReviewFile;
 public interface ReviewBoardMapper {
 	List<ReviewBoard> rselectBoardId(int no);
 	List<ReviewBoard> selectBoard();
+	List<ReviewBoard> bestCnt();
 	ReviewBoard selectBoardByNo(int no);
 	void insertBoard(ReviewBoard board);
 	void deleteBoard(int no);

@@ -1,3 +1,4 @@
+<%@page import="kr.co.tt.repository.domain.ReviewBoard"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
@@ -6,9 +7,12 @@
 <c:import url="topMenu.jsp"></c:import>
 <%
 int i=0;
+int j=0;
 List<String> bookList = (List<String>)request.getAttribute("bookList");
 List<String> linkList = (List<String>)request.getAttribute("linkList");
-List<String> reviewList = (List<String>)request.getAttribute("reviewList");
+List<ReviewBoard> reviewListResult = (List<ReviewBoard>)request.getAttribute("reviewListResult");
+List<String> imgList = (List<String>)request.getAttribute("imgList");
+List<String> idList = (List<String>)request.getAttribute("idList");
 %>
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
 </script>
@@ -201,7 +205,7 @@ ul {
  	
  		<div style = " margin-left:7%" class="wrapper">
  			<c:choose>
- 				<c:when test="${empty reviewList}">
+ 				<c:when test="${empty reviewListResult}">
  					<p>검색 결과가 없습니다.</p>
  				</c:when>
  				
@@ -214,10 +218,10 @@ ul {
 							<th>작성일</th>
 						</tr>
 					
-						<c:forEach var="r" items="${reviewList}">
+						<c:forEach var="r" items="${reviewListResult}">
 							<tr>
 								<td>${r.no}</td>
-								<td><a href="detail.do?no=${r.no}">${r.title}</a></td>
+								<td><a href="/makeFriendsTravel/jsp/board/review/detail.do?no=${r.no}">${r.title}</a></td>
 				        		<td>${r.memNo}</td>
 				        		<td><fmt:formatDate value="${r.modDate}" pattern="yyyy/MM/dd"/></td>
 							</tr>	
@@ -233,43 +237,34 @@ ul {
 	</div>
  	
  		<div style = "border:1px solid black; margin-left: 9%; background: #c5d8e6;" class="wrapper">
-		<a href="bestDetail.jsp">
-        <div class="itemPhoto">
-          <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/dXAhQuT.jpg">
-          	
-            <div class="caption">By Joshua Sortino</div>
-          </div>
-        </div>
-      	</a>
-        <div   class="itemPhoto">
-          <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/LZkivxR.jpg">
-            <div class="caption">By Cole Patrick</div>
-          </div>
-        </div>
-      
-        <div class="itemPhoto">
-          <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/hqcMtrF.jpg">
-            <div class="caption">By Luke Pamer</div>
-          </div>
-        </div>
-        
-        <div class="itemPhoto">
-          <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/hqcMtrF.jpg">
-            <div class="caption">By Luke Pamer</div>
-          </div>
-        </div>
-      
-        <div class="itemPhoto">
-          <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/l867sBU.jpg">
-            <div class="caption">By Alissa Smith</div>
-          </div>
-        </div>
-        
-        <div class="itemPhoto">
-          <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/7cQCk5I.jpg">
-            <div class="caption">By Ales Krivec</div>
-          </div>
-        </div>
+			<c:forEach  var="b" items="${bestReviewList}">
+				<a href="/makeFriendsTravel/jsp/board/review/detail.do?no=${b.no}">
+			        <div class="itemPhoto">
+			          <div class="polaroid">
+			          
+				          	 <%
+					          	if(imgList.get(j)=="none"){
+					          			
+					          %>
+					          	<img src="http://localhost:8000/imgfolder/default.jpg"/>
+					          <% 
+					          j++;
+					          	} else {
+					          %>
+					          	<img src=<%=imgList.get(j)+"jpg"%>>	
+					          <%
+	
+					          j++;
+					          	}
+					          %>	
+				          	
+				            <div class="caption"><%=idList.get(j-1) %></div>
+			          </div>
+			        </div>
+				
+      			</a>
+			</c:forEach>
+              
       </div>
       
       <div style="width:500px; color:black; margin-top:50px; margin-left:10px;  margin-bottom: -50px; padding-left: 160px" class="col-md-4">

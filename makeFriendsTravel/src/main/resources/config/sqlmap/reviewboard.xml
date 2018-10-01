@@ -59,6 +59,12 @@
 		 order by no desc 
 	</select>
 	
+	<select id="bestCnt" resultMap="reviewBoardMap">
+		select *
+		  from tb_board_review
+		 order by rec_cnt desc 
+	</select>
+	
     <select id="selectBoardByNo" parameterType="int" resultMap="reviewBoardDetailMap">
     	select *
     	  from tb_board_review

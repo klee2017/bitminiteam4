@@ -26,7 +26,7 @@ public class QnAImgUploadController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		String uploadPath = "C:/git/4조/bitminiteam4/makeFriendsTravel/src/main/webapp/qnafile";
+		String uploadPath = "C:/git/naverMail/makeFriendsTravel/src/main/webapp/image";
 		
 		MultipartRequest mRequest = new MultipartRequest(
 				request, 

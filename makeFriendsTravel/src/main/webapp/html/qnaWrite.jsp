@@ -163,34 +163,42 @@ h1{
       </div>
     </div>
     <br>
-        <form id="write" name="write" action="/makeFriendsTravel/html/qnaWrite.do" method="get">
+    <form id="write" name="write" action="/makeFriendsTravel/html/qnaWrite.do" method="get">
 	    <div class="post-section">
 	      <label for="post-title"></label>
-	      <span><strong><input name="writerNo" type="hidden" value="${user.no}"/>작성자 ${user.id}</strong></span>
+	      <span><strong><input name="writerNo" type="hidden" value="${user.no}"/>작성자${user.id}</strong></span>
 	      <br>
 	      <hr id="titleline">
 	      <div class="post-title">
-			<textarea class="Title" name="title" class="post-input" placeholder="제목을 입력하세요" rows="1" cols="140"></textarea>
+			<textarea class="Title" name="title" class="post-input" placeholder="제목을 입력하세요" rows="1" cols="140"></textarea>	      </div>
 	      </div>
 	      <br>
 	      <div class="post-content">
 	        <textarea class="Content" name="content" class="post-input" placeholder="내용을 입력하세요" rows="30" cols="140"></textarea>
 	      </div>
+	      
 	    </div>
-	</form>
-<script>
+    </form>
 
+<script>
+ 
+		function sub() {
+			document.write.submit();
+			document.fileup.submit();
+			
+		}
 	
 </script>
 
-    <div class="post-section post-buttons">    
+	
+    <div class="post-section post-buttons">
       <button type="button" class="btn btn-primary"><a href="qnaList.do">목록</a></button>
-      <form action="qnaDetail.do" method="post">
-      	<button type="submit" class="btn btn-success" onclick="sub()">제출</button>
-      </form>      
-      <form action="qnaImgUpload.do" method="post">
+      <button type="submit" class="btn btn-success" onclick="sub()">제출</button>
+      <div class="dropup pull-left">
+		 <form id="fileup"action="qnaImgUpload.do" method="post">
 		<input type="file" >
-      </form>
+     	 </form>
+      </div>
     </div>
     <div class="post-form-overlay closed activities">
       <h4>Add Activity <button type="button" class="close">&times;</button></h4>
@@ -208,12 +216,6 @@ h1{
 </div>
 
 
-<script>
-	$(document).ready(function(){
-		
-	}
-
-</script>
 
 </body>
 </html>

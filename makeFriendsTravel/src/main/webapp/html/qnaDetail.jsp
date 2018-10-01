@@ -155,18 +155,18 @@ h1{
     <br>
     <form id="write" action="/makeFriendsTravel/html/qnaUpate.do">
 	    <div class="post-section">
-	      <input type="hidden" name="no" value="${detail.no}"/>
-	      <input type="hidden" name="memNo" value="${detail.memNo}"/>
+	      <input type="hidden" name="no" value="${board.no}"/>
+	      <input type="hidden" name="memNo" value="${board.memNo}"/>
 	      <label for="post-title"></label>
 	      <span><strong>${id}</strong></span>
 	      <br>
 	      <hr id="titleline">
 	      <div class="post-title">
-	        <p id="pTitle">${detail.title}</p>
+	        <p id="pTitle">${board.title}</p>
 	      </div>
 	      <br>
 	      <div class="post-content">
-	        <p id="pContent">${detail.content}</p>
+	        <p id="pContent">${board.content}</p>
 	      </div>
 	    </div>
     </form>

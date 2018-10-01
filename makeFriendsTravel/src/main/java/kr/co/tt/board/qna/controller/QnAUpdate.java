@@ -21,13 +21,13 @@ public class QnAUpdate extends HttpServlet{
 		int no = Integer.parseInt(req.getParameter("no"));
 		int memNo = Integer.parseInt(req.getParameter("memNo"));
 		String title = req.getParameter("title");
-		String content = req.getParameter("commentContent");
+		String content = req.getParameter("content");
 		
 		QnABoard board = new QnABoard();
 		board.setNo(no);
 		board.setTitle(title);
 		board.setContent(content);
-		mapper.updateBoard(board);
+		mapper.updateQnABoard(board);
 	
 		res.sendRedirect(req.getContextPath()+"/html/qnaDetail.do?no="+no+"&memNo="+memNo);
 		

@@ -9,11 +9,12 @@ import kr.co.tt.repository.domain.QnAFile;
 
 
 public interface QnABoardMapper {
-	List<QnABoard> selectBoard();
+	List<QnABoard> selectQnaBoard();
 	QnABoard selectBoardByNo(int no);
-	void insertBoard(QnABoard board);
+//	void insertBoard(QnABoard board);
+	void insertQnaBoard(QnABoard board);
 	void deleteBoard(int no);
-	void updateBoard(QnABoard board);
+	void updateQnABoard(QnABoard board);
 	QnABoard sqcNo(String title);
 	
 	void insertFile(QnAFile file);

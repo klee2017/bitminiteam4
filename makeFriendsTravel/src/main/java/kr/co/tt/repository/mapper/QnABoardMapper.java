@@ -12,6 +12,7 @@ public interface QnABoardMapper {
 	List<QnABoard> selectQnaBoard();
 	QnABoard selectBoardByNo(int no);
 //	void insertBoard(QnABoard board);
+	List<QnABoard> selectQnaBoardId(int no);
 	void insertQnaBoard(QnABoard board);
 	void deleteBoard(int no);
 	void updateQnABoard(QnABoard board);

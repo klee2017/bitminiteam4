@@ -253,6 +253,9 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 	#table_id_filter {
 		display: none;
 	}
+	.table_id_filter {
+		display: none;
+	}
 	.dataTables_wrapper{
 		position: relative;
 		clear: both;
@@ -364,7 +367,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 <!-- 내가쓴글 확인하기 -->
 <form>
   <div id="board-list">
-		<table id="table_id" class="display">
+		<table id="table_id2" class="display">
 		    <thead>
 		        <tr>
 		            <th id="no">글 번호</th>
@@ -383,8 +386,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 				<td><%=b.getNo() %></td>
 				<td><%=idList.get(i++) %></td>	
 				<td><a href="/makeFriendsTravel/html/qnaDetail.do?no=<%=b.getNo() %>& memNo=<%=b.getMemNo()%>"><%=b.getTitle() %></a></td>	 
-				<td><fmt:formatDate value="<%=b.getRegDate()%>" pattern="yyyy-MM-dd"/></td>
-				
+				<td><fmt:formatDate value="<%=b.getRegDate()%>" pattern="yyyy-MM-dd"/></td>				
 				</tr>   	
 			<%
 				
@@ -392,6 +394,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 			%>		     	
 		    </tbody>
 		</table>
+		
 		<table id="table_id" class="display">
 		    <thead>
 		        <tr>
@@ -402,6 +405,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 		        </tr>
 		    </thead>
 		    <tbody>
+		    
 		   		<%
 		     	for(ReviewBoard c : list2){
 		     		
@@ -502,17 +506,19 @@ if (passwordDisplayed) {
  password.type = "password";
 }
 });
+*/
 $(document).ready( function () {
-*/ 
+
     $('#table_id').DataTable();
-   /* 
+    $('#table_id2').DataTable();
+   
    $('#table_id').DataTable({
     	data: dataSet,
     	columns: col_kor,
         language : lang_kor
 } );   
+   
     }); 
-   */
 </script> 
 
 

@@ -14,11 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import kr.co.tt.common.db.MyAppSqlConfig;
+import kr.co.tt.repository.domain.Member;
 import kr.co.tt.repository.domain.QnABoard;
 import kr.co.tt.repository.domain.QnAComment;
 import kr.co.tt.repository.domain.ReviewBoard;
 import kr.co.tt.repository.domain.ReviewComment;
 import kr.co.tt.repository.mapper.BoardMapper;
+import kr.co.tt.repository.mapper.LoginMapper;
 import kr.co.tt.repository.mapper.QnABoardMapper;
 
 @WebServlet("/html/qnaDetail.do")
@@ -27,18 +29,23 @@ public class QnADetailController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		QnABoardMapper mapper = 
-				MyAppSqlConfig.getSqlSessionInstance().getMapper(QnABoardMapper.class);		
+				MyAppSqlConfig.getSqlSessionInstance().getMapper(QnABoardMapper.class);	
+		
+		LoginMapper mapper2 = MyAppSqlConfig.getSqlSessionInstance().getMapper(LoginMapper.class);
 		int no = Integer.parseInt(request.getParameter("no"));
 		QnABoard board = mapper.selectBoardByNo(no);
+		String id = mapper2.selectMemberId(board.getMemNo());
+		
 		
 		request.setAttribute("board", board);
+		request.setAttribute("id", id);
 		
-		List<QnAComment> commentList = mapper.selectCommentList(no);
-		request.setAttribute("commentList", commentList);
+//		List<QnAComment> commentList = mapper.selectCommentList(no);
+//		request.setAttribute("commentList", commentList);
 		
-		try {
-			request.setAttribute("commentNo", Integer.parseInt(request.getParameter("commentNo")));
-		} catch (NumberFormatException e) {	}
+//		try {
+//			request.setAttribute("commentNo", Integer.parseInt(request.getParameter("commentNo")));
+//		} catch (NumberFormatException e) {	}
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/html/qnaDetail.jsp");
 		rd.forward(request, response);

@@ -3,8 +3,11 @@ package kr.co.tt.login;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +18,9 @@ import com.oreilly.servlet.MultipartRequest;
 
 import kr.co.tt.common.db.MyAppSqlConfig;
 import kr.co.tt.repository.domain.Member;
+import kr.co.tt.repository.domain.QnABoard;
 import kr.co.tt.repository.mapper.LoginMapper;
+import kr.co.tt.repository.mapper.QnABoardMapper;
 
 @WebServlet("/login/update.do")
 
@@ -25,6 +30,21 @@ public class UpdateMemberController extends HttpServlet {
 		LoginMapper mapper = 
 			 	MyAppSqlConfig.getSqlSessionInstance().getMapper(LoginMapper.class);
 		request.setCharacterEncoding("utf-8");
+		
+		QnABoardMapper mapper2 = 
+				MyAppSqlConfig.getSqlSessionInstance().getMapper(QnABoardMapper.class);	
+		
+	
+		List<QnABoard> list = mapper2.selectQnaBoard();
+		String id;
+		List<String> idList = new ArrayList<>();
+		for(QnABoard b : list) {
+			id  = mapper.selectMemberId(b.getMemNo());
+			idList.add(id);
+		}
+		
+		request.setAttribute("list", list);
+		request.setAttribute("idList", idList);
 
 
 		String uploadPath = "C:/app/github/bitminiteam4/makeFriendsTravel/src/main/webapp/image";
@@ -64,6 +84,7 @@ public class UpdateMemberController extends HttpServlet {
 //	  	System.out.println(mRequest.getParameter("email"));
 //	  	System.out.println(mRequest.getParameter("gender"));
 //	  	System.out.println(f);
+		
 		response.sendRedirect(request.getContextPath()+"/html/main/main.do");
 
 	}

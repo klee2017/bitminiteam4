@@ -1,8 +1,30 @@
-
+<%@page import="kr.co.tt.repository.mapper.QnABoardMapper"%>
+<%@page import="kr.co.tt.common.db.MyAppSqlConfig"%>
+<%@page import="kr.co.tt.repository.mapper.LoginMapper"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="kr.co.tt.repository.domain.QnABoard" %>
+<%@page import="kr.co.tt.repository.domain.Member" %>
+<%@page import="java.util.*" %>
+<%
+LoginMapper mapper = 
+	MyAppSqlConfig.getSqlSessionInstance().getMapper(LoginMapper.class);
+request.setCharacterEncoding("utf-8");
 
+QnABoardMapper mapper2 = 
+MyAppSqlConfig.getSqlSessionInstance().getMapper(QnABoardMapper.class);	
+
+
+List<QnABoard> list = mapper2.selectQnaBoard();
+String id;
+List<String> idList = new ArrayList<>();
+for(QnABoard b : list) {
+id  = mapper.selectMemberId(b.getMemNo());
+idList.add(id);
+}
+int i=0;
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -333,6 +355,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 		        </tr>
 		    </thead>
 		    <tbody>
+		    <!-- 
 		      	<c:forEach var="b" items="${list}">
 		        	<tr>
 		        		<td>${b.no}</td>
@@ -341,7 +364,20 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 		        		<td><fmt:formatDate value="${b.modDate}" pattern="yyyy/MM/dd"/></td>
 		        	</tr>
 		        </c:forEach>
-		        </tr>
+		     -->
+		     <%
+		     	for(QnABoard b : list){
+		     		
+		     %>
+		     	<tr>
+				<td><%=b.getNo() %></td>
+				<td><%=idList.get(i++) %></td>	
+				<td><a href="qnaDetail.do?no=<%=b.getNo() %>&memNo=<%=b.getMemNo()%>"><%=b.getTitle() %></a></td>	 
+				</tr>   	
+			<%
+				
+		     	}
+			%>		     	
 		    </tbody>
 		</table>
     

@@ -27,7 +27,7 @@ public class QnAListBoardController extends HttpServlet{
 		QnABoardMapper mapper = MyAppSqlConfig.getSqlSessionInstance().getMapper(QnABoardMapper.class);	
 		LoginMapper mapper2 = MyAppSqlConfig.getSqlSessionInstance().getMapper(LoginMapper.class);
 		
-		List<QnABoard> list = mapper.selectBoard();
+		List<QnABoard> list = mapper.selectQnaBoard();
 		
 		for(QnABoard b : list) {
 			id  = mapper2.selectMemberId(b.getMemNo());

@@ -403,6 +403,12 @@
 	body {
 		font-family: sans-serif;
 	}
+	
+	.comment-avatar{
+			background-position: center ;
+			transition: background-size 0.3s ease;
+			background-size: auto 95%;
+	}
 </style>
 </head>
 <body>
@@ -513,7 +519,7 @@
 
 					<li>
 						<!-- Avatar -->
-						<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
+						<div class="comment-avatar" style="background-image:url('/makeFriendsTravel/image/${user.poto}');"></div>
 						<!-- Contenedor del Comentario -->
 						<div class="comment-box">
 							<div class="comment-head">

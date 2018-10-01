@@ -1,6 +1,7 @@
 package kr.co.tt.board.review.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.tt.common.db.MyAppSqlConfig;
 import kr.co.tt.repository.domain.ReviewBoard;
 import kr.co.tt.repository.domain.ReviewComment;
+import kr.co.tt.repository.mapper.LoginMapper;
 import kr.co.tt.repository.mapper.ReviewBoardMapper;
 
 @WebServlet("/jsp/board/review/detail.do")
@@ -26,8 +28,23 @@ public class DetailController extends HttpServlet {
 		
 		request.setAttribute("board", board);
 		
+		LoginMapper mapper2 = MyAppSqlConfig.getSqlSessionInstance().getMapper(LoginMapper.class);
+		String id = mapper2.selectMemberId(board.getMemNo());
+		
+		request.setAttribute("id", id);
+		
 		List<ReviewComment> commentList = mapper.selectCommentList(no);
 		request.setAttribute("commentList", commentList);
+		
+		List<String> cIdList = new ArrayList<>();
+		String cId;
+		
+		for (ReviewComment c : commentList) {
+			cId = mapper2.selectMemberId(c.getMemNo());
+			cIdList.add(cId);
+		}
+		
+		request.setAttribute("cIdList",	cIdList);
 		
 		try {
 			request.setAttribute("commentNo", Integer.parseInt(request.getParameter("commentNo")));

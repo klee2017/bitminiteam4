@@ -1,8 +1,13 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <c:import url="/html/main/topMenu.jsp"></c:import>
+<%
+	List<String> cIdList = (List<String>)request.getAttribute("cIdList");
+	int i=0;
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -406,7 +411,7 @@
 
 			<header class="post-header">
 				<h3 itemprop="headline" class="post-title">${board.title}</h3>
-				<p class="post-subtitle" itemprop="alternativeHeadline">${board.memNo}</p>
+				<p class="post-subtitle" itemprop="alternativeHeadline">${id}</p>
 				<p class="post-meta">Posted on <fmt:formatDate value="${board.modDate}" pattern="yyyy/MM/dd"/></time></p>
 			</header>
 
@@ -418,7 +423,7 @@
 			</div>
 	
 			<footer class="post-footer">
-				<p class="comments-link"><a href="#" itemprop="discussionUrl">Leave a Comment</a> (<a href="#" itemprop="discussionUrl"><span itemprop="commentCount">3</span></a>)</p>
+				<p class="comments-link"> ´ñ±Û ¼ö : <%= cIdList.size() %></p>
 			</footer>
 			
 	<form action="updatecomment.do" method="post">
@@ -430,7 +435,7 @@
 		<c:choose>
 	  		<c:when test="${commentNo eq comment.commentNo}">	
 				<tr>
-				  <td><c:out value="${comment.memNo}" /></td>
+				  <td><c:out value="<%= cIdList.get(i++) %>" /></td>
 				  <td>
 				  	<textarea name="content" rows="2" cols="60"><c:out value="${comment.content}" /></textarea>
 				  </td>
@@ -442,7 +447,7 @@
 		 	</c:when>
 		 	<c:otherwise>
 				<tr>
-				  <td><c:out value="${comment.memNo}" /></td>
+				  <td><c:out value="<%= cIdList.get(i++) %>" /></td>
 				  <td>
 				  		<c:out value="${comment.content}" /></td>
 				  <td><fmt:formatDate var="regDate" value="${comment.regDate}" 
@@ -550,7 +555,7 @@
 			<div class="comment-regist-form">
 				<form id="enquiry" action="registcomment.do" method="post">
 					<input type="hidden" name="no" value="${board.no}" />
-					<input type="text" name="memNo" />
+					<input type="text" name="memNo" value="${board.memNo}" />
 					<textarea maxlength="140" name="content" id="message" placeholder="Add your comment!"></textarea>
 					<input type="submit" value="Add Comment">
 				</form>

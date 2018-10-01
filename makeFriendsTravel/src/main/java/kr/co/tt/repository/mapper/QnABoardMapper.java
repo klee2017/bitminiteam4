@@ -13,7 +13,7 @@ public interface QnABoardMapper {
 	QnABoard selectBoardByNo(int no);
 //	void insertBoard(QnABoard board);
 	void insertQnaBoard(QnABoard board);
-	void deleteBoard(int no);
+	int deleteBoard(int no);
 	void updateQnABoard(QnABoard board);
 	QnABoard sqcNo(String title);
 	

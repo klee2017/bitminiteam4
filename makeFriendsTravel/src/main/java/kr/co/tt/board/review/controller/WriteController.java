@@ -43,13 +43,14 @@ public class WriteController extends HttpServlet {
 		
 		String title = request.getParameter("title");
 		String content = request.getParameter("editordata");
+		int memNo = Integer.parseInt(request.getParameter("memNo"));
 		
 		ReviewBoardMapper mapper = MyAppSqlConfig.getSqlSessionInstance().getMapper(ReviewBoardMapper.class);
 		ReviewBoard board = new ReviewBoard();
 		
 		board.setTitle(title);
 		board.setContent(content);
-		board.setMemNo(5);
+		board.setMemNo(memNo);
 		
 		mapper.insertBoard(board);
 		

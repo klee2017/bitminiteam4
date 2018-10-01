@@ -27,13 +27,14 @@
 </head>
 <body>
 	<div id="board-write-form">
-	<form method="post" action="/makeFriendsTravel/jsp/board/review/write.do">
-		<div id="title">
-			<h4>제목 : <input type="text" name="title" /></h4>
-		</div>
-		<textarea id="summernote" name="editordata"></textarea>
-		<button class="board-button">등록</button>
-	</form>
+		<form method="post" action="/makeFriendsTravel/jsp/board/review/write.do">
+		<input name="memNo" type="hidden" value="${user.no}"/>
+			<div id="title">
+				<h4>제목 : <input type="text" name="title" /></h4>
+			</div>
+			<textarea id="summernote" name="editordata"></textarea>
+			<button class="board-button">등록</button>
+		</form>
 	</div>
 	
 	<script>

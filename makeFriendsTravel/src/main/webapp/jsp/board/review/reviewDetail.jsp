@@ -424,150 +424,60 @@
 			<p itemprop="description" class="post-intro">${board.content}</p>
 			
 			<div id="update-delete">
-				<a href="/makeFriendsTravel/jsp/board/review/reviewUpdateForm.jsp?no=${board.no}">수정</a>
+				<a href="update-form.do?no=${board.no}">수정</a>
 				<a href="delete.do?no=${board.no}">삭제</a>
 			</div>
+		</article>
 	
 			<footer class="post-footer">
 				<p class="comments-link"> 댓글 수 : <%= cIdList.size() %></p>
 			</footer>
-			
-	<form action="updatecomment.do" method="post">
-		<input type="hidden" name="no" value="${board.no}" />
-		<input type="hidden" name="commentNo" value="${commentNo}" />
-	<table width='80%' border='1'>
-	  <tr>
-		<c:forEach var="comment" items="${commentList}">
-		<c:choose>
-	  		<c:when test="${commentNo eq comment.commentNo}">	
-				<tr>
-				  <td><c:out value="<%= cIdList.get(i++) %>" /></td>
-				  <td>
-				  	<textarea name="content" rows="2" cols="60"><c:out value="${comment.content}" /></textarea>
-				  </td>
-				  <td colspan="2">
-				  	  <input type="submit" value="수정" />	
-				  	  <a href="detail.do?no=${board.no}">취소</a>	
-				  </td>
-				 </tr>
-		 	</c:when>
-		 	<c:otherwise>
-				<tr>
-				  <td><c:out value="<%= cIdList.get(i++) %>" /></td>
-				  <td>
-				  		<c:out value="${comment.content}" /></td>
-				  <td><fmt:formatDate var="regDate" value="${comment.regDate}" 
-				                      pattern="yyyy-MM-dd HH:mm:ss" />
-				      <c:out value="${regDate}" />
-				  </td>
-				  <td>
-				  	  <a href="deletecomment.do?commentNo=${comment.commentNo}&no=${comment.no}">삭제</a>	
-				  	  <a href="detail.do?commentNo=${comment.commentNo}&no=${comment.no}">수정</a>	
-				  </td>
-				 </tr>
-		 	</c:otherwise>
-		 </c:choose>	
-		 </c:forEach>
-		 <c:if test="${empty commentList}">
-		 <tr>
-		    <td colspan='4'>댓글이 존재하지 않습니다.</td>
-		 </tr>
-	 	</c:if>
-	 </table>
-	 </form>
 	  		
-	  		<!-- Contenedor Principal -->
-	<div class="comments-container">
-		<h4>Comment</h4>
-
-		<ul id="comments-list" class="comments-list">
-			<li>
-				<div class="comment-main-level">
-					<!-- Avatar -->
-					<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
-					<!-- Contenedor del Comentario -->
-					<div class="comment-box">
-						<div class="comment-head">
-							<h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
-							<span>hace 20 minutos</span>
-							<i class="fa fa-reply"></i>
-							<i class="fa fa-heart"></i>
-						</div>
-						<div class="comment-content">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-						</div>
-					</div>
-				</div>
-				<!-- Respuestas de los comentarios -->
-				<ul class="comments-list reply-list">
-					<li>
-						<!-- Avatar -->
-						<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
-						<!-- Contenedor del Comentario -->
-						<div class="comment-box">
-							<div class="comment-head">
-								<h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
-								<span>hace 10 minutos</span>
-								<i class="fa fa-reply"></i>
-								<i class="fa fa-heart"></i>
+		<div class="comment-regist-form">
+			<form id="enquiry" action="registcomment.do" method="post">
+				<input type="hidden" name="no" value="${board.no}" />
+				<input type="hidden" name="memNo" value="${user.no}" />
+				<textarea maxlength="140" name="content" id="message" placeholder="Add your comment!"></textarea>
+				<input type="submit" value="Add Comment">
+			</form>
+		</div>
+		
+		<div class="comments-container">
+			<h4>Comment</h4>
+			<form action="updatecomment.do" method="post">
+				<input type="hidden" name="no" value="${board.no}" />
+				<input type="hidden" name="commentNo" value="${commentNo}" />
+				<ul id="comments-list" class="comments-list">
+					<c:forEach var="comment" items="${commentList}">
+						<li>
+							<div class="comment-main-level">
+								<c:choose>
+									<c:when test="${commentNo eq comment.commentNo}">
+										<c:out value="<%= cIdList.get(i++) %>" />
+										<textarea name="content" rows="2" cols="60"><c:out value="${comment.content}" /></textarea>
+										<input type="submit" value="수정" />	
+							  	  		<a href="detail.do?no=${board.no}">취소</a>	
+									</c:when>
+									<c:otherwise>
+										<c:out value="<%= cIdList.get(i++) %>" />
+										<c:out value="${comment.content}" />
+										<fmt:formatDate var="regDate" value="${comment.regDate}" 
+							                      		pattern="yyyy-MM-dd" />
+							            <c:out value="${regDate}" />
+							            <a href="deletecomment.do?commentNo=${comment.commentNo}&no=${comment.no}">삭제</a>	
+							  	  		<a href="detail.do?commentNo=${comment.commentNo}&no=${comment.no}">수정</a>
+									</c:otherwise>
+								</c:choose>
 							</div>
-							<div class="comment-content">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-							</div>
-						</div>
-					</li>
-
-					<li>
-						<!-- Avatar -->
-						<div class="comment-avatar" style="background-image:url('/makeFriendsTravel/image/${user.poto}');"></div>
-						<!-- Contenedor del Comentario -->
-						<div class="comment-box">
-							<div class="comment-head">
-								<h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
-								<span>hace 10 minutos</span>
-								<i class="fa fa-reply"></i>
-								<i class="fa fa-heart"></i>
-							</div>
-							<div class="comment-content">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-							</div>
-						</div>
-					</li>
+						</li>
+					</c:forEach>
+					<c:if test="${empty commentList}">
+						댓글이 존재하지 않습니다.
+					</c:if>
 				</ul>
-			</li>
+			</form>
+		</div>
 
-			<li>
-				<div class="comment-main-level">
-					<!-- Avatar -->
-					<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
-					<!-- Contenedor del Comentario -->
-					<div class="comment-box">
-						<div class="comment-head">
-							<h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
-							<span>hace 10 minutos</span>
-							<i class="fa fa-reply"></i>
-							<i class="fa fa-heart"></i>
-						</div>
-						<div class="comment-content">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-						</div>
-					</div>
-				</div>
-			</li>
-		</ul>
-	</div>
-	  		
-	  		
-			<div class="comment-regist-form">
-				<form id="enquiry" action="registcomment.do" method="post">
-					<input type="hidden" name="no" value="${board.no}" />
-					<input type="text" name="memNo" value="${board.memNo}" />
-					<textarea maxlength="140" name="content" id="message" placeholder="Add your comment!"></textarea>
-					<input type="submit" value="Add Comment">
-				</form>
-			</div>
-
-		</article>
 	
 	</div>
 	

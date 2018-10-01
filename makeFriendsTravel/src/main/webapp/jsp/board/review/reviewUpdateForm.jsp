@@ -30,9 +30,9 @@
 	<form method="post" action="/makeFriendsTravel/jsp/board/review/update.do">
 		<input type="hidden" name="no" value="${param.no}" />
 		<div id="title">
-			<h4>제목 : <input type="text" name="title" /></h4>
+			<h4>제목 : <input type="text" name="title" value="${board.title}" /></h4>
 		</div>
-		<textarea id="summernote" name="editordata"></textarea>
+		<textarea id="summernote" name="editordata">${board.content}</textarea>
 		<button class="board-button">등록</button>
 	</form>
 	</div>

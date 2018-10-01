@@ -16,6 +16,12 @@
 	
 	
 	<!-- 전체 목록 가져오기 -->
+	<select id="selectQnaBoardId" parameterType="int" resultMap="boardMap">
+		select *
+		  from tb_board_qna
+		 where mem_no= #{memNo}
+	</select>
+	
 	<select id="selectQnaBoard" resultMap="boardMap">
 		select *
 		  from tb_board_qna

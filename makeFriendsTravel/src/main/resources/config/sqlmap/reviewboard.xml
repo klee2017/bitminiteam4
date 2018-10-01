@@ -47,6 +47,12 @@
 		<result column="mem_no" property="memNo" />
 	</resultMap>
 	
+	<select id="rselectBoardId" parameterType="int" resultMap="reviewBoardMap">
+		select *
+		  from tb_board_review
+		where mem_no = #{memNo}
+	</select>
+	
 	<select id="selectBoard" resultMap="reviewBoardMap">
 		select *
 		  from tb_board_review

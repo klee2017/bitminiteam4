@@ -11,6 +11,10 @@
 		<result column="mem_no" property="memNo" />
 	</resultMap>
 	
+
+
+	
+	
 	<!-- 전체 목록 가져오기 -->
 	<select id="selectQnaBoard" resultMap="boardMap">
 		select *
@@ -43,7 +47,6 @@
     	       content = #{content}
     	 where no = #{no}
     </update>	 
-    
 
 </mapper>
 

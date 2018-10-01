@@ -1,8 +1,13 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <c:import url="/html/main/topMenu.jsp"></c:import>
+<%
+	List<String> idList = (List<String>)request.getAttribute("idList");
+	int i=0;
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -69,8 +74,8 @@
 		        <c:forEach var="b" items="${list}">
 		        	<tr>
 		        		<td>${b.no}</td>
-		        		<td><a href="detail.do?no=${b.no}">${b.title}</a></td>
-		        		<td>${b.memNo}</td>
+		        		<td><a href="detail.do?no=${b.no}&memNo=${b.memNo}">${b.title}</a></td>
+		        		<td><%= idList.get(i++) %></td>
 		        		<td><fmt:formatDate value="${b.modDate}" pattern="yyyy/MM/dd"/></td>
 		        	</tr>
 		        </c:forEach>

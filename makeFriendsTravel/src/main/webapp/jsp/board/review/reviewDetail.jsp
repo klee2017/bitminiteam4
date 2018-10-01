@@ -1,6 +1,6 @@
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <c:import url="/html/main/topMenu.jsp"></c:import>
@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Review Detail</title>
 <style>
 	@import url(https://fonts.googleapis.com/css?family=Merriweather:400,700,400italic,700italic);
@@ -350,7 +350,7 @@
 		}
 		
 		.comment-box .comment-head span {
-			float: left;
+			float: right;
 			color: #999;
 			font-size: 13px;
 			position: relative;
@@ -424,150 +424,97 @@
 			<p itemprop="description" class="post-intro">${board.content}</p>
 			
 			<div id="update-delete">
-				<a href="/makeFriendsTravel/jsp/board/review/reviewUpdateForm.jsp?no=${board.no}">¼öÁ¤</a>
-				<a href="delete.do?no=${board.no}">»èÁ¦</a>
+				<a href="update-form.do?no=${board.no}">ìˆ˜ì •</a>
+				<a href="delete.do?no=${board.no}">ì‚­ì œ</a>
 			</div>
+		</article>
 	
 			<footer class="post-footer">
-				<p class="comments-link"> ´ñ±Û ¼ö : <%= cIdList.size() %></p>
+				<p class="comments-link"> ëŒ“ê¸€ ìˆ˜ : <%= cIdList.size() %></p>
 			</footer>
-			
-	<form action="updatecomment.do" method="post">
-		<input type="hidden" name="no" value="${board.no}" />
-		<input type="hidden" name="commentNo" value="${commentNo}" />
-	<table width='80%' border='1'>
-	  <tr>
-		<c:forEach var="comment" items="${commentList}">
-		<c:choose>
-	  		<c:when test="${commentNo eq comment.commentNo}">	
-				<tr>
-				  <td><c:out value="<%= cIdList.get(i++) %>" /></td>
-				  <td>
-				  	<textarea name="content" rows="2" cols="60"><c:out value="${comment.content}" /></textarea>
-				  </td>
-				  <td colspan="2">
-				  	  <input type="submit" value="¼öÁ¤" />	
-				  	  <a href="detail.do?no=${board.no}">Ãë¼Ò</a>	
-				  </td>
-				 </tr>
-		 	</c:when>
-		 	<c:otherwise>
-				<tr>
-				  <td><c:out value="<%= cIdList.get(i++) %>" /></td>
-				  <td>
-				  		<c:out value="${comment.content}" /></td>
-				  <td><fmt:formatDate var="regDate" value="${comment.regDate}" 
-				                      pattern="yyyy-MM-dd HH:mm:ss" />
-				      <c:out value="${regDate}" />
-				  </td>
-				  <td>
-				  	  <a href="deletecomment.do?commentNo=${comment.commentNo}&no=${comment.no}">»èÁ¦</a>	
-				  	  <a href="detail.do?commentNo=${comment.commentNo}&no=${comment.no}">¼öÁ¤</a>	
-				  </td>
-				 </tr>
-		 	</c:otherwise>
-		 </c:choose>	
-		 </c:forEach>
-		 <c:if test="${empty commentList}">
-		 <tr>
-		    <td colspan='4'>´ñ±ÛÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.</td>
-		 </tr>
-	 	</c:if>
-	 </table>
-	 </form>
 	  		
-	  		<!-- Contenedor Principal -->
-	<div class="comments-container">
-		<h4>Comment</h4>
 
-		<ul id="comments-list" class="comments-list">
-			<li>
-				<div class="comment-main-level">
-					<!-- Avatar -->
-					<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
-					<!-- Contenedor del Comentario -->
-					<div class="comment-box">
-						<div class="comment-head">
-							<h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
-							<span>hace 20 minutos</span>
-							<i class="fa fa-reply"></i>
-							<i class="fa fa-heart"></i>
-						</div>
-						<div class="comment-content">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-						</div>
-					</div>
-				</div>
-				<!-- Respuestas de los comentarios -->
-				<ul class="comments-list reply-list">
-					<li>
-						<!-- Avatar -->
-						<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
-						<!-- Contenedor del Comentario -->
-						<div class="comment-box">
-							<div class="comment-head">
-								<h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
-								<span>hace 10 minutos</span>
-								<i class="fa fa-reply"></i>
-								<i class="fa fa-heart"></i>
-							</div>
-							<div class="comment-content">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-							</div>
-						</div>
-					</li>
-
-					<li>
-						<!-- Avatar -->
-						<div class="comment-avatar" style="background-image:url('/makeFriendsTravel/image/${user.poto}');"></div>
-						<!-- Contenedor del Comentario -->
-						<div class="comment-box">
-							<div class="comment-head">
-								<h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
-								<span>hace 10 minutos</span>
-								<i class="fa fa-reply"></i>
-								<i class="fa fa-heart"></i>
-							</div>
-							<div class="comment-content">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-							</div>
-						</div>
-					</li>
-				</ul>
-			</li>
-
-			<li>
-				<div class="comment-main-level">
-					<!-- Avatar -->
-					<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
-					<!-- Contenedor del Comentario -->
-					<div class="comment-box">
-						<div class="comment-head">
-							<h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
-							<span>hace 10 minutos</span>
-							<i class="fa fa-reply"></i>
-							<i class="fa fa-heart"></i>
-						</div>
-						<div class="comment-content">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-						</div>
-					</div>
-				</div>
-			</li>
-		</ul>
-	</div>
-	  		
-	  		
-			<div class="comment-regist-form">
-				<form id="enquiry" action="registcomment.do" method="post">
-					<input type="hidden" name="no" value="${board.no}" />
-					<input type="text" name="memNo" value="${board.memNo}" />
-					<textarea maxlength="140" name="content" id="message" placeholder="Add your comment!"></textarea>
-					<input type="submit" value="Add Comment">
-				</form>
+		<form action="updatecomment.do" method="post">
+			<input type="hidden" name="no" value="${board.no}" />
+			<input type="hidden" name="commentNo" value="${commentNo}" />
+			<div class="comments-container">
+				<h1>Comment</h1>
+					<ul id="comments-list" class="comments-list">
+						<c:forEach var="comment" items="${commentList}">
+							<li>
+								<div class="comment-main-level">
+									<c:choose>
+										<c:when test="${commentNo eq comment.commentNo}">
+											<div class="comment-avatar" style="background-image:url('/makeFriendsTravel/image/${user.poto}');"></div>
+											<div class="comment-box">
+												<div class="comment-head">
+													<h6 class="comment-name by-author">
+														<c:out value="<%= cIdList.get(i++) %>" />
+													</h6>
+												</div>
+												<div class="comment-content">
+													<textarea name="content" rows="2" cols="60"><c:out value="${comment.content}" /></textarea>
+													<input type="submit" value="ìˆ˜ì •" />	
+										  	  		<a href="detail.do?no=${board.no}">ì·¨ì†Œ</a>
+												</div>
+									  	  	</div>	
+										</c:when>
+										<c:otherwise>
+											<div class="comment-avatar" style="background-image:url('/makeFriendsTravel/image/${user.poto}');"></div>
+											<div class="comment-box">
+												<div class="comment-head">
+												<c:choose>
+													<c:when test="${user.no eq comment.memNo}">
+														<h6 class="comment-name by-author">
+															<c:out value="<%= cIdList.get(i++) %>" />
+															<span>
+																<fmt:formatDate var="regDate" value="${comment.regDate}" 
+											                      				pattern="yyyy-MM-dd" />
+											            		<c:out value="${regDate}" />
+											            	</span>
+														</h6>
+													</c:when>
+													<c:otherwise>
+														<h6 class="comment-name">
+															<c:out value="<%= cIdList.get(i++) %>" />
+															<span>
+																<fmt:formatDate var="regDate" value="${comment.regDate}" 
+											                      				pattern="yyyy-MM-dd" />
+											            		<c:out value="${regDate}" />
+											            	</span>
+														</h6>
+													</c:otherwise>
+												</c:choose>
+												</div>
+												<div class="comment-content">
+													<c:out value="${comment.content}" />
+										            <a href="deletecomment.do?commentNo=${comment.commentNo}&no=${comment.no}">ì‚­ì œ</a>	
+										  	  		<a href="detail.do?commentNo=${comment.commentNo}&no=${comment.no}">ìˆ˜ì •</a>
+												</div>
+											</div>
+										</c:otherwise>
+									</c:choose>
+								</div>
+							</li>
+						</c:forEach>
+						<c:if test="${empty commentList}">
+							ëŒ“ê¸€ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
+						</c:if>
+					</ul>
 			</div>
+		</form>
 
-		</article>
+
+		<div class="comment-regist-form">
+			<form id="enquiry" action="registcomment.do" method="post">
+				<input type="hidden" name="no" value="${board.no}" />
+				<input type="hidden" name="memNo" value="${user.no}" />
+				<textarea maxlength="140" name="content" id="message" placeholder="Add your comment!"></textarea>
+				<input type="submit" value="Add Comment">
+			</form>
+		</div>
+	
+	
 	
 	</div>
 	

@@ -1,30 +1,49 @@
+<%@page import="kr.co.tt.repository.mapper.ReviewBoardMapper"%>
+<%@page import="kr.co.tt.repository.domain.ReviewBoard"%>
 <%@page import="kr.co.tt.repository.mapper.QnABoardMapper"%>
 <%@page import="kr.co.tt.common.db.MyAppSqlConfig"%>
 <%@page import="kr.co.tt.repository.mapper.LoginMapper"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="kr.co.tt.repository.domain.QnABoard" %>
 <%@page import="kr.co.tt.repository.domain.Member" %>
 <%@page import="java.util.*" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <%
 LoginMapper mapper = 
 	MyAppSqlConfig.getSqlSessionInstance().getMapper(LoginMapper.class);
 request.setCharacterEncoding("utf-8");
 
+int i=0;
+// qna 게시판 내가쓴글 불러오기 
 QnABoardMapper mapper2 = 
 MyAppSqlConfig.getSqlSessionInstance().getMapper(QnABoardMapper.class);	
+int no = Integer.parseInt(request.getParameter("no"));
 
+List<QnABoard> list = mapper2.selectQnaBoardId(no);
 
-List<QnABoard> list = mapper2.selectQnaBoard();
 String id;
 List<String> idList = new ArrayList<>();
 for(QnABoard b : list) {
 id  = mapper.selectMemberId(b.getMemNo());
 idList.add(id);
 }
-int i=0;
+
+
+//review 게시판 내가쓴 글 불러오기 
+ 
+ReviewBoardMapper mapper3 = 
+MyAppSqlConfig.getSqlSessionInstance().getMapper(ReviewBoardMapper.class);
+
+List<ReviewBoard> list2 = mapper3.rselectBoardId(no);
+
+for (ReviewBoard c : list2) {
+	id= mapper.selectMemberId(c.getMemNo());
+	idList.add(id);
+}
 %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -234,12 +253,15 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 	#table_id_filter {
 		display: none;
 	}
+	.table_id_filter {
+		display: none;
+	}
 	.dataTables_wrapper{
 		position: relative;
 		clear: both;
 		zoom : 1;
-		width: 201%;
-		left: -54%;
+		width: 182%;
+		left: -43%;
 	}
 	.dataTables_wrapper .dataTables_length {
 		float: right;
@@ -345,26 +367,17 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 <!-- 내가쓴글 확인하기 -->
 <form>
   <div id="board-list">
-		<table id="table_id" class="display">
+		<table id="table_id2" class="display">
 		    <thead>
 		        <tr>
 		            <th id="no">글 번호</th>
-		            <th id="title">글 제목</th>
 		            <th id="writer">작성자</th>
+		            <th id="title">글 제목</th>
 		            <th id="reg_date">작성일</th>
 		        </tr>
 		    </thead>
 		    <tbody>
-		    <!-- 
-		      	<c:forEach var="b" items="${list}">
-		        	<tr>
-		        		<td>${b.no}</td>
-		        		<td><a href="detail.do?no=${b.no}">${b.title}</a></td>
-		        		<td>${b.memNo}</td>
-		        		<td><fmt:formatDate value="${b.modDate}" pattern="yyyy/MM/dd"/></td>
-		        	</tr>
-		        </c:forEach>
-		     -->
+		    
 		     <%
 		     	for(QnABoard b : list){
 		     		
@@ -372,7 +385,8 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 		     	<tr>
 				<td><%=b.getNo() %></td>
 				<td><%=idList.get(i++) %></td>	
-				<td><a href="qnaDetail.do?no=<%=b.getNo() %>&memNo=<%=b.getMemNo()%>"><%=b.getTitle() %></a></td>	 
+				<td><a href="/makeFriendsTravel/html/qnaDetail.do?no=<%=b.getNo() %>& memNo=<%=b.getMemNo()%>"><%=b.getTitle() %></a></td>	 
+				<td><fmt:formatDate value="<%=b.getRegDate()%>" pattern="yyyy-MM-dd"/></td>				
 				</tr>   	
 			<%
 				
@@ -380,11 +394,37 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 			%>		     	
 		    </tbody>
 		</table>
+		
+		<table id="table_id" class="display">
+		    <thead>
+		        <tr>
+		            <th id="no">글 번호</th>
+		            <th id="writer">작성자</th>
+		            <th id="title">글 제목</th>
+		            <th id="reg_date">작성일</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		    
+		   		<%
+		     	for(ReviewBoard c : list2){
+		     		
+		     %>
+		     	<tr>
+				<td><%=c.getNo() %></td>
+				<td><%=idList.get(i++) %></td>	
+				<td><a href="/makeFriendsTravel/jsp/board/review/detail.do?no=<%=c.getNo() %>& memNo=<%=c.getMemNo()%>"><%=c.getTitle() %></a></td>	 
+				<td><fmt:formatDate value="<%=c.getRegDate()%>" pattern="yyyy-MM-dd"/></td>
+				
+				</tr>   	
+			<%
+				
+		     	}
+			%>
+		    </tbody>
+		</table>
     
 </div>
-  
-
-
 
 </form>
 <script>
@@ -466,15 +506,19 @@ if (passwordDisplayed) {
  password.type = "password";
 }
 });
+*/
 $(document).ready( function () {
-*/ 
+
     $('#table_id').DataTable();
-/*    $('#table_id').DataTable({
+    $('#table_id2').DataTable();
+   
+   $('#table_id').DataTable({
     	data: dataSet,
     	columns: col_kor,
         language : lang_kor
-} );
-    }); */
+} );   
+   
+    }); 
 </script> 
 
 

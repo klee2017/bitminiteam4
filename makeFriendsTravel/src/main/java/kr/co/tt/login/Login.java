@@ -26,16 +26,18 @@ public class Login extends HttpServlet{
 		String id  = request.getParameter("id");
 		String pass  = request.getParameter("pass");
 		String name  = request.getParameter("name");
+		String photo = request.getParameter("photo");
 
 		if(kakao!=null) {
 			Member member = new Member();
 			member.setId(name+"(kakao)");
 			member.setPass(pass);
 			member.setName(name);
+			member.setPoto(photo);
 			
 			HttpSession session  = request.getSession();
 			session.setAttribute("user", member);
-			session.setAttribute("kakao", kakao);
+			//session.setAttribute("kakao", kakao);
 			
 			//메인페이지로 이동하기
 			response.sendRedirect(request.getContextPath()+"/html/main/main.do");

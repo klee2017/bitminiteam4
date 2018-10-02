@@ -28,6 +28,7 @@ public class SignUp extends HttpServlet{
 		String id  = request.getParameter("id");
 		String pass  = request.getParameter("pass");
 		String name  = request.getParameter("name");
+		String photo = request.getParameter("profile");
 
 		
 		
@@ -36,16 +37,16 @@ public class SignUp extends HttpServlet{
 			member.setId(name+"(kakao)");
 			member.setPass(pass);
 			member.setName(name);
+			member.setPoto(photo);
 			Member checkMember = mapper.selectMember(member);
 			if(checkMember == null) {
 				mapper.insertMember(member);
-				System.out.println(member.getId());
-				System.out.println(member.getPass());
-				System.out.println(member.getName());
+
 			
 				request.setAttribute("id", member.getId());
 				request.setAttribute("pass", member.getPass());
 				request.setAttribute("name", member.getName());
+				request.setAttribute("poto", member.getPoto());
 				request.setAttribute("access", kakao);
 				
 				RequestDispatcher rd= request.getRequestDispatcher("/login/login.do");
@@ -56,6 +57,7 @@ public class SignUp extends HttpServlet{
 				request.setAttribute("id", member.getId());
 				request.setAttribute("pass", member.getPass());
 				request.setAttribute("name", member.getName());
+				request.setAttribute("poto", member.getPoto());
 				request.setAttribute("access", kakao);
 				
 				RequestDispatcher rd= request.getRequestDispatcher("/login/login.do");

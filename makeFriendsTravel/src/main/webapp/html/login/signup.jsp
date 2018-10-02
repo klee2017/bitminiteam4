@@ -485,7 +485,8 @@ input[type=checkbox] {
 		             location.href='/makeFriendsTravel/login/sign.do?id='+res.id+
 		            		 		'&name='+res.properties['nickname']+
 		            		 		'&access='+authObj.access_token+
-		            		 		'&pass=1234';
+		            		 		'&pass=1234'+
+		            		 		'&profile='+ res.properties['profile_image'];
 		             /*
 		             location.href='/makeFriendsTravel/login/login.do?id='+res.id+
      		 		'&name='+res.properties['nickname']+

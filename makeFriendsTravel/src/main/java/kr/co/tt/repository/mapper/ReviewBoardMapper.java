@@ -24,4 +24,7 @@ public interface ReviewBoardMapper {
 	void insertComment(ReviewComment comment);
 	void updateComment(ReviewComment comment);
 	void deleteComment(int no);
+	
+	void deleteSequence();
+	void createSequence();
 }

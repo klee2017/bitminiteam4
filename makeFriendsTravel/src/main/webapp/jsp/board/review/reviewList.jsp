@@ -71,20 +71,26 @@
 		        </tr>
 		    </thead>
 		    <tbody>
-		        <c:forEach var="b" items="${list}">
-		        	<tr>
-		        		<td>${b.no}</td>
-		        		<td><a href="detail.do?no=${b.no}&memNo=${b.memNo}">${b.title}</a></td>
-		        		<td><%= idList.get(i++) %></td>
-		        		<td><fmt:formatDate value="${b.modDate}" pattern="yyyy/MM/dd"/></td>
-		        	</tr>
-		        </c:forEach>
+		    	<c:choose>
+		    		<c:when test="${empty list}">
+		    			<tr><td colspan=4 style="text-align: center;">글이 없습니다.</td></tr>
+		    		</c:when>
+		    		<c:otherwise>
+				        <c:forEach var="b" items="${list}">
+				        	<tr>
+				        		<td>${b.no}</td>
+				        		<td><a href="detail.do?no=${b.no}&memNo=${b.memNo}">${b.title}</a></td>
+				        		<td><%= idList.get(i++) %></td>
+				        		<td><fmt:formatDate value="${b.modDate}" pattern="yyyy/MM/dd"/></td>
+				        	</tr>
+				        </c:forEach>
+					</c:otherwise>
+		        </c:choose>
 		    </tbody>
 		</table>
     
  	<c:choose>
- 		<c:when test="${empty user.id}">
-		    <a id="write" href="#">글쓰기</a> 			
+ 		<c:when test="${empty user.id}">		
  		</c:when>
  		<c:otherwise>
 		    <a id="write" href="reviewWriteForm.jsp">글쓰기</a> 			

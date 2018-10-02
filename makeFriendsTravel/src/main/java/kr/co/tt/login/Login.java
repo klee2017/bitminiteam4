@@ -20,7 +20,7 @@ public class Login extends HttpServlet{
 	
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 
+		LoginMapper mapper = MyAppSqlConfig.getSqlSessionInstance().getMapper(LoginMapper.class);
 		request.setCharacterEncoding("utf-8");
 		String kakao = request.getParameter("access");
 		String id  = request.getParameter("id");
@@ -34,9 +34,10 @@ public class Login extends HttpServlet{
 			member.setPass(pass);
 			member.setName(name);
 			member.setPoto(photo);
+			Member login = mapper.selectMember(member);
 			
 			HttpSession session  = request.getSession();
-			session.setAttribute("user", member);
+			session.setAttribute("user", login);
 			//session.setAttribute("kakao", kakao);
 			
 			//메인페이지로 이동하기
@@ -48,7 +49,6 @@ public class Login extends HttpServlet{
 				pass  = request.getParameter("pass");
 				name  = request.getParameter("name");
 				
-				LoginMapper mapper = MyAppSqlConfig.getSqlSessionInstance().getMapper(LoginMapper.class);
 				
 				Member member = new Member();
 				member.setId(id);

@@ -422,16 +422,8 @@
 			<p itemprop="description" class="post-intro">${board.content}</p>
 			
 			<div id="update-delete">
-				<c:choose>
-					<c:when test="${id ne user.id || empty user.id}">
-						<a href="#">삭제</a>
-	            		<a href="#">수정</a>
-					</c:when>
-					<c:otherwise>														
-						<a href="delete.do?no=${board.no}">삭제</a>
-	            		<a href="update-form.do?no=${board.no}">수정</a>
-					</c:otherwise>
-				</c:choose>
+				<a href="update-form.do?no=${board.no}">수정</a>
+				<a href="delete.do?no=${board.no}">삭제</a>
 			</div>
 		</article>
 	
@@ -494,16 +486,8 @@
 												</div>
 												<div class="comment-content">
 													<c:out value="${comment.content}" />
-													<c:choose>
-														<c:when test="${id ne user.id || empty user.id}">
-										            		<a href="#">삭제</a>	
-										  	  				<a href="#">수정</a>
-														</c:when>
-														<c:otherwise>														
-										            		<a href="deletecomment.do?commentNo=${comment.commentNo}&no=${comment.no}">삭제</a>	
-										  	  				<a href="detail.do?commentNo=${comment.commentNo}&no=${comment.no}">수정</a>
-														</c:otherwise>
-													</c:choose>
+										            <a href="deletecomment.do?commentNo=${comment.commentNo}&no=${comment.no}">삭제</a>	
+										  	  		<a href="detail.do?commentNo=${comment.commentNo}&no=${comment.no}">수정</a>
 												</div>
 											</div>
 										</c:otherwise>

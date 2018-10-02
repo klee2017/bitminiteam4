@@ -22,7 +22,7 @@ public class ListController extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				
+		
 		ReviewBoardMapper mapper = MyAppSqlConfig.getSqlSessionInstance().getMapper(ReviewBoardMapper.class);
 		List<ReviewBoard> list = mapper.selectBoard();
 	

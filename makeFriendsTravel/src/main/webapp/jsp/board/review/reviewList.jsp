@@ -82,17 +82,8 @@
 		    </tbody>
 		</table>
     
- 	<c:choose>
- 		<c:when test="${empty user.id}">
-		    <a id="write" href="#">글쓰기</a> 			
- 		</c:when>
- 		<c:otherwise>
-		    <a id="write" href="reviewWriteForm.jsp">글쓰기</a> 			
- 		</c:otherwise>
- 	</c:choose>
-    
-    
-    
+ 	
+    <a id="write" href="reviewWriteForm.jsp">글쓰기</a>
     <div id="div-board-search">
 	    <form action="" method="get" id="board-search-form">
 		    <input type="text" id="board-search" placeholder="검색어를 입력하세요">

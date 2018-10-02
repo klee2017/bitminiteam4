@@ -12,4 +12,5 @@ public interface LoginMapper {
 	void updateMember(Member member);
 	List<String> idcheck();
 	String selectMemberId(int memNo);
+	String selectMemberPhoto(int memNo);
 }

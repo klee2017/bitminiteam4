@@ -7,6 +7,9 @@
 <%
 	List<String> cIdList = (List<String>)request.getAttribute("cIdList");
 	int i=0;
+	
+	List<String> cImgList = (List<String>)request.getAttribute("cImgList");
+	int j=0;
 %>
 <!DOCTYPE html>
 <html>
@@ -267,11 +270,6 @@
 			height: 100%;
 		}
 		
-		.reply-list .comment-avatar {
-			width: 50px;
-			height: 50px;
-		}
-		
 		.comment-main-level:after {
 			content: '';
 			width: 0;
@@ -445,7 +443,7 @@
 								<div class="comment-main-level">
 									<c:choose>
 										<c:when test="${commentNo eq comment.commentNo}">
-											<div class="comment-avatar" style="background-image:url('/makeFriendsTravel/image/${user.poto}');"></div>
+											<div class="comment-avatar" style="background-image: url('/makeFriendsTravel/image/<%= cImgList.get(j++) %>')"></div>
 											<div class="comment-box">
 												<div class="comment-head">
 													<h6 class="comment-name by-author">
@@ -460,7 +458,7 @@
 									  	  	</div>	
 										</c:when>
 										<c:otherwise>
-											<div class="comment-avatar" style="background-image:url('/makeFriendsTravel/image/${user.poto}');"></div>
+											<div class="comment-avatar" style="background-image: url('/makeFriendsTravel/image/<%= cImgList.get(j++) %>')"></div>
 											<div class="comment-box">
 												<div class="comment-head">
 												<c:choose>

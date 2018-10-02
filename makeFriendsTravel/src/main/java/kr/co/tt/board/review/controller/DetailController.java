@@ -50,6 +50,16 @@ public class DetailController extends HttpServlet {
 			request.setAttribute("commentNo", Integer.parseInt(request.getParameter("commentNo")));
 		} catch (NumberFormatException e) {	}
 		
+		List<String> cImgList = new ArrayList<>();
+		String cImg;
+		
+		for (ReviewComment c : commentList) {
+			cImg = mapper2.selectMemberPhoto(c.getMemNo());
+			cImgList.add(cImg);
+		}
+		
+		request.setAttribute("cImgList", cImgList);
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/jsp/board/review/reviewDetail.jsp");
 		rd.forward(request, response);
 	}

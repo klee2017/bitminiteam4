@@ -79,7 +79,14 @@
 				        <c:forEach var="b" items="${list}">
 				        	<tr>
 				        		<td>${b.no}</td>
-				        		<td><a href="detail.do?no=${b.no}&memNo=${b.memNo}">${b.title}</a></td>
+				        		<td>
+				        			<c:choose>
+				        				<c:when test="${empty user.id}">${b.title}</c:when>
+				        				<c:otherwise>
+				        					<a href="detail.do?no=${b.no}&memNo=${b.memNo}">${b.title}</a>
+				        				</c:otherwise>
+				        			</c:choose>
+				        		</td>
 				        		<td><%= idList.get(i++) %></td>
 				        		<td><fmt:formatDate value="${b.modDate}" pattern="yyyy/MM/dd"/></td>
 				        	</tr>

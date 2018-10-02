@@ -424,8 +424,6 @@
 			<div id="update-delete">
 				<c:choose>
 					<c:when test="${id ne user.id || empty user.id}">
-						<a href="#">삭제</a>
-	            		<a href="#">수정</a>
 					</c:when>
 					<c:otherwise>														
 						<a href="delete.do?no=${board.no}">삭제</a>
@@ -496,8 +494,6 @@
 													<c:out value="${comment.content}" />
 													<c:choose>
 														<c:when test="${id ne user.id || empty user.id}">
-										            		<a href="#">삭제</a>	
-										  	  				<a href="#">수정</a>
 														</c:when>
 														<c:otherwise>														
 										            		<a href="deletecomment.do?commentNo=${comment.commentNo}&no=${comment.no}">삭제</a>	

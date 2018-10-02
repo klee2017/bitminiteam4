@@ -424,8 +424,6 @@
 			<div id="update-delete">
 				<c:choose>
 					<c:when test="${id ne user.id || empty user.id}">
-						<a href="#">삭제</a>
-	            		<a href="#">수정</a>
 					</c:when>
 					<c:otherwise>														
 						<a href="delete.do?no=${board.no}">삭제</a>
@@ -495,9 +493,7 @@
 												<div class="comment-content">
 													<c:out value="${comment.content}" />
 													<c:choose>
-														<c:when test="${id ne user.id || empty user.id}">
-										            		<a href="#">삭제</a>	
-										  	  				<a href="#">수정</a>
+														<c:when test="${comment.memNo ne user.no || empty user.id}">
 														</c:when>
 														<c:otherwise>														
 										            		<a href="deletecomment.do?commentNo=${comment.commentNo}&no=${comment.no}">삭제</a>	
@@ -518,15 +514,20 @@
 			</div>
 		</form>
 
-
-		<div class="comment-regist-form">
-			<form id="enquiry" action="registcomment.do" method="post">
-				<input type="hidden" name="no" value="${board.no}" />
-				<input type="hidden" name="memNo" value="${user.no}" />
-				<textarea maxlength="140" name="content" id="message" placeholder="Add your comment!"></textarea>
-				<input type="submit" value="Add Comment">
-			</form>
-		</div>
+		<c:choose>
+			<c:when test="${empty user.id}">
+			</c:when>
+			<c:otherwise>
+				<div class="comment-regist-form">
+					<form id="enquiry" action="registcomment.do" method="post">
+						<input type="hidden" name="no" value="${board.no}" />
+						<input type="hidden" name="memNo" value="${user.no}" />
+						<textarea maxlength="140" name="content" id="message" placeholder="Add your comment!"></textarea>
+						<input type="submit" value="댓글 달기">
+					</form>
+				</div>
+			</c:otherwise>
+		</c:choose>
 	
 	
 	

@@ -113,15 +113,16 @@
 	
 	<select id="selectFileList" parameterType="int" resultMap="FileMap">
 		select *
-		  from tb_comment_review
+		  from tb_file_review
 		 where no = #{no}
-		 order by comment_no desc
+		 order by file_no desc
 	</select>
 	
 	<select id="selectCommentList" parameterType="int" resultMap="CommentMap">
 		select *
 		  from tb_comment_review
 		 where no = #{no}
+		 order by comment_no
 	</select>
 	
 	<insert id="insertComment" parameterType="ReviewComment">
@@ -143,5 +144,13 @@
 		  from tb_comment_review
 		 where comment_no = #{commentNo}
 	</delete>
+	
+	<delete id="deleteSequence">
+		drop sequence s_board_review
+	</delete>
+	
+	<insert id="createSequence">
+		create sequence s_board_review
+	</insert>
 </mapper>
 

@@ -74,6 +74,13 @@ create table tb_comment_review (
     mem_no number REFERENCES tb_member(mem_no)
 );
 
+alter table tb_comment_review
+ drop CONSTRAINT no references tb_board_review(no);
+ 
+alter table tb_comment_review
+  add constraint no on delete cascade;
+
+
 create sequence s_comment_review;
 
 select *
@@ -102,11 +109,28 @@ delete from tb_board_review;
 
 delete from tb_member;
 
+delete from tb_comment_review;
+
 insert into tb_comment_review (
     comment_no, comment_content, no, mem_no
 ) values (
     s_comment_review.nextval, 'comment1', 2, 2
 );
+
+select mem_poto
+  from tb_member;
+  
+delete
+  from tb_member
+ where mem_no = 2;
+
+delete
+  from tb_board_review
+ where mem_no = 2;
+ 
+select *
+  from tb_comment_review
+ where mem_no = 2;
 
 commit;
 

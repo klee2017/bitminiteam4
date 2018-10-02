@@ -30,6 +30,11 @@ public class ListController extends HttpServlet {
 		List<String> idList = new ArrayList<>();
 		String id;
 		
+		if (list.size() == 0) {
+			mapper.deleteSequence();
+			mapper.createSequence();
+		}
+		
 		for (ReviewBoard b : list) {
 			id = mapper2.selectMemberId(b.getMemNo());
 			idList.add(id);

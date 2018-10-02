@@ -131,6 +131,10 @@ h1{
   font-weight: bold;
   width:800px;
 }
+#comment-title{
+	text-align: left;
+}
+
 </style>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/magicsuggest/2.1.4/magicsuggest-min.js"></script>
@@ -147,7 +151,7 @@ h1{
     <div class="post-form-backdrop closed"></div>
     <div class="post-section post-tagged-people">
       <div class="form-group">
-        <label for="people-entry">작성일</label>
+        <label for="people-entry">작성일<fmt:formatDate value="${board.regDate}" pattern="yyyy-MM-dd"/></label>
         <span><strong></strong></span>
         <div id="people-entry"></div>
       </div>
@@ -158,11 +162,11 @@ h1{
 	      <input type="hidden" name="no" value="${board.no}"/>
 	      <input type="hidden" name="memNo" value="${board.memNo}"/>
 	      <label for="post-title"></label>
-	      <span><strong>${id}</strong></span>
+	      <span><strong>작성자${id}</strong></span>
 	      <br>
 	      <hr id="titleline">
 	      <div class="post-title">
-	        <p id="pTitle">${board.title}</p>
+	        <p id="pTitle"><strong>제목</strong>${board.title}</p>
 	      </div>
 	      <br>
 	      <div class="post-content">
@@ -174,31 +178,51 @@ h1{
 
 	
     <div class="post-section post-buttons">
+	  <c:choose> 
+	  	<c:when test="${id == user.id}">
+		  <button id="deleteBtn" class="btn btn-delete"><a href="qnaDelete.do?no=${board.no}">삭제</a></button>
+	  	</c:when>
+	  </c:choose>
+	  	
       <button type="button" class="btn btn-primary"><a href="qnaList.do">목록</a></button>
+
       <c:choose>
-      	<c:when test="${id!=user.id||user.id==null}">
-	      <button class="btn btn-success" onclick="al()">수정</button>
+      	<c:when test="${id == user.id}">
+      	  <button id ="updateBtn" class="btn btn-success">수정</button>
       	</c:when>
       	<c:otherwise>
-      	  <button  id ="updateBtn" class="btn btn-success">수정</button>
       	</c:otherwise>
       </c:choose>
-      <div class="dropup pull-left">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="add-more-post-items">첨부파일 <i class="caret"></i></button>
+
+		<br>
+		<br>
+		<div id="comment-title"><strong>댓글</strong></div>
+		<hr>
+		<table>
+			<tr>
+				<td>
+					<textarea rows="3" cols="140" id="comContent"></textarea>
+				</td>
+				<td>
+					<button type="submit" onclick="regCom()" id="regCom">등록</button>
+				</td>
+			</tr>
+			<tr id="comment">
+				<td></td>
+			</tr>
+		</table>
 
       </div>
     </div>
    
     
   </div>
-</div>
 <script>
 	function al() {
 		alert("수정 할 수  없습니다.")
 	}
 	
-
-
+	
 	$("#updateBtn").click(function(){
 		if(this.id!="updateBtn"){
 
@@ -213,9 +237,9 @@ h1{
 				return;				
 				  
 			  }
-			 
-			  
-		}
+		};
+		
+		
 		var title = $("#pTitle");
 		var content = $("#pContent")
 		var btnChange = $(this);
@@ -223,8 +247,8 @@ h1{
 		title.remove();
 		content.remove();
 		
-		var input = "<input type='text'name='title' id='title1'/>"
-		var textArea ="<textarea name='content' id='content1'></textarea>" 
+		var input = "<textarea name='title' id='title1' rows='1' cols='140'></textarea>"
+		var textArea ="<textarea name='content' id='content1' rows='30' cols='148'></textarea>" 
 		
 		$('.post-title').append(input);
 		$('.post-content').append(textArea);
@@ -232,9 +256,9 @@ h1{
 		 btnChange.addClass("change")
 		 this.id="changeBtn";
 		 return;
-
 	})
 	
+
 	
 </script>
 

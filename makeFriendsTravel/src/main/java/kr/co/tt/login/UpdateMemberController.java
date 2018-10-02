@@ -75,6 +75,9 @@ public class UpdateMemberController extends HttpServlet {
 		if(f != null) {
 			memberVO.setPoto(mRequest.getFilesystemName("poto"));
 			memberVO.setPotoAddr(f.getParent());
+		}else {
+			memberVO.setPoto("");
+			memberVO.setPotoAddr("");
 		}
 		
 		mapper.updateMember(memberVO);

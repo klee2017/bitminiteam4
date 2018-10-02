@@ -73,7 +73,14 @@
     <div class="nav content">
       <ul>
         <li class="current"><a href="/makeFriendsTravel/html/main/main.do">Home</a></li>
-        <li><a href="/makeFriendsTravel/html/login/Mypage.jsp?no=${user.no}">Mypage</a></li>
+       	<c:choose> 
+       		<c:when test="${user.id ==null }">
+			  <li><a href="" onclick="al()">Mypage</a></li>
+			</c:when>
+			<c:otherwise>
+			  <li><a href="/makeFriendsTravel/html/login/Mypage.jsp?no=${user.no}">Mypage</a></li>
+			</c:otherwise>		
+        </c:choose>
         <li><a href="/makeFriendsTravel/jsp/board/review/list.do">Review</a></li>
         <li><a href="/makeFriendsTravel/html/main/bestPhoto.do">Best</a></li>
         <li><a href="/makeFriendsTravel/html/qnaList.do">Q&A</a></li>
@@ -103,5 +110,8 @@
 		  		return false;
 		  	}    
 	  }
-		
+	  function al() {
+			alert("로그인 이후 이용하 실 수 있습니다.")
+		}
+
   </script>

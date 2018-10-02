@@ -23,6 +23,12 @@
 		where  mem_no=#{memNo} 
 	</select>
 	
+	<select id="selectMemberPhoto" parameterType="int" resultType="string">
+		select mem_poto
+		  from tb_member
+		 where mem_no = #{memNo}
+	</select>
+	
 	<select id="selectMember" parameterType="Member" resultMap="MemberMap">
 		select *
 		  from tb_member

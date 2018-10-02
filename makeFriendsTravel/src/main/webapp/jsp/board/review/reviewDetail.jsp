@@ -1,17 +1,20 @@
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <c:import url="/html/main/topMenu.jsp"></c:import>
 <%
 	List<String> cIdList = (List<String>)request.getAttribute("cIdList");
 	int i=0;
+	
+	List<String> cImgList = (List<String>)request.getAttribute("cImgList");
+	int j=0;
 %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Review Detail</title>
 <style>
 	@import url(https://fonts.googleapis.com/css?family=Merriweather:400,700,400italic,700italic);
@@ -267,11 +270,6 @@
 			height: 100%;
 		}
 		
-		.reply-list .comment-avatar {
-			width: 50px;
-			height: 50px;
-		}
-		
 		.comment-main-level:after {
 			content: '';
 			width: 0;
@@ -424,13 +422,21 @@
 			<p itemprop="description" class="post-intro">${board.content}</p>
 			
 			<div id="update-delete">
-				<a href="update-form.do?no=${board.no}">¼öÁ¤</a>
-				<a href="delete.do?no=${board.no}">»èÁ¦</a>
+				<c:choose>
+					<c:when test="${id ne user.id || empty user.id}">
+						<a href="#">ì‚­ì œ</a>
+	            		<a href="#">ìˆ˜ì •</a>
+					</c:when>
+					<c:otherwise>														
+						<a href="delete.do?no=${board.no}">ì‚­ì œ</a>
+	            		<a href="update-form.do?no=${board.no}">ìˆ˜ì •</a>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</article>
 	
 			<footer class="post-footer">
-				<p class="comments-link"> ´ñ±Û ¼ö : <%= cIdList.size() %></p>
+				<p class="comments-link"> ëŒ“ê¸€ ìˆ˜ : <%= cIdList.size() %></p>
 			</footer>
 	  		
 
@@ -445,7 +451,7 @@
 								<div class="comment-main-level">
 									<c:choose>
 										<c:when test="${commentNo eq comment.commentNo}">
-											<div class="comment-avatar" style="background-image:url('/makeFriendsTravel/image/${user.poto}');"></div>
+											<div class="comment-avatar" style="background-image: url('/makeFriendsTravel/image/<%= cImgList.get(j++) %>')"></div>
 											<div class="comment-box">
 												<div class="comment-head">
 													<h6 class="comment-name by-author">
@@ -454,13 +460,13 @@
 												</div>
 												<div class="comment-content">
 													<textarea name="content" rows="2" cols="60"><c:out value="${comment.content}" /></textarea>
-													<input type="submit" value="¼öÁ¤" />	
-										  	  		<a href="detail.do?no=${board.no}">Ãë¼Ò</a>
+													<input type="submit" value="ìˆ˜ì •" />	
+										  	  		<a href="detail.do?no=${board.no}">ì·¨ì†Œ</a>
 												</div>
 									  	  	</div>	
 										</c:when>
 										<c:otherwise>
-											<div class="comment-avatar" style="background-image:url('/makeFriendsTravel/image/${user.poto}');"></div>
+											<div class="comment-avatar" style="background-image: url('/makeFriendsTravel/image/<%= cImgList.get(j++) %>')"></div>
 											<div class="comment-box">
 												<div class="comment-head">
 												<c:choose>
@@ -488,8 +494,16 @@
 												</div>
 												<div class="comment-content">
 													<c:out value="${comment.content}" />
-										            <a href="deletecomment.do?commentNo=${comment.commentNo}&no=${comment.no}">»èÁ¦</a>	
-										  	  		<a href="detail.do?commentNo=${comment.commentNo}&no=${comment.no}">¼öÁ¤</a>
+													<c:choose>
+														<c:when test="${id ne user.id || empty user.id}">
+										            		<a href="#">ì‚­ì œ</a>	
+										  	  				<a href="#">ìˆ˜ì •</a>
+														</c:when>
+														<c:otherwise>														
+										            		<a href="deletecomment.do?commentNo=${comment.commentNo}&no=${comment.no}">ì‚­ì œ</a>	
+										  	  				<a href="detail.do?commentNo=${comment.commentNo}&no=${comment.no}">ìˆ˜ì •</a>
+														</c:otherwise>
+													</c:choose>
 												</div>
 											</div>
 										</c:otherwise>
@@ -498,7 +512,7 @@
 							</li>
 						</c:forEach>
 						<c:if test="${empty commentList}">
-							´ñ±ÛÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.
+							ëŒ“ê¸€ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
 						</c:if>
 					</ul>
 			</div>

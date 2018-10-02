@@ -21,6 +21,7 @@ public class Login extends HttpServlet{
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 
+		request.setCharacterEncoding("utf-8");
 		String id  = request.getParameter("id");
 		String pass  = request.getParameter("pass");
 		String name  = request.getParameter("name");

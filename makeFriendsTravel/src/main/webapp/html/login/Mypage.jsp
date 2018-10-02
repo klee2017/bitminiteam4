@@ -253,6 +253,9 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 	#table_id_filter {
 		display: none;
 	}
+	.table_id_filter {
+		display: none;
+	}
 	.dataTables_wrapper{
 		position: relative;
 		clear: both;
@@ -364,7 +367,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 <!-- 내가쓴글 확인하기 -->
 <form>
   <div id="board-list">
-		<table id="table_id" class="display">
+		<table id="table_id2" class="display">
 		    <thead>
 		        <tr>
 		            <th id="no">글 번호</th>
@@ -383,8 +386,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 				<td><%=b.getNo() %></td>
 				<td><%=idList.get(i++) %></td>	
 				<td><a href="/makeFriendsTravel/html/qnaDetail.do?no=<%=b.getNo() %>& memNo=<%=b.getMemNo()%>"><%=b.getTitle() %></a></td>	 
-				<td><fmt:formatDate value="<%=b.getRegDate()%>" pattern="yyyy-MM-dd"/></td>
-				
+				<td><fmt:formatDate value="<%=b.getRegDate()%>" pattern="yyyy-MM-dd"/></td>				
 				</tr>   	
 			<%
 				
@@ -392,6 +394,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 			%>		     	
 		    </tbody>
 		</table>
+		
 		<table id="table_id" class="display">
 		    <thead>
 		        <tr>
@@ -402,6 +405,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 		        </tr>
 		    </thead>
 		    <tbody>
+		    
 		   		<%
 		     	for(ReviewBoard c : list2){
 		     		
@@ -433,7 +437,6 @@ const fileUpload = document.querySelector("#js-file-uploader");
 const profileTrigger = document.querySelector("#js-profile-trigger");
 const profileBackground = document.querySelector("#js-profile-pic");
 
-/*
 //암호 개체
 const password = document.querySelector("#js-password");
 const passwordConfirm = document.querySelector("#js-password-confirm");
@@ -442,19 +445,18 @@ const passwordSuggest = document.querySelector("#js-suggest-password");
 let passwordDisplayed = false;
 //양식 제출시 암호가 일치하는지 확인하고 암호가 저장되어 있으면 메시지를 표시합니다.
 document.querySelector("form").addEventListener("submit", function(event) {
-event.preventDefault();
 
 if (password.value != passwordConfirm.value) {
  messageElement.innerText = "오류:비밀번호가 일치하지 않으니 다시 확인해 주십시오.";
  messageElement.classList.add("settings-message--error");
  messageElement.classList.remove("settings-message--success");
+ event.preventDefault();
 } else {
  messageElement.innerText = "수정이 완료되었습니다!";
  messageElement.classList.add("settings-message--success");
  messageElement.classList.remove("settings-message--error");
 }
 });
-*/
 // 프로필 사진을 설정하기 위해 파일 업로드를 트리거합니다.
 profileTrigger.addEventListener("click", function(event) {
 event.preventDefault();
@@ -476,7 +478,6 @@ if (fileUpload.files && fileUpload.files[0]) {
 }
 });
 
-/*
 //사용자에게 제안 된 암호를 추가하십시오 (암호 및 암호 입력에 모두 해당).
 passwordSuggest.addEventListener("click", function(event) {
 let newPassword = btoa(
@@ -503,16 +504,17 @@ if (passwordDisplayed) {
 }
 });
 $(document).ready( function () {
-*/ 
+
     $('#table_id').DataTable();
-   /* 
+    $('#table_id2').DataTable();
+   
    $('#table_id').DataTable({
     	data: dataSet,
     	columns: col_kor,
         language : lang_kor
 } );   
+   
     }); 
-   */
 </script> 
 
 

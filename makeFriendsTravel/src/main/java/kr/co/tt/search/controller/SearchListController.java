@@ -29,6 +29,7 @@ public class SearchListController extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		String book = req.getParameter("search_word");
 		String id="";
+		String img;
 		
 		ReviewBoardMapper mapper = MyAppSqlConfig.getSqlSessionInstance().getMapper(ReviewBoardMapper.class);
 		LoginMapper mapper2 = MyAppSqlConfig.getSqlSessionInstance().getMapper(LoginMapper.class);
@@ -40,6 +41,7 @@ public class SearchListController extends HttpServlet {
 		List<ReviewBoard> reviewListResult = new ArrayList<>();
 		
 		List<ReviewBoard> bestReviewList = mapper.bestCnt();
+		List<ReviewBoard> bestReviewListResult = new ArrayList<>();
 		List<String> imgList = new ArrayList<>();
 		List<String> idList = new ArrayList<>();
 		
@@ -65,24 +67,42 @@ public class SearchListController extends HttpServlet {
 			}
 			
 			for(ReviewBoard best: bestReviewList) {
-				if(best.getContent().contains("img")==true) {
-					String img = best.getContent().substring(best.getContent().indexOf("http"),best.getContent().indexOf("jpg"));
+				if(best.getTitle().contains(book)==true && best.getRecCnt()>0) {
+					bestReviewListResult.add(best);
 					id = mapper2.selectMemberId(best.getMemNo());
 					idList.add(id);
-					imgList.add(img);
 					
-				} else if(best.getContent().contains("img")==false) {
+					if(best.getContent().contains("img")==true) {
+						img = best.getContent().substring(best.getContent().indexOf("http"),best.getContent().indexOf("jpg"));
+						imgList.add(img);
+						
+						
+					} else if(best.getContent().contains("img")==false) {
+						imgList.add("none");
+					
+					}
+				} else if(best.getContent().contains(book)==true && best.getRecCnt()>0) {
+					bestReviewListResult.add(best);
 					id = mapper2.selectMemberId(best.getMemNo());
 					idList.add(id);
-					imgList.add("none");
+					if(best.getContent().contains("img")==true) {
+						img = best.getContent().substring(best.getContent().indexOf("http"),best.getContent().indexOf("jpg"));
+						imgList.add(img);
+				
+						
+					} else if(best.getContent().contains("img")==false) {
+						imgList.add("none");
+				
+					}
 				}
+				
 			}
-			System.out.println(idList);
+
 			
 			req.setAttribute("reviewListResult", reviewListResult);
 			req.setAttribute("bookList", bookList);
 			req.setAttribute("linkList", linkList);
-			req.setAttribute("bestReviewList", bestReviewList);
+			req.setAttribute("bestReviewListResult", bestReviewListResult);
 			req.setAttribute("imgList", imgList);
 			req.setAttribute("idList", idList);
 			// 공유가 되었다면 페이지를 이동
@@ -90,7 +110,7 @@ public class SearchListController extends HttpServlet {
 			rd.forward(req, res);	
 		} catch (IOException e) {
 			
-			e.printStackTrace();
+			System.out.println("어딜까");
 		};
 	}
 }

@@ -236,53 +236,75 @@ ul {
 		<h2 style="font-weight:bold;">Best</h2>
 	</div>
  	
- 		<div style = "border:1px solid black; margin-left: 9%; background: #c5d8e6;" class="wrapper">
-			<c:forEach  var="b" items="${bestReviewList}">
-				<a href="/makeFriendsTravel/jsp/board/review/detail.do?no=${b.no}">
-			        <div class="itemPhoto">
-			          <div class="polaroid">
-			          
-				          	 <%
-					          	if(imgList.get(j)=="none"){
-					          			
-					          %>
-					          	<img src="http://localhost:8000/imgfolder/default.jpg"/>
-					          <% 
-					          j++;
-					          	} else {
-					          %>
-					          	<img src=<%=imgList.get(j)+"jpg"%>>	
-					          <%
-	
-					          j++;
-					          	}
-					          %>	
-				          	
-				            <div class="caption"><%=idList.get(j-1) %></div>
-			          </div>
-			        </div>
-				
-      			</a>
-			</c:forEach>
+
+			<c:choose>
+				<c:when test="${empty bestReviewListResult}">
+					<div style = " margin-left:7%" class="wrapper">
+						<p>검색 결과가 없습니다.</p>
+					</div>	
+					
+				</c:when>
+				<c:otherwise>
+						<div style = "border:1px solid black; margin-left: 9%; background: #c5d8e6;" class="wrapper">
+						 <c:forEach  var="b" items="${bestReviewListResult}">
+							<a href="/makeFriendsTravel/jsp/board/review/detail.do?no=${b.no}">
+					        <div class="itemPhoto">
+					          <div class="polaroid">
+					          
+						          	 <%
+							          	if(imgList.get(j)=="none"){
+							          			
+							          %>
+							          	<img src="http://localhost:8000/imgfolder/default.jpg"/>
+							          <% 
+							          j++;
+							          	} else {
+							          %>
+							          	<img src=<%=imgList.get(j)+"jpg"%>>	
+							          <%
+			
+							          j++;
+							          	}
+							          %>	
+						          	
+						            <div class="caption"><%=idList.get(j-1) %></div>
+					          </div>
+					        </div>
+						
+		      			</a>
+					</c:forEach>
+				</c:otherwise>	
+			</c:choose>
+			
               
       </div>
       
       <div style="width:500px; color:black; margin-top:50px; margin-left:10px;  margin-bottom: -50px; padding-left: 160px" class="col-md-4">
 		<h2 style="font-weight:bold;">BOOK</h2>
 		</div>
-      
-      <div style = "border:1px solid black; margin-left: 9%; background: #c5d8e6; background: #EAEDF1;" class="wrapper">
-      	<ul class="book-list">
-	      	<c:forEach var="b" items="${bookList}" >
-				<li class="book"><a href="<%=linkList.get(i++) %>">
-					<img src=${b}/>
-					</a>
-				</li>
-			</c:forEach>
-		</ul>
-      </div>
  
- 
+ 	<c:choose>
+		<c:when test="${empty bookList}">
+			<div style = " margin-left:7%" class="wrapper">
+				<p>검색 결과가 없습니다.</p>
+			</div>
+		</c:when>
+		
+		<c:otherwise>
+			<div style = "border:1px solid black; margin-left: 9%; background: #c5d8e6; background: #EAEDF1;" class="wrapper">
+      	
+	      	<ul class="book-list">
+		      	<c:forEach var="b" items="${bookList}" >
+					<li class="book"><a href="<%=linkList.get(i++) %>">
+						<img src=${b}/>
+						</a>
+					</li>
+				</c:forEach>
+			</ul>
+     	  </div>
+		
+		</c:otherwise>
+    </c:choose>
 
 	
 <script>

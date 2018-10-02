@@ -75,7 +75,7 @@
         <li class="current"><a href="/makeFriendsTravel/html/main/main.do">Home</a></li>
         <li><a href="/makeFriendsTravel/html/login/Mypage.jsp?no=${user.no}">Mypage</a></li>
         <li><a href="/makeFriendsTravel/jsp/board/review/list.do">Review</a></li>
-        <li><a href="/makeFriendsTravel/html/main/photoBoard.jsp">Best Photo</a></li>
+        <li><a href="/makeFriendsTravel/html/main/bestPhoto.do">Best</a></li>
         <li><a href="/makeFriendsTravel/html/qnaList.do">Q&A</a></li>
         <c:choose>
         <c:when test="${empty user}">
@@ -86,7 +86,7 @@
         </c:otherwise>
         </c:choose>
       </ul>
-       <form name="mForm" action = "searchlist.do"  onsubmit="return Enter_Check()">
+       <form name="mForm" action = "/makeFriendsTravel/html/main/searchlist.do"  onsubmit="return Enter_Check()">
       <input id="search_word"name="search_word" class="search float-right" placeholder="Search..">
       </form>
     </div>

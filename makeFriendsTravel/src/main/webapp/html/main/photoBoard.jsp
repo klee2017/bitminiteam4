@@ -1,7 +1,14 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%
+List<String> idList = (List<String>)request.getAttribute("idList");
+List<String> imgList = (List<String>)request.getAttribute("imgList");
+int i=0;
+int j=0;
+%> 
 <c:import url="topMenu.jsp"></c:import>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -20,6 +27,10 @@ body {
 #photo {
   max-width: 100%;
   height: auto;
+}
+#photo2 {
+  width: 400px;
+  height: 290px;
 }
 .wrapper {
   width: 100%;
@@ -118,68 +129,30 @@ body {
 </head>
 <body>
 	<div class="wrapper">
-
-	 <a href="bestDetail.jsp">
-        <div class="itemPhoto">
-          <div class="polaroid"><img id="photo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/dXAhQuT.jpg">
-            <div class="caption">By Joshua Sortino</div>
-          </div>
-        </div>
-      </a>
-        <div class="itemPhoto">
-          <div class="polaroid"><img id="photo"src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/LZkivxR.jpg">
-            <div class="caption">By Cole Patrick</div>
-          </div>
-        </div>
-      
-        <div class="itemPhoto">
-          <div class="polaroid"><img id="photo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/hqcMtrF.jpg">
-            <div class="caption">By Luke Pamer</div>
-          </div>
-        </div>
-      
-        <div class="itemPhoto">
-          <div class="polaroid"><img id="photo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/l867sBU.jpg">
-            <div class="caption">By Alissa Smith</div>
-          </div>
-        </div>
-        
-        <div class="itemPhoto">
-          <div class="polaroid"><img id="photo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/7cQCk5I.jpg">
-            <div class="caption">By Ales Krivec</div>
-          </div>
-        </div>
-        
-        <div class="itemPhoto">
-          <div class="polaroid"><img id="photo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/7cQCk5I.jpg">
-            <div class="caption">By Ales Krivec</div>
-          </div>
-        </div>
-        
-        <div class="itemPhoto">
-          <div class="polaroid"><img id="photo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/7cQCk5I.jpg">
-            <div class="caption">By Ales Krivec</div>
-          </div>
-        </div>
-        
-        <div class="itemPhoto">
-          <div class="polaroid"><img id="photo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/7cQCk5I.jpg">
-            <div class="caption">By Ales Krivec</div>
-          </div>
-        </div>
-        
-        <div class="itemPhoto">
-          <div class="polaroid"><img id="photo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/7cQCk5I.jpg">
-            <div class="caption">By Ales Krivec</div>
-          </div>
-        </div>
-        
-        <div class="itemPhoto">
-          <div class="polaroid"><img id="photo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/7cQCk5I.jpg">
-            <div class="caption">By Ales Krivec</div>
-          </div>
-        </div>
-      
+		<c:forEach  var="b" items="${bestReviewList}">
+			 <a href="/makeFriendsTravel/jsp/board/review/detail.do?no=${b.no}">
+		        <div class="itemPhoto">
+		          <div class="polaroid">
+		          				  <%
+						          	if(imgList.get(j)=="none"){
+						          			
+						          %>
+						          	<img  id="photo2" src="http://localhost:8000/imgfolder/default.jpg"/>
+						          <% 
+						          j++;
+						          	} else {
+						          %>
+						          	<img id="photo2" src=<%=imgList.get(j)+"jpg"%>>	
+						          <%
+		
+						          j++;
+						          	}
+						          %>
+		            <div class="caption"><%=idList.get(i++) %></div>
+		          </div>
+		        </div>
+		      </a>
+		</c:forEach>
       </div>
 </body>
 </html>

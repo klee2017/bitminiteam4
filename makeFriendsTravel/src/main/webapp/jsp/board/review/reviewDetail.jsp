@@ -514,15 +514,20 @@
 			</div>
 		</form>
 
-
-		<div class="comment-regist-form">
-			<form id="enquiry" action="registcomment.do" method="post">
-				<input type="hidden" name="no" value="${board.no}" />
-				<input type="hidden" name="memNo" value="${user.no}" />
-				<textarea maxlength="140" name="content" id="message" placeholder="Add your comment!"></textarea>
-				<input type="submit" value="Add Comment">
-			</form>
-		</div>
+		<c:choose>
+			<c:when test="${empty user.id}">
+			</c:when>
+			<c:otherwise>
+				<div class="comment-regist-form">
+					<form id="enquiry" action="registcomment.do" method="post">
+						<input type="hidden" name="no" value="${board.no}" />
+						<input type="hidden" name="memNo" value="${user.no}" />
+						<textarea maxlength="140" name="content" id="message" placeholder="Add your comment!"></textarea>
+						<input type="submit" value="댓글 달기">
+					</form>
+				</div>
+			</c:otherwise>
+		</c:choose>
 	
 	
 	

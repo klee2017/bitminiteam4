@@ -493,7 +493,7 @@
 												<div class="comment-content">
 													<c:out value="${comment.content}" />
 													<c:choose>
-														<c:when test="${id ne user.id || empty user.id}">
+														<c:when test="${comment.memNo ne user.no || empty user.id}">
 														</c:when>
 														<c:otherwise>														
 										            		<a href="deletecomment.do?commentNo=${comment.commentNo}&no=${comment.no}">삭제</a>	

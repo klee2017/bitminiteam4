@@ -354,7 +354,7 @@ input[type=checkbox] {
       <div class="signin">
         <h1>sign in</h1>
         <form class="more-padding"  name="mForm2" action="<c:url value='/login/login.do'/>" method="post" autocomplete="off" onsubmit="return doLoginAction()">
-          <input type="text" name="id" placeholder="username">
+          <input id ="logId" type="text" name="id" placeholder="username">
           <input type="password" name="pass" placeholder="password">
           <div class="checkbox">
             <input type="checkbox" id="remember" /><label for="remember">remember me</label><br>
@@ -462,6 +462,7 @@ input[type=checkbox] {
 		
 		// 사용할 앱의 JavaScript 키를 설정해 주세요.
 		Kakao.init('a1de9b36d0ed9efc6fe551ced014da2b');
+		var contentElement;
 		// 카카오 로그인 버튼을 생성합니다.
 		Kakao.Auth.createLoginButton({
 		  container: '#kakao-login-btn',
@@ -469,15 +470,28 @@ input[type=checkbox] {
 			  Kakao.API.request({
 		       url: '/v1/user/me',
 		       success: function(res) {
-
+			
 		             alert(JSON.stringify(res)); //<---- kakao.api.request 에서 불러온 결과값 json형태로 출력
-		             alert(JSON.stringify(authObj)); //<----Kakao.Auth.createLoginButton에서 불러온 결과값 json형태로 출력
+		             console.log(JSON.stringify(authObj.access_token)); //<----Kakao.Auth.createLoginButton에서 불러온 결과값 json형태로 출력
 		             console.log(res.id);//<---- 콘솔 로그에 id 정보 출력(id는 res안에 있기 때문에  res.id 로 불러온다)
+
 		             console.log(res.kaccount_email);//<---- 콘솔 로그에 email 정보 출력 (어딨는지 알겠죠?)
 		             console.log(res.properties['nickname']);//<---- 콘솔 로그에 닉네임 출력(properties에 있는 nickname 접근 
+		             console.log(res.properties['thumbnail_image']);//<---- 콘솔 로그에 닉네임 출력(properties에 있는 nickname 접근 
 		         	// res.properties.nickname으로도 접근 가능 )
 		             console.log(authObj.access_token);//<---- 콘솔 로그에 토큰값 출력
-
+		             contentElement = document.getElementById("logId");
+		             contentElement.value = res.id 
+		             location.href='/makeFriendsTravel/login/sign.do?id='+res.id+
+		            		 		'&name='+res.properties['nickname']+
+		            		 		'&access='+authObj.access_token+
+		            		 		'&pass=1234';
+		             /*
+		             location.href='/makeFriendsTravel/login/login.do?id='+res.id+
+     		 		'&name='+res.properties['nickname']+
+     		 		'&access='+authObj.access_token+
+     		 		'&pass=1234';
+		             */
 		           }
 
 		         })

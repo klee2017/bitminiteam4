@@ -11,7 +11,8 @@
 		<typeAlias alias="QnABoard" type="kr.co.tt.repository.domain.QnABoard" />
 		<typeAlias alias="ReviewFile" type="kr.co.tt.repository.domain.ReviewFile" />
 		<typeAlias alias="ReviewComment" type="kr.co.tt.repository.domain.ReviewComment" />
-		
+		<typeAlias alias="QnAComment" type="kr.co.tt.repository.domain.QnAComment" />
+      	<typeAlias alias="QnAFile" type="kr.co.tt.repository.domain.QnAFile" />
 	</typeAliases>
 	
 	<environments default="development">

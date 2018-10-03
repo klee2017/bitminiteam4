@@ -29,7 +29,7 @@ create table tb_comment_qna (
     comment_content varchar2(420),
     comment_reg_date date default sysdate,
     comment_mod_date date default sysdate,
-    no number REFERENCES tb_board_review(no),
+    no number REFERENCES tb_board_qna(no),
     mem_no number REFERENCES tb_member(mem_no)
 );
 

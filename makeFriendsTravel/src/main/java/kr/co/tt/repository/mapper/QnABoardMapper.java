@@ -9,19 +9,19 @@ import kr.co.tt.repository.domain.QnAFile;
 
 
 public interface QnABoardMapper {
+	List<QnABoard> selectQnaBoardId(int no);
 	List<QnABoard> selectQnaBoard();
 	QnABoard selectBoardByNo(int no);
-//	void insertBoard(QnABoard board);
-	List<QnABoard> selectQnaBoardId(int no);
 	void insertQnaBoard(QnABoard board);
 	int deleteBoard(int no);
-	void updateQnABoard(QnABoard board);
+	void updateQnaBoard(QnABoard board);
 	QnABoard sqcNo(String title);
 	
 	void insertFile(QnAFile file);
+	List<QnAFile> selectFileList(int no);
 	
 	List<QnAComment> selectCommentList(int no);
 	void insertComment(QnAComment comment);
 	void updateComment(QnAComment comment);
-	void deleteComment(int no);
+	int deleteComment(int no);
 }

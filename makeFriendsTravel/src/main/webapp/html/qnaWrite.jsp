@@ -141,6 +141,13 @@ h1{
   font-weight: bold;
   width:800px;
 }
+#regDate{
+	margin-left: 25px;
+}
+#writer{
+	margin-left: 25px;
+}
+
 </style>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/magicsuggest/2.1.4/magicsuggest-min.js"></script>
@@ -158,23 +165,27 @@ h1{
     <div class="post-section post-tagged-people">
       <div class="form-group">
         <label for="people-entry">작성일</label>
-        <span><strong><%=mTime %></strong></span>
+        <span id="regDate"><strong><%=mTime %></strong></span>
         <div id="people-entry"></div>
-      </div>
+      </div> 
     </div>
     <br>
     <form id="write" name="write" action="/makeFriendsTravel/html/qnaWrite.do" method="get">
 	    <div class="post-section">
 	      <label for="post-title"></label>
-	      <span><strong><input name="writerNo" type="hidden" value="${user.no}"/>작성자${user.id}</strong></span>
+	      <div>
+	      		<strong><input name="writerNo" type="hidden" value="${user.no}"/>작성자<span id="writer">${user.id}</span></strong>
+	      </div>
 	      <br>
 	      <hr id="titleline">
 	      <div class="post-title">
-			<textarea class="Title" name="title" class="post-input" placeholder="제목을 입력하세요" rows="1" cols="140"></textarea>	      </div>
+			<textarea class="Title" id="title" name="title" class="post-input" placeholder="제목을 입력하세요" rows="1" style="width:80%;"></textarea>	      
+		  </div>
+		  <br>
 	      </div>
 	      <br>
 	      <div class="post-content">
-	        <textarea class="Content" name="content" class="post-input" placeholder="내용을 입력하세요" rows="30" cols="140"></textarea>
+	        <textarea class="Content" name="content" class="post-input" placeholder="내용을 입력하세요" rows="30" style="width:80%;"></textarea>
 	      </div>
 	      
 	    </div>
@@ -185,7 +196,6 @@ h1{
 		function sub() {
 			document.write.submit();
 			document.fileup.submit();
-			
 		}
 	
 </script>
@@ -193,7 +203,7 @@ h1{
 	
     <div class="post-section post-buttons">
       <button type="button" class="btn btn-primary"><a href="qnaList.do">목록</a></button>
-      <button type="submit" class="btn btn-success" onclick="sub()">제출</button>
+	   <button type="submit" class="btn btn-success" onclick="sub()">제출</button>      
       <div class="dropup pull-left">
 		 <form id="fileup"action="qnaImgUpload.do" method="post">
 		<input type="file" >

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN">
+
+-<mapper namespace="kr.co.tt.repository.mapper.QnABoardMapper">
+
+
+-<resultMap type="QnABoard" id="boardMap">
+
+<result property="no" column="no"/>
+
+<result property="title" column="title"/>
+
+<result property="content" column="content"/>
+
+<result property="regDate" column="reg_date"/>
+
+<result property="modDate" column="mod_date"/>
+
+<result property="memNo" column="mem_no"/>
+
+</resultMap>
+
+
+-<resultMap type="QnAFile" id="FileMap">
+
+<result property="fileNo" column="file_no"/>
+
+<result property="fileOriginalName" column="file_original_name"/>
+
+<result property="fileServerName" column="file_server_name"/>
+
+<result property="filePath" column="file_path"/>
+
+<result property="fileSize" column="file_size"/>
+
+<result property="no" column="no"/>
+
+</resultMap>
+
+
+-<resultMap type="QnAComment" id="CommentMap">
+
+<result property="no" column="no"/>
+
+<result property="commentNo" column="comment_no"/>
+
+<result property="commentContent" column="comment_content"/>
+
+<result property="commentRegDate" column="comment_reg_date"/>
+
+<result property="commentModDate" column="comment_mod_date"/>
+
+<result property="commentMemNo" column="comment_mem_no"/>
+
+</resultMap>
+
+<!-- 전체 목록 가져오기 -->
+
+
+<select id="selectQnaBoardId" resultMap="boardMap" parameterType="int">select *from tb_board_qnawhere mem_no= #{memNo} </select>
+
+<select id="selectQnaBoard" resultMap="boardMap">select *from tb_board_qnaorder by no desc </select>
+
+<!-- 게시물 등록하기 : insertBoard -->
+
+
+<insert id="insertQnaBoard" parameterType="QnABoard">insert into tb_board_qna(no, title, content,mem_no) values (s_board_qna.nextval, #{title}, #{content}, #{memNo}) </insert>
+
+<select id="selectBoardByNo" resultMap="boardMap" parameterType="int">select *from tb_board_qnawhere no = #{no} </select>
+
+<delete id="deleteBoard" parameterType="int">deletefrom tb_board_qnawhere no = #{no} </delete>
+
+<update id="updateQnaBoard" parameterType="QnABoard">update tb_board_qnaset title = #{title},content = #{content}where no = #{no} </update>
+
+<insert id="insertFile" parameterType="QnAFile">insert into tb_file_qna (file_no, no, file_original_name, file_server_name, file_path, file_size) values (s_file_qna.nextval, #{no}, #{fileOriginalName}, #{fileServerName}, #{filePath}, #{fileSize}) </insert>
+
+<select id="selectFileList" resultMap="FileMap" parameterType="int">select *from tb_comment_qnawhere no = #{no}order by comment_no desc </select>
+
+<select id="selectCommentList" resultMap="CommentMap" parameterType="int">select *from tb_comment_qnawhere no = #{no} </select>
+
+<insert id="insertComment" parameterType="QnAComment">insert into tb_comment_qna (comment_no, no, comment_content, mem_no) values (s_comment_qna.nextval, #{no}, #{commentContent}, #{commentMemNo}) </insert>
+
+<update id="updateComment" parameterType="QnAComment">update tb_comment_qnaset comment_content = #{content}where comment_no = #{commentNo} </update>
+
+<delete id="deleteComment" parameterType="int">deletefrom tb_comment_qnawhere comment_no = #{commentNo} </delete>
+
+</mapper>

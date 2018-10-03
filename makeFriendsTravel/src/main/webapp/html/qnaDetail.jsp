@@ -1,8 +1,11 @@
+<%@page import="kr.co.tt.repository.domain.QnAComment"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <%@page import="kr.co.tt.repository.domain.QnABoard" %>
+<%@page import="kr.co.tt.repository.domain.QnAComment" %>
 
 <c:import url="./main/topMenu.jsp"></c:import>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -134,6 +137,13 @@ h1{
 #comment-title{
 	text-align: left;
 }
+#comList{
+	text-align: left;
+}
+#regCom{
+	margin-left: 40px;
+}
+
 
 </style>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -198,20 +208,32 @@ h1{
 		<br>
 		<div id="comment-title"><strong>댓글</strong></div>
 		<hr>
-		<table>
-			<tr>
-				<td>
-					<textarea rows="3" cols="140" id="comContent"></textarea>
-				</td>
-				<td>
-					<button type="submit" onclick="regCom()" id="regCom">등록</button>
-				</td>
-			</tr>
-			<tr id="comment">
-				<td></td>
-			</tr>
-		</table>
-
+			<form action="registComment.do" method="post">
+			<table>
+				<input type="hidden" name="no" value="${board.no}"/>
+				<input type="hidden" name="memNo" value="${user.no}"/>				
+				<tr>
+					<td>
+						<textarea rows="5" cols="130" id="comContent" name="commentContent"></textarea>
+					</td>
+					
+					<td>
+						<button type="submit" id="regCom">등록</button>
+					</td>
+				</tr>
+			</table>
+			</form>
+			<br>
+			
+			<c:forEach var="c" items="${commentList}">
+				<div id="comList">
+					<hr>
+					<div id="comId"><strong>${user.id}</strong></div>
+					<div id="comContent"><c:out value="${c.commentContent}"/></div>
+				</div>
+			</c:forEach>
+			
+			<hr>
       </div>
     </div>
    
@@ -223,7 +245,7 @@ h1{
 	}
 	
 	
-	$("#updateBtn").click(function(){
+	$("#updateBtn").click(function(){ 
 		if(this.id!="updateBtn"){
 
 			  if($.trim($("#title1").val())==''){
@@ -257,8 +279,6 @@ h1{
 		 this.id="changeBtn";
 		 return;
 	})
-	
-
 	
 </script>
 

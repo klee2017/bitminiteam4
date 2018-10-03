@@ -30,22 +30,24 @@ public class QnADetailController extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		QnABoardMapper mapper = 
 				MyAppSqlConfig.getSqlSessionInstance().getMapper(QnABoardMapper.class);	
-		
-		LoginMapper mapper2 = MyAppSqlConfig.getSqlSessionInstance().getMapper(LoginMapper.class);
 		int no = Integer.parseInt(request.getParameter("no"));
 		QnABoard board = mapper.selectBoardByNo(no);
+	
+		request.setAttribute("board", board);
+		
+		LoginMapper mapper2 = MyAppSqlConfig.getSqlSessionInstance().getMapper(LoginMapper.class);
 		String id = mapper2.selectMemberId(board.getMemNo());
 		
-		
-		request.setAttribute("board", board);
 		request.setAttribute("id", id);
 		
-//		List<QnAComment> commentList = mapper.selectCommentList(no);
-//		request.setAttribute("commentList", commentList);
 		
-//		try {
-//			request.setAttribute("commentNo", Integer.parseInt(request.getParameter("commentNo")));
-//		} catch (NumberFormatException e) {	}
+		List<QnAComment> commentList = mapper.selectCommentList(no);
+		request.setAttribute("commentList", commentList);
+		
+		
+		try {
+			request.setAttribute("commentNo", Integer.parseInt(request.getParameter("commentNo")));
+		} catch (NumberFormatException e) {	}
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/html/qnaDetail.jsp");
 		rd.forward(request, response);

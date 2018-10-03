@@ -27,7 +27,7 @@ public class QnAUpdate extends HttpServlet{
 		board.setNo(no);
 		board.setTitle(title);
 		board.setContent(content);
-		mapper.updateQnABoard(board);
+		mapper.updateQnaBoard(board);
 	
 		res.sendRedirect(req.getContextPath()+"/html/qnaDetail.do?no="+no+"&memNo="+memNo);
 		

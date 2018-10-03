@@ -708,11 +708,9 @@ h3 {
                 <div><h3>5</h3></div>
             </div>
             <div class="slider slider-nav">
-                <div><h3 style="font-family: Nanum Pen Script, cursive;"><a href="/makeFriendsTravel/html/main/photoBoard.jsp">BEST</a></h3></div>
-                <div><h3 style="font-family: Nanum Pen Script, cursive;"><a href="/makeFriendsTravel/html/reviewList.jsp">Review</a></h3><</div>
-                <div><h3 style="font-family: Nanum Pen Script, cursive;"><a href="/makeFriendsTravel/html/Q&AList.jsp">Q&A</a></h3><</div>
-                <div><h3>4</h3></div>
-                <div><h3>5</h3></div>
+                <div><h3 style="font-family: Nanum Pen Script, cursive;"><a href="/makeFriendsTravel/html/main/bestPhoto.do">BEST</a></h3></div>
+                <div><h3 style="font-family: Nanum Pen Script, cursive;"><a href="/makeFriendsTravel/jsp/board/review/list.do">Review</a></h3><</div>
+                <div><h3 style="font-family: Nanum Pen Script, cursive;"><a href="/makeFriendsTravel/html/qnaList.do">Q&A</a></h3><</div>
             </div>        
         </div>
       </div>

@@ -40,7 +40,7 @@ public class SignUp extends HttpServlet{
 			member.setPoto(photo);
 			Member checkMember = mapper.selectMember(member);
 			if(checkMember == null) {
-				mapper.insertMember(member);
+				mapper.insertKakaoMember(member);
 
 			
 				request.setAttribute("id", member.getId());
@@ -49,7 +49,7 @@ public class SignUp extends HttpServlet{
 				request.setAttribute("poto", member.getPoto());
 				request.setAttribute("access", kakao);
 				
-				RequestDispatcher rd= request.getRequestDispatcher("/login/login.do");
+				RequestDispatcher rd= request.getRequestDispatcher("/login/login.do?poto="+photo);
 				rd.forward(request, response);
 				
 				return;
@@ -60,7 +60,7 @@ public class SignUp extends HttpServlet{
 				request.setAttribute("poto", member.getPoto());
 				request.setAttribute("access", kakao);
 				
-				RequestDispatcher rd= request.getRequestDispatcher("/login/login.do");
+				RequestDispatcher rd= request.getRequestDispatcher("/login/login.do?poto="+photo);
 				rd.forward(request, response);
 		
 				return;

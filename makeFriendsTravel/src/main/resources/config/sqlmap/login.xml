@@ -37,7 +37,11 @@
 	</select>
 
 	<insert id="insertMember" parameterType="Member" >
-		insert into tb_member(mem_no, mem_id, mem_name, mem_pass )values(m_member_no.nextval, #{id}, #{name}, #{pass} )
+		insert into tb_member(mem_no, mem_id, mem_name, mem_pass)values(m_member_no.nextval, #{id}, #{name}, #{pass})
+	</insert>
+	
+	<insert id="insertKakaoMember" parameterType="Member" >
+		insert into tb_member(mem_no, mem_id, mem_name, mem_pass, mem_poto)values(m_member_no.nextval, #{id}, #{name}, #{pass}, #{poto} )
 	</insert>
 	
 	<select id= "selectMemberByNo" parameterType="int" resultMap="MemberMap">

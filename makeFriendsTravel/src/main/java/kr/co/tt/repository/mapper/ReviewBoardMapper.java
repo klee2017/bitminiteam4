@@ -16,6 +16,7 @@ public interface ReviewBoardMapper {
 	void insertBoard(ReviewBoard board);
 	void deleteBoard(int no);
 	void updateBoard(ReviewBoard board);
+	void updateRecommendCount(int no);
 	ReviewBoard sqcNo(String title);
 	
 	void insertFile(ReviewFile file);

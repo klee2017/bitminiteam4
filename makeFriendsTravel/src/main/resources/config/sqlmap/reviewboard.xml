@@ -68,8 +68,6 @@
  		  ]]>
 	</select>
 	
-	
-	
     <select id="selectBoardByNo" parameterType="int" resultMap="reviewBoardDetailMap">
     	select *
     	  from tb_board_review
@@ -100,6 +98,12 @@
     	update tb_board_review
     	   set title = #{title},
     	       content = #{content}
+    	 where no = #{no}
+    </update>
+    
+    <update id="updateRecommendCount" parameterType="int">
+    	update tb_board_review
+    	   set rec_cnt = rec_cnt + 1
     	 where no = #{no}
     </update>	  
     

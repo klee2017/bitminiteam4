@@ -22,6 +22,7 @@ public class DetailController extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		ReviewBoardMapper mapper = MyAppSqlConfig.getSqlSessionInstance().getMapper(ReviewBoardMapper.class);
 		int no = Integer.parseInt(request.getParameter("no"));
 		ReviewBoard board = mapper.selectBoardByNo(no);

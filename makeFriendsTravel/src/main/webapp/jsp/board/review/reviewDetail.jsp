@@ -15,6 +15,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
 <title>Review Detail</title>
 <style>
 	@import url(https://fonts.googleapis.com/css?family=Merriweather:400,700,400italic,700italic);
@@ -398,6 +402,10 @@
 		float: right;
 	}
 	
+	#update-delete > a {
+		border: 1px solid black;
+	}
+		
 	body {
 		font-family: sans-serif;
 	}
@@ -416,14 +424,18 @@
 			<header class="post-header">
 				<h3 itemprop="headline" class="post-title">${board.title}</h3>
 				<p class="post-subtitle" itemprop="alternativeHeadline">${id}</p>
-				<p class="post-meta">Posted on <fmt:formatDate value="${board.modDate}" pattern="yyyy/MM/dd"/></time></p>
+				<p class="post-meta">Posted on <fmt:formatDate value="${board.modDate}" pattern="yyyy/MM/dd"/></p>
+				<p>추천수 : <span id="recommend-count">${board.recCnt}</span></p>
 			</header>
 
 			<p itemprop="description" class="post-intro">${board.content}</p>
 			
 			<div id="update-delete">
 				<c:choose>
-					<c:when test="${id ne user.id || empty user.id}">
+					<c:when test="${id ne user.id}">
+						<button id="recommendBtn" data-no=${board.no}>추천</button>
+					</c:when>
+					<c:when test="${empty user.id}">
 					</c:when>
 					<c:otherwise>														
 						<a href="delete.do?no=${board.no}">삭제</a>
@@ -535,7 +547,7 @@
 	
 	<script>
 	$(document).ready(function () {
-	    var comment = $('form#enquiry textarea'),
+	    /* var comment = $('form#enquiry textarea'),
 	        counter = '',
 	        counterValue = 140, //change this to set the max character count
 	        minCommentLength = 10, //set minimum comment length
@@ -558,8 +570,39 @@
 	      } else {
 	        submitButton.fadeOut(200);
 	      }
-	    });
+	    }); */
+	    
+	  /* function addRecommend(boardNo) {
+		$.ajax({
+			data: {no: boardNo},
+			type: "GET",
+			url: "/makeFriendsTravel/jsp/board/review/recommend.do",
+			dataType: "json",
+			success : function(data) { // 처리가 성공할 경우
+                alert(data);
+				console.log(data);
+ 	        }
+		});  
+	  }; */
+	    
 	  });
+	
+	
+	$(function(){
+		$('#recommendBtn').on('click', function() {
+			var no = $(this).data('no');
+			$.ajax({
+				data: {no: no},
+				type: "POST",
+				url: "/makeFriendsTravel/jsp/board/review/recommend.do",
+				dataType: "json",
+				success : function(data) { // 처리가 성공할 경우
+					$('#recommend-count').html(data.recCnt);
+	 	        }
+			});
+		})	
+	})
+	
 	</script>
 </body>
 </html>

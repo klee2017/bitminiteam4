@@ -61,12 +61,12 @@
          	
      	 	<div class="nav1 content">
      	 		<c:choose>
-     	 			<c:when test="${kakao !=null }">
+     	 			<c:when test="${kakao != null }">
      	 				<div class="item pic1" style="background-image:url('${user.poto}');"></div><br>
      	 			</c:when>
      	 			
      	 			<c:otherwise>
-     	 				<div class="item pic1" style="background-image:url(`/makeFriendsTravel/image/${user.poto}`);"></div><br>
+     	 				<div class="item pic1" style="background-image:url('/makeFriendsTravel/image/${user.poto};')"></div><br>
      	 			</c:otherwise>
      	 		</c:choose>
       			<span style="float: right; margin-top: -52px; margin-right: 22px;font-weight: 800;">"${user.id}"님 환영합니다.</span> 

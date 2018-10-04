@@ -8,6 +8,7 @@ public interface LoginMapper {
 	
 	Member selectMember(Member member);
 	void insertMember(Member member);
+	void insertKakaoMember(Member member);
 	Member selectBoardByNo(int no);
 	void updateMember(Member member);
 	List<String> idcheck();

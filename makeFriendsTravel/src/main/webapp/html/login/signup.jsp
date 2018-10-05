@@ -461,7 +461,7 @@ input[type=checkbox] {
 		}
 		
 		// 사용할 앱의 JavaScript 키를 설정해 주세요.
-		Kakao.init('a1de9b36d0ed9efc6fe551ced014da2b');
+		Kakao.init('9d964721616f86a4ed62c0097d88aa88');
 		var contentElement;
 		// 카카오 로그인 버튼을 생성합니다.
 		Kakao.Auth.createLoginButton({

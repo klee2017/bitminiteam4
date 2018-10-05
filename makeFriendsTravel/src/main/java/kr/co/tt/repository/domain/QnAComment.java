@@ -8,7 +8,7 @@ public class QnAComment {
 	private String commentContent;
 	private	Date commentRegDate;
 	private	Date commentModDate;
-	private int commentMemNo;
+	private int memNo;
 	
 	public int getNo() {
 		return no;
@@ -40,10 +40,10 @@ public class QnAComment {
 	public void setCommentModDate(Date commentModDate) {
 		this.commentModDate = commentModDate;
 	}
-	public int getCommentMemNo() {
-		return commentMemNo;
+	public int getMemNo() {
+		return memNo;
 	}
-	public void setCommentMemNo(int commentMemNo) {
-		this.commentMemNo = commentMemNo;
+	public void setMemNo(int memNo) {
+		this.memNo = memNo;
 	}
 }

@@ -6,6 +6,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <%@page import="kr.co.tt.repository.domain.QnABoard" %>
 <%@page import="kr.co.tt.repository.domain.QnAComment" %>
+<%
+List<String> commentIdList = (List<String>)request.getAttribute("commentIdList");
+int i=0;
+%>
 
 <c:import url="./main/topMenu.jsp"></c:import>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -228,7 +232,7 @@ h1{
 			<c:forEach var="c" items="${commentList}">
 				<div id="comList">
 					<hr>
-					<div id="comId"><strong>${user.id}</strong></div>
+					<div id="comId"><strong><%=commentIdList.get(i++) %></strong></div>
 					<div id="comContent"><c:out value="${c.commentContent}"/></div>
 				</div>
 			</c:forEach>

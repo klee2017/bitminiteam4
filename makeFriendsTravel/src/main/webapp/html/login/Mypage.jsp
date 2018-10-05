@@ -260,8 +260,8 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 		position: relative;
 		clear: both;
 		zoom : 1;
-		width: 182%;
-		left: -43%;
+		width: 150%;
+		left: -20%;
 	}
 	.dataTables_wrapper .dataTables_length {
 		float: right;
@@ -281,6 +281,12 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 	#title{
 		width:50%;
 	}
+	#table_id{
+		width:100%
+	}
+	#table_id2{
+		width:100%
+	}
 </style>
 
 </head>
@@ -290,7 +296,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 <h1>Update Profile</h1>
 <div class="settings-message" id="js-message"></div>
 
-<form action="<c:url value='/login/update.do'/>" method="post" encType="multipart/form-data">
+<form name="mForm" action="<c:url value='/login/update.do'/>" method="post" encType="multipart/form-data">
 	<input type="hidden" name="no" value="<%=Integer.parseInt(request.getParameter("no"))%>">
 
   <input id="js-file-uploader" class="hidden " name="poto" type="file"/>
@@ -360,15 +366,19 @@ input[type="submit"]:hover, input[type="submit"]:focus {
     
     </div>
   </div>
- 		<input type="submit" value="수정완료" id="update">
+ 		<input type="submit" value="수정완료" id="update" >
  		 <a href="/makeFriendsTravel/html/main/main.do" id="maintag">Privious..</a>
  </form>
+ 
  
 <!-- 내가쓴글 확인하기 -->
 <form>
   <div id="board-list">
 		<table id="table_id2" class="display">
 		    <thead>
+		    	<tr>
+				     <th><h2>MyQna<hr id="hrtwo"></h2></th>
+		    	</tr>
 		        <tr>
 		            <th id="no">글 번호</th>
 		            <th id="writer">작성자</th>
@@ -397,6 +407,9 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 		
 		<table id="table_id" class="display">
 		    <thead>
+		    	<tr>
+				     <th><h2>MyReview<hr id="hrtwo"></h2></th>
+		    	</tr>
 		        <tr>
 		            <th id="no">글 번호</th>
 		            <th id="writer">작성자</th>
@@ -443,6 +456,7 @@ const passwordConfirm = document.querySelector("#js-password-confirm");
 const passwordToggle = document.querySelector("#js-toggle-password");
 const passwordSuggest = document.querySelector("#js-suggest-password");
 let passwordDisplayed = false;
+
 //양식 제출시 암호가 일치하는지 확인하고 암호가 저장되어 있으면 메시지를 표시합니다.
 document.querySelector("form").addEventListener("submit", function(event) {
 
@@ -451,7 +465,10 @@ if (password.value != passwordConfirm.value) {
  messageElement.classList.add("settings-message--error");
  messageElement.classList.remove("settings-message--success");
  event.preventDefault();
-} else {
+
+
+}
+else {
  messageElement.innerText = "수정이 완료되었습니다!";
  messageElement.classList.add("settings-message--success");
  messageElement.classList.remove("settings-message--error");
@@ -503,18 +520,12 @@ if (passwordDisplayed) {
  password.type = "password";
 }
 });
-$(document).ready( function () {
 
-    $('#table_id').DataTable();
-    $('#table_id2').DataTable();
-   
-   $('#table_id').DataTable({
-    	data: dataSet,
-    	columns: col_kor,
-        language : lang_kor
-} );   
-   
+$(document).ready( function () {
+   //$('#table_id').DataTable();
+//    $('#table_id2').DataTable();
     }); 
+   
 </script> 
 
 

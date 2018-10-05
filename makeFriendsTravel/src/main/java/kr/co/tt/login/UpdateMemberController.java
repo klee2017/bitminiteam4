@@ -47,7 +47,7 @@ public class UpdateMemberController extends HttpServlet {
 		request.setAttribute("idList", idList);
 
 
-		String uploadPath = "C:/app/github/bitminiteam4/makeFriendsTravel/src/main/webapp/image";
+		String uploadPath = "C:/git/naverMail/makeFriendsTravel/src/main/webapp/image";
 		
 		
 		//file 업로드
@@ -71,7 +71,9 @@ public class UpdateMemberController extends HttpServlet {
 		memberVO.setGender(mRequest.getParameter("gender"));
 		memberVO.setFavoritePlace(mRequest.getParameter("favoriteplace"));
 		
+		System.out.println(mRequest.getFilesystemName("poto"));
 		File f = mRequest.getFile("poto");
+		System.out.println(f.getParent());
 		if(f != null) {
 			memberVO.setPoto(mRequest.getFilesystemName("poto"));
 			memberVO.setPotoAddr(f.getParent());

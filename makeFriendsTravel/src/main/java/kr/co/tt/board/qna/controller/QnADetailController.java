@@ -2,6 +2,7 @@ package kr.co.tt.board.qna.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -42,7 +43,15 @@ public class QnADetailController extends HttpServlet{
 		
 		
 		List<QnAComment> commentList = mapper.selectCommentList(no);
+		List<String> commentIdList = new ArrayList<>() ;
+		String commentId ;
+		for(QnAComment c : commentList) {
+			commentId = mapper2.selectMemberId(c.getMemNo());
+			commentIdList.add(commentId);
+		}
+		
 		request.setAttribute("commentList", commentList);
+		request.setAttribute("commentIdList", commentIdList);
 		
 		
 		try {

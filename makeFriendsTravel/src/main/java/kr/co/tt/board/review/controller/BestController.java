@@ -30,7 +30,7 @@ public class BestController extends HttpServlet{
 		
 		for(ReviewBoard best: bestReviewList) {
 			if(best.getContent().contains("img")==true) {
-				String img = best.getContent().substring(best.getContent().indexOf("http"),best.getContent().indexOf("jpg"));
+				String img = best.getContent().substring(best.getContent().indexOf("/imgfolder"),best.getContent().indexOf("jpg"));
 				id = mapper2.selectMemberId(best.getMemNo());
 				idList.add(id);
 				imgList.add(img);

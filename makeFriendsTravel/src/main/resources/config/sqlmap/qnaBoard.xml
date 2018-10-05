@@ -26,7 +26,7 @@
 		<result column="comment_content" property="commentContent" />
 		<result column="comment_reg_date" property="commentRegDate" />
 		<result column="comment_mod_date" property="commentModDate" />
-		<result column="comment_mem_no" property="commentMemNo" />
+		<result column="mem_no" property="memNo" />
 	</resultMap>
 	
 	<!-- 전체 목록 가져오기 -->
@@ -92,7 +92,7 @@
 		insert into tb_comment_qna (
 			comment_no, no, comment_content, mem_no
 		) values (
-			s_comment_qna.nextval, #{no}, #{commentContent}, #{commentMemNo}
+			s_comment_qna.nextval, #{no}, #{commentContent}, #{memNo}
 		)
 	</insert>
 	

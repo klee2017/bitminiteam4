@@ -15,6 +15,7 @@ if(weatherList.get(1).equals("구름조금")) weather ="partly_cloudy";
 if(weatherList.get(1).equals("구름많음")) weather ="cloudy";
 if(weatherList.get(1).equals("비")) weather ="rainy";
 if(weatherList.get(1).equals("흐림")) weather ="rainyCloudy";
+if(weatherList.get(1).equals("흐리고 비")) weather ="rainy";
 
 
 Calendar cal = Calendar.getInstance();

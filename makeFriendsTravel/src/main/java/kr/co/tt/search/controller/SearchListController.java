@@ -73,7 +73,7 @@ public class SearchListController extends HttpServlet {
 					idList.add(id);
 					
 					if(best.getContent().contains("img")==true) {
-						img = best.getContent().substring(best.getContent().indexOf("http"),best.getContent().indexOf("jpg"));
+						img = best.getContent().substring(best.getContent().indexOf("/imgfolder"),best.getContent().indexOf("jpg"));
 						imgList.add(img);
 						
 						
@@ -86,7 +86,7 @@ public class SearchListController extends HttpServlet {
 					id = mapper2.selectMemberId(best.getMemNo());
 					idList.add(id);
 					if(best.getContent().contains("img")==true) {
-						img = best.getContent().substring(best.getContent().indexOf("http"),best.getContent().indexOf("jpg"));
+						img = best.getContent().substring(best.getContent().indexOf("/imgfolder"),best.getContent().indexOf("jpg"));
 						imgList.add(img);
 				
 						

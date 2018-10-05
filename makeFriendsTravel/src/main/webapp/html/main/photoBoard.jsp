@@ -137,7 +137,7 @@ body {
 						          	if(imgList.get(j)=="none"){
 						          			
 						          %>
-						          	<img  id="photo2" src="http://localhost:8000/imgfolder/default.jpg"/>
+						          	<img  id="photo2" src="/imgfolder/default.jpg"/>
 						          <% 
 						          j++;
 						          	} else {

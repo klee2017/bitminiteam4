@@ -24,12 +24,12 @@ public class QnACommentRegistController extends HttpServlet {
 		QnABoardMapper mapper = MyAppSqlConfig.getSqlSessionInstance().getMapper(QnABoardMapper.class);
 		
 		int no = Integer.parseInt(request.getParameter("no"));
-			System.out.println("no -> " + no);
+
 		QnAComment comment = new QnAComment();
 		comment.setNo(no);
 		comment.setCommentContent(request.getParameter("commentContent"));
-		comment.setCommentMemNo(Integer.parseInt(request.getParameter("memNo")));
-		System.out.println("memNo -> " + request.getParameter("memNo"));
+		comment.setMemNo(Integer.parseInt(request.getParameter("memNo")));
+
 		mapper.insertComment(comment);
 		
 		response.sendRedirect("qnaDetail.do?no=" + no);
